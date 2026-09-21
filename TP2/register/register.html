@@ -33,5 +33,55 @@
             </div>
         </nav>
     </header>
+
+
+    <div class="form-register">
+        <h2 class="form-title">Formulario de Registro</h2>
+        <form action="register.html" method="post">
+            <div class="input-group">
+                <label for="nombre">Nombre <span class="required">*</span></label>
+                <input type="text" name="nombre" placeholder="Ingrese su nombre." required>
+            </div>
+            <div class="input-group">
+                <label for="apellido">Apellido <span class="required">*</span></label>
+                <input type="text" name="apellido" placeholder="Ingrese su apellido." required>
+            </div>
+            <div class="input-group">
+                <label for="nombreUsuario">Nombre de Usuario </label>
+                <input type="text" name="nombreUsuario" placeholder="Elija un apodo para su cuenta." required>
+            </div>
+            <div class="input-group">
+                <label for="edad">Edad <span class="required">*</span></label>
+                <input type="text" name="edad" placeholder="Ingrese su edad" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" name="email" placeholder="ejemplo@gamingteam.com" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Contraseña <span class="required">*</span></label>
+                <input type="password" name="password" placeholder="Elija una contraseña." required>
+            </div>    
+             <div class="input-group">
+                <label for="password">Repetir contraseña <span class="required">*</span></label>
+                <input type="password" name="password" placeholder="Repita la contraseña elegida." required>
+            </div> 
+            <div class="captcha-container">
+                <img src="../assets/img/captcha.png" alt="captcha" class="captcha"> 
+            </div>
+                <button type="submit" class="btn-submit">Registrarse</button>
+    
+                <p class="text-footer">
+                    ¿Ya tenés cuenta? <a href="login.html" class="text-link"> Inicia sesión acá</a>
+                </p>
+    
+                
+        </form>
+
+
+
+    </div>
+
+
 </body>
 </html>

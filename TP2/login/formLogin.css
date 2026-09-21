@@ -1,10 +1,15 @@
 body{
     background-color: #101225;
     font-family: Arial, sans-serif;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     margin: 0;
+
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-bottom: 50px;
 }
 
 .form-login{
@@ -16,6 +21,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 50px auto;
 }
 
 .form-title{
@@ -27,7 +33,7 @@ body{
 
 }
  
-form{
+.form-login form{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -39,13 +45,13 @@ form{
     margin-bottom: 1.5rem;
 }
 
-label{
+.input-group label{
     color: #bd8d2f;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
 }
 
-input{
+.input-group input{
     background-color: #92939f;
     border: 1px solid #7577a3;
     border-radius: 10px;
@@ -55,7 +61,7 @@ input{
     outline: none;
 }
 
-input::placeholder{
+.input-group input::placeholder{
     color: #2b2b36
 }
 
@@ -95,10 +101,10 @@ input::placeholder{
 }
 
 .text-footer {
-    color: #e5e5e5;
-    text-align: center;
+    color: #f0d58a;
     font-size: 0.9rem;
-    margin: 0;
+    text-align: center;
+    margin-top: 1rem;
 }
 
 .text-link {
@@ -107,5 +113,5 @@ input::placeholder{
 }
 
 .text-link:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
