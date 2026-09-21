@@ -1,0 +1,80 @@
+.seccion-carrusel {
+  margin-top: 50px;
+  background-color: #191b32; /* El mismo violeta de tu fondo */
+  text-align: center;
+  width: 100%;
+}
+
+.titulo-carrusel {
+  color: #b58034; /* Color dorado del título */
+  padding-top: 20px;
+  margin-bottom: 40px;
+  font-family:'nunito', sans-serif;
+  font-size: 20px;
+}
+
+/* El contenedor que recorta la fila */
+.carrusel-contenedor {
+  position: relative; /* Permite posicionar los botones encima */
+  max-width: 100%;  /* Ajusta según el ancho de tu Figma */
+  max-height: 222px;  /* Ajusta según el alto de tu Figma */
+  margin: 0 auto;
+  overflow: hidden;   /* 👈 Recorta las imágenes que se salen */
+}
+
+/* La fila larga con flex */
+.carrusel-track {
+  height: 150px;       /* Ocupa todo el alto del contenedor */  
+  display: flex;
+  padding-left: 20px;  /* Espacio a la izquierda para que no quede pegado */
+  gap: 20px;          /* Espacio entre cada juego */
+  scroll-behavior: smooth; /* Hace que el movimiento sea suave */
+  overflow-x: auto;   /* Permite moverlo con el dedo en celulares */
+  width: 100%;         /* Ocupa todo el ancho del contenedor */
+}
+
+/* Oculta la barra de scroll visual para que quede limpio */
+.carrusel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Estilos para las tarjetas de los juegos */
+.juego-tarjeta img {
+  width: 120px;       /* Ajusta al tamaño de tus iconos */
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* 1. Aplicamos el posicionamiento absoluto a AMBOS botones */
+.btn-carrusel-prev, 
+.btn-carrusel-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 10;
+  
+  /* Quitamos los bordes y fondos feos por defecto que los navegadores le dan a los botones */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* 2. Ubicamos el botón izquierdo */
+.btn-carrusel-prev {
+  left: 20px; 
+}
+
+/* 3. Ubicamos el botón derecho */
+.btn-carrusel-next {
+  right: 20px; /* Pega al borde derecho */
+}
+
+/* 4. Le damos el tamaño a la IMAGEN que está dentro de los botones */
+.btn-carrusel {
+  width: 80px;
+  height: 80px;
+  display: block; /* Evita espacios vacíos raros debajo de la imagen */
+}
+
