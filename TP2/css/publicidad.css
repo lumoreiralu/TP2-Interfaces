@@ -1,0 +1,14 @@
+.seccion-publicidad {
+  background-color: #191b32; /* El mismo violeta de tu fondo */
+  text-align: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.contenedor-publicidad {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los elementos hijos */
+  align-items: center;     /* Centra verticalmente los elementos hijos */
+  gap: 20px; /* Espacio entre cada publicidad */
+  padding: 20px 0; /* Espaciado vertical */
+}

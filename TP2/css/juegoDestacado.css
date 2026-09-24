@@ -6,6 +6,7 @@
   padding: 20px;
   margin-top: 70px;       /* Espacio para que el header fixed no lo tape */
   background-color: #191b32;
+  margin-bottom: 50px;
 }
 
 .subtitulo {

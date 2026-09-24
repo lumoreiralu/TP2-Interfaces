@@ -1,0 +1,35 @@
+.seccion-footer {
+    background-color: #191b32; /* El mismo violeta de tu fondo */
+    color: #BD8D2F; /* Color dorado del título */
+    padding: 20px;
+    margin-top: 50px;
+    height: 400px;
+}
+
+.footer-columnas{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-link {
+    color: #00E5FF; /* Color dorado del texto */
+    text-decoration: none;
+}
+
+.footer-columnas ul {
+    list-style-type: none;
+    padding: 0;
+}
+.footer-columnas ul li{
+    margin-bottom: 50px;
+}
+.footer-copyright {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 14px;
+    color: #BD8D2F; /* Color dorado del texto */
+}
+.footer-logo {
+    width: 117px;
+    height: 94px;
+}
