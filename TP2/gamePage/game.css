@@ -25,3 +25,21 @@ body{
     max-width: 100%;
     height: auto;
 }
+
+
+.carrusel-trackv2 {
+  height: 150px;       /* Ocupa todo el alto del contenedor */  
+  display: flex;
+  padding-left: 20px;  /* Espacio a la izquierda para que no quede pegado */
+  gap: 50px;          /* Espacio entre cada juego */
+  scroll-behavior: smooth; /* Hace que el movimiento sea suave */
+  overflow-x: auto;   /* Permite moverlo con el dedo en celulares */
+  width: 100%;         /* Ocupa todo el ancho del contenedor */
+}
+
+.juego-tarjetav2 img {
+  width: 120px;       /* Ajusta al tamaño de tus iconos */
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+}
