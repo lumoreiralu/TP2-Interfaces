@@ -5,9 +5,171 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="game.css">
-    <title>GamingTeam - PegSolitaire PacMan</title>
+    <link rel="stylesheet" href="../css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    <title>GamingTeam - PegSolitaire PacMan</title>
+    <link rel="stylesheet" href="../css/publicidad.css">
+        <link rel="stylesheet" href="../css/carrusel.css">
 </head>
 <body>
-    
+    <header class="navBar">
+        <nav>
+            <!--izquierda-->
+            <div class="izquierda">
+                <img src="../assets/img/menu.png" alt="menu" class="menu"> 
+                <img src="../assets/img/logo.png" alt="logo" class="logo"> 
+            </div>
+
+            <!--centro-->
+            <div class="buscador">
+                <form action="search.html" method="get">
+                    <input type="text" name="buscador" placeholder="Buscar un juego...">
+                    <button type="submit" class="lupa-btn" aria-label="Buscar">
+                        
+                    </button>
+                </form>
+            </div>
+
+            <!--derecha-->
+            <div class="derecha">
+                <span class="saludo-usuario">Hola, Usuario</span>
+                <img src="../assets/img/user.png" alt="user" class="user">
+            </div>
+        </nav>
+    </header>
+
+    <div class="seccion-juego"> 
+        <img src="../assets/pegPacmanPage/juegoPeg.png" alt="juego">
+    </div>
+    <div class="seccion-descripcion">
+        <img src="../assets/pegPacmanPage/Descripcion juego.png" alt="descripcion">
+    </div>
+    <div class="seccion-foro"> 
+        <img src="../assets/pegPacmanPage/foro.png" alt="foro">
+    </div>
+
+    <div class="seccion-publicidad">
+        <div class="contenedor-publicidad">
+            <div class="publicidad"><img src="../assets/img/publiOreo.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiHamburguesa.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiBFChica.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiAuto.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiCoca.png" alt="Publicidad"></div>
+        </div>
+    </div>
+
+        <div class="seccion-carrusel">
+        <h3 class="titulo-carrusel">Recomendados Para Ti</h3>
+
+        <div class="carrusel-contenedor">
+            <!-- Botón Izquierdo -->
+            <button class="btn-carrusel-prev"><img src="../assets/img/botonIzquierdaCarrusel.png" alt=""
+                    class="btn-carrusel"></button>
+
+            <!-- La fila que contiene los juegos y se va a recortar -->
+            <div class="carrusel-track">
+                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
+                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+            </div>
+            <!-- Botón Derecho -->
+            <button class="btn-carrusel-next"><img src="../assets/img/botonDerechaCarrusel.png" alt=""
+                    class="btn-carrusel"></button>
+        </div>
+    </div>
+
+    <footer class="seccion-footer">
+        <!-- Contenedor superior para agrupar todas las columnas -->
+        <div class="footer-columnas">
+
+            <!-- Columna 1: Logo -->
+            <div class="footer-col-logo-col"><img class="footer-logo" src="../assets/img/logo.png" alt="Gaming Team Logo"
+                    class="footer-logo"></div>
+
+            <!-- Columna 2: Legales -->
+            <div class="footer-col">
+                <h4>Legales</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Términos y condiciones de uso</a></li>
+                    <li><a class="footer-link" href="#">Políticas de privacidad</a></li>
+                    <li><a class="footer-link" href="#">Derechos de Autor / Copyright</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Categorías Populares -->
+            <div class="footer-col">
+                <h4>Categorías Populares</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Animales</a></li>
+                    <li><a class="footer-link" href="#">Carreras</a></li>
+                    <li><a class="footer-link" href="#">Clásicos</a></li>
+                    <li><a class="footer-link" href="#">Muñecas</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4: Cookies | Preferencias -->
+            <div class="footer-col">
+                <h4>Cookies | Preferencias</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Configuración de cookies</a></li>
+                    <li><a class="footer-link" href="#">Políticas de cookies</a></li>
+                    <li><a class="footer-link" href="#">Preferencias de accesibilidad</a></li>
+                    <li><a class="footer-link" href="#">Idioma / Región</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 5: Acerca de Nosotros -->
+            <div class="footer-col">
+                <h4>Acerca de Nosotros</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">¿Quiénes somos?</a></li>
+                    <li><a class="footer-link" href="#">Publicá tu juego</a></li>
+                    <li><a class="footer-link" href="#">Blog de Novedades</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 6: Ayuda -->
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Preguntas frecuentes (FAQ)</a></li>
+                    <li><a class="footer-link" href="#">Soporte técnico</a></li>
+                    <li><a class="footer-link" href="#">Seguridad de la cuenta</a></li>
+                    <li><a class="footer-link" href="#">Contacto comercial y prensa</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 7: Redes y Suscripción -->
+            <div class="footer-col-redes-suscripcion-col">
+                <h4>Nuestras redes</h4>
+                <div class="redes-iconos">
+                    <a class="footer-link" href="#"><img src="../assets/IconoSocial/IconoIg.png" alt="Instagram"></a>
+                    <a class="footer-link" href="#"><img src="../assets/IconoSocial/IconoFb.png" alt="Facebook"></a>
+                    <a class="footer-link" href="#"><img src="../assets/IconoSocial/IconoX.png" alt="X (Twitter)"></a>
+                </div>
+
+                <h4 class="titulo-suscripcion">Suscripción</h4>
+                <a class="footer-link" href="#">Recibí nuevos juegos en tu correo</a>
+            </div>
+
+        </div>
+
+        <!-- Barra inferior para el Copyright -->
+        <div class="footer-copyright">
+            <p>Todos los derechos reservados Copyright &copy; 2026 Gamingteam.com - Juegos Gratis online</p>
+        </div>
+    </footer>
 </body>
 </html>

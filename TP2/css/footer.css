@@ -1,6 +1,6 @@
 .seccion-footer {
-    background-color: #191b32; /* El mismo violeta de tu fondo */
-    color: #BD8D2F; /* Color dorado del título */
+    background-color: #191b32;
+    color: #BD8D2F; 
     padding: 20px;
     margin-top: 50px;
     height: 400px;
@@ -12,7 +12,7 @@
 }
 
 .footer-link {
-    color: #00E5FF; /* Color dorado del texto */
+    color: #00E5FF;
     text-decoration: none;
 }
 
@@ -27,7 +27,7 @@
     text-align: center;
     margin-top: 50px;
     font-size: 14px;
-    color: #BD8D2F; /* Color dorado del texto */
+    color: #BD8D2F;
 }
 .footer-logo {
     width: 117px;

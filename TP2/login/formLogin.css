@@ -1,6 +1,6 @@
 body{
     background-color: #101225;
-    font-family: Arial, sans-serif;
+    font-family: 'nunito', sans-serif;
     min-height: 100vh;
     margin: 0;
 
@@ -93,12 +93,7 @@ body{
     margin-bottom: 2rem;
 }
 
-.social {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-}
+
 
 .text-footer {
     color: #f0d58a;
