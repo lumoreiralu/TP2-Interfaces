@@ -1,0 +1,74 @@
+.carrusel-3d-seccion {
+  background-color: #191b32;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    flex-direction: column;
+}
+
+.titulo-carrusel3D {
+  color: #BD8D2F; /* El color amarillo/dorado del texto */
+  margin-top: 40px;
+  margin-bottom: 40px;
+  font-family:'nunito', sans-serif;
+  font-size: 28px;
+}
+
+.carrusel-3d-contenedor {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 450px;
+  /* Habilita el entorno 3D para los hijos */
+  perspective: 1000px; 
+}
+
+.cards-3d-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* Base de todas las tarjetas */
+.card-3d {
+  position: absolute;
+  width: 55%; /* Tamaño de la tarjeta principal */
+  height: 100%;
+  left: 22.5%; /* Centra la tarjeta activa */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  /* Animación suave para la transición de posiciones */
+  transition: transform 0.5s ease, opacity 0.5s ease, z-index 0.5s;
+}
+
+.card-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- ESTADOS TRIDIMENSIONALES --- */
+
+/* 1. Tarjeta Activa (Al frente del todo) */
+.posicion-activa {
+  transform: translate3d(0, 0, 0) scale(1);
+  opacity: 1;
+  z-index: 5;
+}
+
+/* 2. Tarjeta Izquierda (Atrás, achicada e inclinada) */
+.posicion-izquierda {
+  transform: translate3d(-60%, 0, -150px) rotateY(-35deg) scale(0.85);
+  opacity: 0.4; /* Opacada */
+  z-index: 2;
+}
+
+/* 3. Tarjeta Derecha (Atrás, achicada e inclinada hacia el otro lado) */
+.posicion-derecha {
+  transform: translate3d(60%, 0, -150px) rotateY(35deg) scale(0.85);
+  opacity: 0.4; /* Opacada */
+  z-index: 2;
+}

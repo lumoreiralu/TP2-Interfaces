@@ -1,0 +1,238 @@
+/* ==========================================
+   DISEÑO MOBILE  (ancho <= 768px)
+   Linkeado al final del <head> para que gane por
+   orden de cascada sin tocar los CSS de desktop.
+   Breakpoint unico: 768px
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  /* ---------- NAVBAR ---------- */
+  /* Se mantiene la composicion (menu + logo / buscador / avatar)
+     y el position: fixed. Solo se compacta para que el buscador
+     quede usable: pasa de 96px a ~236px de ancho. */
+  .navBar {
+    height: 60px;
+    padding: 0.75rem 1rem;
+  }
+
+  .izquierda,
+  .derecha {
+    gap: 0.75rem;
+  }
+
+  .buscador {
+    max-width: none; /* ocupa el espacio que sobra */
+  }
+
+  .saludo-usuario {
+    display: none; /* no entra "Hola, Usuario" en mobile */
+  }
+
+  /* ---------- TITULOS ---------- */
+  /* El padding-top de 76px deja libre el navbar fijo de 60px:
+     sin esto el titulo del destacado queda tapado. */
+  .carrusel-3d-seccion {
+    padding: 76px 16px 30px;
+  }
+
+  .titulo-carrusel3D {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  .titulo-carrusel {
+    font-size: 18px;
+    padding-top: 16px;
+    margin-bottom: 20px;
+  }
+
+  /* ---------- CARRUSELES COMUNES ---------- */
+
+  /* Sin flechas: en mobile el carrusel se mueve con el dedo */
+  .btn-carrusel-prev,
+  .btn-carrusel-next {
+    display: none;
+  }
+
+  /* La seccion tiene height: 260px fijo en desktop: en mobile la card es
+     mas alta, el contenido se desbordaba y se pisaba con el carrusel de
+     abajo. Con auto cada carrusel ocupa lo que necesita. */
+  .seccion-carrusel {
+    height: auto;
+    margin-bottom: 30px; /* franja violeta del body entre carruseles */
+  }
+
+  /* El contenedor ya no recorta: la card mobile es mas alta que 222px */
+  .carrusel-contenedor {
+    max-height: none;
+  }
+
+  .carrusel-track {
+    height: auto; /* en vez de los 150px fijos */
+    gap: 12px;
+    padding: 0 20px 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory; /* el salto entre juegos queda "clavado" */
+    scroll-padding-left: 20px;
+  }
+
+  /* Card al 75% del ancho: se asoma el pedacito de la siguiente
+     (o de la anterior al llegar al final) */
+  .juego-tarjeta {
+    flex: 0 0 75%;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #101225;
+    scroll-snap-align: start;
+  }
+
+  /* Los thumbs son 150x150: la imagen se mantiene cuadrada */
+  .juego-tarjeta img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    transition: none;
+  }
+
+  /* El nombre pasa a ser parte de la card, debajo de la imagen.
+     Sin degradado porque ya no va encima de la imagen. */
+  .info-juego {
+    position: static;
+    width: auto;
+    height: auto;
+    flex: 1; /* toma el alto sobrante: el texto queda al fondo */
+    opacity: 1; /* sin hover, el nombre siempre visible */
+    transform: none;
+    background: none;
+    padding: 10px 12px 12px;
+  }
+
+  .nombre-juego {
+    font-size: 0.95rem;
+  }
+
+  /* Sin hover en mobile: solo un feedback al tocar.
+     Misma especificidad que el :hover de desktop para ganarle. */
+  .juego-tarjeta:hover {
+    transform: none;
+    z-index: auto;
+  }
+
+  .juego-tarjeta:hover .info-juego {
+    opacity: 1;
+    transform: none;
+  }
+
+  .juego-tarjeta:active {
+    transform: scale(0.98);
+  }
+
+  /* ---------- JUEGO DESTACADO ---------- */
+  /* La imagen del juego ocupa todo el ancho (la foto es 801x610) */
+  .carrusel-3d-contenedor {
+    height: auto;
+    max-width: 100%;
+    perspective: none;
+  }
+
+  .cards-3d-wrapper {
+    height: auto;
+  }
+
+  .card-3d {
+    position: static;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.31;
+    box-shadow: none;
+  }
+
+  .posicion-activa {
+    transform: none;
+    opacity: 1;
+    z-index: auto;
+  }
+
+  .posicion-izquierda,
+  .posicion-derecha {
+    display: none;
+  }
+
+  .btn-3d-nav {
+    display: none;
+  }
+
+  /* ---------- PUBLICIDAD ---------- */
+  /* Tira scrolleable con 2 avisos por pantalla */
+  .contenedor-publicidad {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 16px 20px;
+    gap: 12px;
+    scroll-snap-type: x proximity;
+  }
+
+  .publicidad {
+    flex: 0 0 46%;
+    aspect-ratio: 3 / 4;
+    scroll-snap-align: start;
+  }
+
+  .publicidad img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  /* ---------- FOOTER ---------- */
+  /* Una sola columna con lo importante: logo, legales y redes */
+  .seccion-footer {
+    height: auto; /* los 400px fijos no sirven apilado */
+    padding: 24px 20px;
+    margin-top: 24px;
+  }
+
+  .footer-columnas {
+    flex-direction: column;
+    align-items: center; /* centrado, no alineado a la izquierda */
+    text-align: center; /* centra los links de Legales y el CTA */
+    gap: 28px;
+  }
+
+  /* Oculta Categorias Populares, Cookies, Acerca de Nosotros y Ayuda.
+     La 2da <div> (.footer-columnas) es la de Legales y se conserva. */
+  .footer-columnas > .footer-col:not(:nth-of-type(2)) {
+    display: none;
+  }
+
+  .footer-columnas ul li {
+    margin-bottom: 10px; /* 50px dejaba un hueco enorme */
+  }
+
+  .footer-logo {
+    width: 90px;
+    height: 72px;
+  }
+
+  .redes-iconos {
+    display: flex;
+    justify-content: center; /* centra los 3 iconos */
+    gap: 12px;
+  }
+
+  .redes-iconos img {
+    width: 36px;
+    height: 27px;
+  }
+
+  .footer-copyright {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+}

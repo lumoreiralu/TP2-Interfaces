@@ -12,10 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/navBar.css">
-    <link rel="stylesheet" href="css/juegoDestacado.css">
     <link rel="stylesheet" href="css/carrusel.css">
     <link rel="stylesheet" href="css/publicidad.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/carruselDestacado.css">
+    <link rel="stylesheet" href="css/mobile.css">
 
     <title>GamingTeam</title>
 </head>
@@ -48,11 +49,30 @@
     </header>
 
 
-    <div class="juego-destacado">
-        <h2 class="subtitulo">Juego Destacado del Mes</h2>
+    <div class="carrusel-3d-seccion">
+        <h1 class="titulo-carrusel3D">Juego destacado del mes</h1>
+        <div class="carrusel-3d-contenedor">
+            <!-- Botones de navegación -->
+            <button class="btn-3d-nav prev"><img src="assets/img/svg/flechaIzq.svg" alt=""></button>
+            <button class="btn-3d-nav next"><img src="assets/img/svg/flechaDer.svg" alt=""></button>
 
-        <div class="pegSolitaire-home">
-            <button class="btn-start">START</button>
+            <!-- El grupo de imágenes -->
+            <div class="cards-3d-wrapper">
+                <!-- Tarjeta Izquierda (Fondo) -->
+                <div class="card-3d posicion-izquierda">
+                    <img src="assets/img/pegSolitaireCuadrado.png" alt="Peg Solitaire Pac-Man 1">
+                </div>
+
+                <!-- Tarjeta Centro (Al frente) -->
+                <div class="card-3d posicion-activa">
+                    <img src="assets/img/pegSolitaireCuadrado.png" alt="Peg Solitaire Pac-Man 2">
+                </div>
+
+                <!-- Tarjeta Derecha (Fondo) -->
+                <div class="card-3d posicion-derecha">
+                    <img src="assets/img/pegSolitaireCuadrado.png" alt="Peg Solitaire Pac-Man 3">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -62,63 +82,306 @@
 
         <div class="carrusel-contenedor">
             <!-- Botón Izquierdo -->
-            <button class="btn-carrusel-prev"><img src="assets/img/botonIzquierdaCarrusel.png" alt=""
+            <button class="btn-carrusel-prev"><img src="assets/img/svg/flechaIzq.svg" alt=""
                     class="btn-carrusel"></button>
 
             <!-- La fila que contiene los juegos y se va a recortar -->
             <div class="carrusel-track">
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fireboy & Watergirl</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
             </div>
             <!-- Botón Derecho -->
-            <button class="btn-carrusel-next"><img src="assets/img/botonDerechaCarrusel.png" alt=""
+            <button class="btn-carrusel-next"><img src="assets/img/svg/flechaDer.svg" alt=""
                     class="btn-carrusel"></button>
         </div>
     </div>
 
     <div class="seccion-carrusel">
-        <h3 class="titulo-carrusel">Recomendados Para Ti</h3>
+        <h3 class="titulo-carrusel">Los Más Jugados Últimamente</h3>
 
         <div class="carrusel-contenedor">
             <!-- Botón Izquierdo -->
-            <button class="btn-carrusel-prev"><img src="assets/img/botonIzquierdaCarrusel.png" alt=""
+            <button class="btn-carrusel-prev"><img src="assets/img/svg/flechaIzq.svg" alt=""
                     class="btn-carrusel"></button>
 
             <!-- La fila que contiene los juegos y se va a recortar -->
             <div class="carrusel-track">
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/sonic.png" alt="sonic">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Sonic</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/slitherio.png" alt="slitherio">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Slither.io</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/cars3D.png" alt="cars3D">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Cars 3D</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/sonic.png" alt="sonic">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Sonic</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/slitherio.png" alt="slitherio">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Slither.io</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/cars3D.png" alt="cars3D">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Cars 3D</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/sonic.png" alt="sonic">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Sonic</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/slitherio.png" alt="slitherio">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Slither.io</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/cars3D.png" alt="cars3D">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Cars 3D</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/sonic.png" alt="sonic">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Sonic</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/slitherio.png" alt="slitherio">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Slither.io</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/cars3D.png" alt="cars3D">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Cars 3D</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/sonic.png" alt="sonic">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Sonic</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/slitherio.png" alt="slitherio">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Slither.io</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/cars3D.png" alt="cars3D">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Cars 3D</span>
+                    </div>
+                </div>
             </div>
             <!-- Botón Derecho -->
-            <button class="btn-carrusel-next"><img src="assets/img/botonDerechaCarrusel.png" alt=""
+            <button class="btn-carrusel-next"><img src="assets/img/svg/flechaDer.svg" alt=""
+                    class="btn-carrusel"></button>
+        </div>
+    </div>
+
+    <div class="seccion-carrusel">
+        <h3 class="titulo-carrusel">Lanzamientos Recientes</h3>
+
+        <div class="carrusel-contenedor">
+            <!-- Botón Izquierdo -->
+            <button class="btn-carrusel-prev"><img src="assets/img/svg/flechaIzq.svg" alt=""
+                    class="btn-carrusel"></button>
+
+            <!-- La fila que contiene los juegos y se va a recortar -->
+            <div class="carrusel-track">
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fnaf1.png" alt="fnaf1">
+                    <div class="info-juego">
+                        <span class="nombre-juego">FNAF1</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/penguinDiner.png" alt="penguinDiner">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Penguin Diner</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/granny.png" alt="granny">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Granny</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fnaf1.png" alt="fnaf1">
+                    <div class="info-juego">
+                        <span class="nombre-juego">FNAF1</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/penguinDiner.png" alt="penguinDiner">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Penguin Diner</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/granny.png" alt="granny">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Granny</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/fnaf1.png" alt="fnaf1">
+                    <div class="info-juego">
+                        <span class="nombre-juego">FNAF1</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/penguinDiner.png" alt="penguinDiner">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Penguin Diner</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/granny.png" alt="granny">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Granny</span>
+                    </div>
+                </div>
+                 <div class="juego-tarjeta">
+                    <img src="assets/img/fnaf1.png" alt="fnaf1">
+                    <div class="info-juego">
+                        <span class="nombre-juego">FNAF1</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/penguinDiner.png" alt="penguinDiner">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Penguin Diner</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/granny.png" alt="granny">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Granny</span>
+                    </div>
+                </div>
+                 <div class="juego-tarjeta">
+                    <img src="assets/img/fnaf1.png" alt="fnaf1">
+                    <div class="info-juego">
+                        <span class="nombre-juego">FNAF1</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/penguinDiner.png" alt="penguinDiner">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Penguin Diner</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="assets/img/granny.png" alt="granny">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Granny</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Botón Derecho -->
+            <button class="btn-carrusel-next"><img src="assets/img/svg/flechaDer.svg" alt=""
                     class="btn-carrusel"></button>
         </div>
     </div>

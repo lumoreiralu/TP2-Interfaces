@@ -3,3 +3,15 @@ body{
     margin: 0;
     padding: 0;
 }
+
+p{
+    font-family:'nunito', sans-serif;
+}
+
+h4{
+    font-family:'nunito', sans-serif;
+}
+
+ul a{
+    font-family:'nunito', sans-serif;
+}

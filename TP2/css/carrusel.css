@@ -3,6 +3,7 @@
   text-align: center;
   width: 100%;
   margin-bottom: 15px;
+  height: 260px;
 }
 
 .titulo-carrusel {
@@ -24,12 +25,16 @@
 
 /* La fila larga con flex */
 .carrusel-track {
-  height: 150px;       /* Ocupa todo el alto del contenedor */  
+  height: 150px;       /* Ocupa todo el alto del contenedor */
   display: flex;
+  align-items: center; /* Centra las tarjetas para que al crecer no se corten arriba */
+  box-sizing: border-box; /* El padding-left cuenta dentro del ancho */
   padding-left: 20px;  /* Espacio a la izquierda para que no quede pegado */
+  padding-right: 20px; /* Espacio a la derecha para la ultima tarjeta */
   gap: 20px;          /* Espacio entre cada juego */
   scroll-behavior: smooth; /* Hace que el movimiento sea suave */
   overflow-x: auto;   /* Permite moverlo con el dedo en celulares */
+  overflow-y: hidden; /* Explicito: evita scrollbar vertical al hacer hover */
   width: 100%;         /* Ocupa todo el ancho del contenedor */
 }
 
@@ -38,43 +43,130 @@
   display: none;
 }
 
-/* Estilos para las tarjetas de los juegos */
-.juego-tarjeta img {
-  width: 120px;       /* Ajusta al tamaño de tus iconos */
+/* Asegura que la tarjeta sea el marco de referencia */
+.juego-tarjeta {
+  position: relative;
+  flex: 0 0 120px;    /* No se comprime: mantiene 120x120 y desborda para scrollear */
+  width: 120px;       /* Mantén el tamaño que ya tenías */
   height: 120px;
   border-radius: 12px;
+  overflow: hidden;   /* 👈 Recorta la imagen al border-radius (la tarjeta es la que escala) */
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Estilos de la imagen por defecto */
+.juego-tarjeta img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-/* 1. Aplicamos el posicionamiento absoluto a AMBOS botones */
-.btn-carrusel-prev, 
-.btn-carrusel-next {
+/* El contenedor del texto (Capa oscura que sube) */
+.info-juego {
   position: absolute;
-  top: 40%;
-  transform: translateY(-50%);
-  z-index: 10;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Cubre toda la tarjeta para hacer un efecto de sombra */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
   
-  /* Quitamos los bordes y fondos feos por defecto que los navegadores le dan a los botones */
-  background: none;
-  border: none;
+  display: flex;
+  align-items: flex-end; /* Sienta el texto abajo */
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
+  
+  /* Estado inicial: oculto y empujado hacia abajo */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Estilo del texto del juego */
+.nombre-juego {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* ==========================================
+   EFECTO HOVER (La magia al pasar el mouse)
+   ========================================== */
+
+/* 1. La tarjeta completa se agranda suavemente un 15% (scale 1.15) */
+.juego-tarjeta:hover {
+  transform: scale(1.20);
+  z-index: 5; /* Se dibuja por encima de las tarjetas vecinas */
+}
+
+/* 2. La capa del texto se vuelve visible y sube a su posición real */
+.juego-tarjeta:hover .info-juego {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* ==========================================
+   ESTILOS COMPARTIDOS PARA AMBOS CARRUSELES
+   ========================================== */
+
+/* 1. Base idéntica para los 4 botones (Forma, color, borde y flex) */
+.btn-carrusel-prev,
+.btn-carrusel-next,
+.btn-3d-nav {
+  position: absolute;
+  z-index: 10;
+
+  width: 75px;
+  height: 75px;
+
+  background-color: #d4a33b; /* El dorado/marrón que elegiste */
+  border: 3px solid #5c431c;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   cursor: pointer;
-  padding: 0;
+  padding: 0; /* Evita que el navegador le sume padding por defecto */
 }
 
-/* 2. Ubicamos el botón izquierdo */
-.btn-carrusel-prev {
-  left: 20px; 
+/* 2. Control de los SVG internos para que midan lo mismo */
+.btn-carrusel-prev img,
+.btn-carrusel-next img,
+.btn-3d-nav img {
+  width: 35px;
+  height: 35px;
+  display: block;
 }
 
-/* 3. Ubicamos el botón derecho */
+
+/* ==========================================
+   POSICIONAMIENTO ESPECÍFICO DE CADA UNO
+   ========================================== */
+
+/* --- Carrusel Común (Altura al 40%) --- */
+.btn-carrusel-prev,
 .btn-carrusel-next {
-  right: 20px; /* Pega al borde derecho */
+  top: 50%;
+  transform: translateY(-50%);
 }
+.btn-carrusel-prev { left: 20px; }
+.btn-carrusel-next { right: 20px; }
 
-/* 4. Le damos el tamaño a la IMAGEN que está dentro de los botones */
-.btn-carrusel {
-  width: 80px;
-  height: 80px;
-  display: block; /* Evita espacios vacíos raros debajo de la imagen */
+
+/* --- Carrusel Destacado 3D (Altura al 50% y centrado en los 650px) --- */
+.btn-3d-nav {
+  top: 50%;
+  transform: translateY(-50%);
 }
+.btn-3d-nav.prev { left: 20px; }
+.btn-3d-nav.next { right: 20px; }
 
+.nombre-juego {
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: 'nunito', sans-serif;
+}
