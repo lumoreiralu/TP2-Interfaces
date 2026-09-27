@@ -16,7 +16,9 @@
             <!--izquierda-->
             <div class="izquierda">
                 <img src="../assets/img/menu.png" alt="menu" class="menu"> 
-                <img src="../assets/img/logo.png" alt="logo" class="logo"> 
+                <a href="/index.html">
+                    <img src="/assets/img/logo.png" alt="logo" class="logo">
+                </a>            
             </div>
 
             <!--centro-->
@@ -37,12 +39,122 @@
         </nav>
     </header>
 
-    <div class="seccion-juego"> 
-        <img src="../assets/pegPacmanPage/juegoPeg.png" alt="juego">
-    </div>
-    <div class="seccion-descripcion">
-        <img src="../assets/pegPacmanPage/descgame.png" alt="descripcion">
-    </div>
+    <section class="seccion-juego">
+        <!-- Título superior -->
+        <h2 class="juego-titulo">PegSolitaire: versión PacMan</h2>
+
+        <!-- Contenedor principal del juego -->
+        <div class="juego-contenedor-principal">
+            
+            <!-- Botones superiores derechos (Configuración / Ayuda) -->
+            <div class="juego-controles-top">
+            <button class="icono-btn" aria-label="Configuración">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+            </button>
+            <button class="icono-btn" aria-label="Ayuda">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/></svg>
+            </button>
+            </div>
+
+
+            <div class="juego-imagen-wrapper">
+            <img src="../assets/pegPacmanPage/principal.png" alt="PegSolitaire: versión PacMan" class="juego-screenshot">
+            </div>
+
+            <!-- Estadísticas inferiores izquierdas -->
+            <div class="juego-stats-bottom-left">
+            <div class="stat-card">
+                <span class="stat-label">Mejor puntuación</span>
+                <span class="stat-value">390</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-label">Movimientos</span>
+                <span class="stat-value">10/25</span>
+            </div>
+            </div>
+
+            <!-- Controles inferiores derechos (Audio / Pantalla completa) -->
+            <div class="juego-controles-bottom-right">
+            <button class="icono-btn" aria-label="Silenciar">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+            </button>
+            <button class="icono-btn" aria-label="Pantalla completa">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+            </button>
+            </div>
+
+        </div>
+        </section>
+
+
+
+
+
+    <section class="game-info-section">
+        <div class="game-info-container">
+            
+            <!-- Columna Izquierda: Descripción y Compartir -->
+            <div class="info-column">
+            <div class="info-block">
+                <h2 class="info-title">Descripción</h2>
+                <p class="info-text">
+                Peg Solitaire es un juego de lógica y estrategia para un jugador. El objetivo es eliminar las fichas del tablero realizando movimientos sobre otras fichas hasta dejar una sola. ¡Intentá resolver el tablero con la menor cantidad de movimientos posible!
+                </p>
+            </div>
+
+            <!-- Detalles y Compartir en dos columnas internas -->
+            <div class="details-share-row">
+                <div class="game-details">
+                <span class="detail-title">Peg Solitaire</span>
+                <span class="detail-item">⭐ 4.5/5</span>
+                <span class="detail-item">🧩 Puzzle</span>
+                <span class="detail-item">👤 1 jugador</span>
+                </div>
+
+                <div class="share-block">
+                <span class="share-title">Compartir juego:</span>
+                <div class="social-buttons">
+                    <!-- Instagram -->
+                    <button class="icono-btn" aria-label="Compartir en Instagram">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    </button>
+                    <!-- X (Twitter) -->
+                    <button class="icono-btn" aria-label="Compartir en X">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    </button>
+                    <!-- Facebook -->
+                    <button class="icono-btn" aria-label="Compartir en Facebook">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                    </button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Columna Derecha: Cómo jugar -->
+            <div class="info-column">
+            <div class="info-block">
+                <h2 class="info-title">Cómo jugar: Peg Solitaire version pacman</h2>
+                <ul class="instructions-list">
+                <li><strong>Objetivo:</strong> Eliminar tantas fichas como sea posible hasta que quede una sola en el centro del tablero.</li>
+                <li><strong>Movimiento:</strong> Seleccioná una ficha y saltá por encima de una ficha adyacente hacia un espacio vacío contiguo (en horizontal o vertical).</li>
+                <li><strong>Captura:</strong> La ficha sobre la que saltaste se retira del tablero.</li>
+                <li><strong>Fin de la partida:</strong> El juego termina cuando lográs dejar una única ficha o cuando ya no quedan movimientos válidos posibles.</li>
+                <li><strong>Controles:</strong> Clic o arrastrar sobre la ficha que quieras mover.</li>
+                </ul>
+            </div>
+            </div>
+
+        </div>
+        </section>
     <div class="comments-section">
   <!-- Título principal -->
   <div class="comments-header">
@@ -62,7 +174,7 @@
     </div>
     <div class="comment-input-wrapper">
       <input type="text" placeholder="Escribe tu comentario aqui.." class="comment-input">
-      <button class="comment-btn send-btn" aria-label="Enviar comentario">
+      <button class="icono-btn" aria-label="Enviar comentario">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="22" y1="2" x2="11" y2="13"></line>
           <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -97,7 +209,7 @@
     </div>
     <div class="comment-input-wrapper">
       <div class="comment-text">Muy divertida esta version!! Llegué al nivel 58 y contando...</div>
-      <button class="comment-btn like-btn" aria-label="Me gusta">
+      <button class="icono-btn" aria-label="Me gusta">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
         </svg>

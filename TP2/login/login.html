@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="formLogin.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    <title>GamingTeam - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    
+    <title>GamingTeam - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="navBar">
@@ -13,8 +15,10 @@
             <!--izquierda-->
             <div class="izquierda">
                 <img src="../assets/img/menu.png" alt="menu" class="menu"> 
-                <img src="../assets/img/logo.png" alt="logo" class="logo"> 
-            </div>
+                <a href="../index.html">
+                    <img src="../assets/img/logo.png" alt="logo" class="logo">
+                </a>           
+             </div>
 
             <!--centro-->
             <div class="buscador">
@@ -36,32 +40,50 @@
 
     <div class="form-login">
         <h2 class="form-title">Inicio de sesión</h2>
-        <form action="login.html" method="post">
+        
+        <!-- Agregamos un ID al formulario para controlarlo con JS -->
+        <form id="loginForm" action="../index.html" method="get">
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" name="email" placeholder="ejemplo@gamingteam.com" required>
+                <input type="email" id="email" name="email" placeholder="ejemplo@gamingteam.com" required>
             </div>
             <div class="input-group">
                 <label for="password">Contraseña</label>
-                <input type="password" name="password" placeholder="Introduzca su contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Introduzca su contraseña" required>
             </div>    
-                <button type="submit" class="btn-submit">Iniciar sesión</button>
+            
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <span class="btn-text">Iniciar sesión</span>
+                <!-- Spinner oculto por defecto que se activa con JS -->
+                <div class="spinner" style="display: none;"></div>
+            </button>
 
-                <p class="text-social">Ingresar con cuenta de Facebook / Google</p>
-                <div class="social-container">
-                    <a href="#" class="social-link"><img src="../assets/IconoSocial/IconoFb.png" alt="Facebook" ></a>
-                    <a href="#" class="social-link"><img src="../assets/IconoSocial/IconoIg.png" alt="Google" ></a>
-                </div>
+            <p class="text-social">O ingresa con</p>
+            <div class="social-container">
+                <a href="#" class="social-btn facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </a>
+            </div>
     
-                <p class="text-footer">
-                    ¿No tenés cuenta? <a href="register.html" class="text-link"> Regístrate acá</a>
-                </p>
-    
-                
+            <p class="text-footer">
+                ¿No tenés cuenta? <a href="../register/register.html" class="text-link"> Regístrate acá</a>
+            </p>
         </form>
 
-
-
+        <!-- Mensaje de éxito oculto (Animado por CSS/JS) -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <i class="fas fa-check-circle"></i>
+            <h3>¡Inicio de sesión exitoso!</h3>
+            <p>Redirigiendo a GamingTeam...</p>
+        </div>
     </div>
+
+    <!-- Script para simular la animación y validación -->
+    <script src="loginAnimation.js"></script>
 </body>
 </html>

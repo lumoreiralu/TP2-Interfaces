@@ -13,6 +13,7 @@ body{
 }
 
 .form-register{
+    margin-top: 100px;
     background-color: #191b32;
     width: 100%;
     max-width: 480px;
@@ -103,4 +104,120 @@ body{
 
 .text-link:hover {
     text-decoration: none;
+}
+
+.text-social {
+    color: #f0d58a;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+/* Estilo base de la cápsula */
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px; /* Forma de cápsula */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Tamaños y colores oficiales para los iconos */
+.social-btn i {
+    font-size: 1.1rem;
+}
+
+.facebook-btn {
+    color: #333333; /* Texto oscuro elegante */
+}
+.facebook-btn i {
+    color: #1877f2; /* Azul oficial de Facebook */
+}
+
+.google-btn {
+    color: #333333;
+}
+.google-btn i {
+    color: #ea4335; /* Rojo/Multicolor representativo de Google */
+}
+
+/* Efecto hover */
+.social-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: translateY(-10px); /*hace que se eleve la capsula*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Spinner de carga dentro del botón */
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 0.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Animación del contenedor de éxito */
+.success-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-message i {
+    font-size: 3.5rem;
+    color: #2ecc71;
+    margin-bottom: 1rem;
+    animation: bounceIn 0.6s ease;
+}
+
+.success-message h3 {
+    color: #f0d58a;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.success-message p {
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+/* Keyframes con porcentajes estrictos */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }

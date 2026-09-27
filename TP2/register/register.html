@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="formRegister.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    <title>GamingTeam - Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    
+    <title>GamingTeam - Register</title>
+    <!-- Agregué Font Awesome por si usás el icono de check en el éxito -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header class="navBar">
@@ -13,16 +16,16 @@
             <!--izquierda-->
             <div class="izquierda">
                 <img src="../assets/img/menu.png" alt="menu" class="menu"> 
-                <img src="../assets/img/logo.png" alt="logo" class="logo"> 
+                <a href="../index.html">
+                    <img src="../assets/img/logo.png" alt="logo" class="logo">
+                </a>            
             </div>
 
             <!--centro-->
             <div class="buscador">
                 <form action="search.html" method="get">
                     <input type="text" name="buscador" placeholder="Buscar un juego...">
-                    <button type="submit" class="lupa-btn" aria-label="Buscar">
-                        
-                    </button>
+                    <button type="submit" class="lupa-btn" aria-label="Buscar"></button>
                 </form>
             </div>
 
@@ -34,10 +37,11 @@
         </nav>
     </header>
 
-
     <div class="form-register">
         <h2 class="form-title">Formulario de Registro</h2>
-        <form action="register.html" method="post">
+        
+        <!-- Agregué el ID registerForm -->
+        <form id="registerForm" action="../index.html" method="get">
             <div class="input-group">
                 <label for="nombre">Nombre <span class="required">*</span></label>
                 <input type="text" name="nombre" placeholder="Ingrese su nombre." required>
@@ -48,11 +52,11 @@
             </div>
             <div class="input-group">
                 <label for="nombreUsuario">Nombre de Usuario </label>
-                <input type="text" name="nombreUsuario" placeholder="Elija un apodo para su cuenta." required>
+                <input type="text" name="nombreUsuario" placeholder="Elija un apodo para su cuenta." >
             </div>
             <div class="input-group">
                 <label for="edad">Edad <span class="required">*</span></label>
-                <input type="text" name="edad" placeholder="Ingrese su edad" required>
+                <input type="number" name="edad" placeholder="Ingrese su edad" required>
             </div>
             <div class="input-group">
                 <label for="email">Email <span class="required">*</span></label>
@@ -62,26 +66,46 @@
                 <label for="password">Contraseña <span class="required">*</span></label>
                 <input type="password" name="password" placeholder="Elija una contraseña." required>
             </div>    
-             <div class="input-group">
-                <label for="password">Repetir contraseña <span class="required">*</span></label>
-                <input type="password" name="password" placeholder="Repita la contraseña elegida." required>
+            <div class="input-group">
+                <label for="confirm-password">Repetir contraseña <span class="required">*</span></label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita la contraseña elegida." required>
             </div> 
             <div class="captcha-container">
                 <img src="../assets/img/captcha.png" alt="captcha" class="captcha"> 
             </div>
-                <button type="submit" class="btn-submit">Registrarse</button>
+            
+            <!-- Agregué ID al botón y span al texto -->
+            <button type="submit" class="btn-submit" id="submitBtn">
+                <span class="btn-text">Registrarse</span>
+                <div class="spinner" style="display: none;"></div>
+            </button>
+
+            <p class="text-social">O registrate con</p>
+            <div class="social-container">
+                <a href="#" class="social-btn facebook-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Registrarse con Facebook</span>
+                </a>
+                <a href="#" class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                    <span>Registrarse con Google</span>
+                </a>
+            </div>
     
-                <p class="text-footer">
-                    ¿Ya tenés cuenta? <a href="login.html" class="text-link"> Inicia sesión acá</a>
-                </p>
-    
-                
+            <p class="text-footer">
+                ¿Ya tenés cuenta? <a href="../login/login.html" class="text-link"> Inicia sesión acá</a>
+            </p>
         </form>
 
-
-
+        <!-- Mensaje de éxito corregido para el registro -->
+        <div id="successMessage" class="success-message" style="display: none;">
+            <i class="fas fa-check-circle"></i>
+            <h3>¡Registro exitoso!</h3>
+            <p>Bienvenido a GamingTeam, redirigiendo...</p>
+        </div>
     </div>
 
-
+    <!-- Script exclusivo para el registro -->
+    <script src="registerAnimation.js"></script>
 </body>
 </html>
