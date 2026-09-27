@@ -14,7 +14,7 @@
         <nav>
             <!--izquierda-->
             <div class="izquierda">
-                <img src="../assets/img/menu.png" alt="menu" class="menu"> 
+                <img src="../assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
                 <a href="../index.html">
                     <img src="../assets/img/logo.png" alt="logo" class="logo">
                 </a>           
@@ -33,10 +33,36 @@
             <!--derecha-->
             <div class="derecha">
                 <span class="saludo-usuario">Hola, Usuario</span>
-                <img src="../assets/img/user.png" alt="user" class="user">
+                <img src="../assets/img/user.png" alt="user" class="user" id="userBtn">
             </div>
         </nav>
     </header>
+
+
+    <!-- Menú lateral desplegable (Sidebar de Categorías) -->
+        <div id="sidebarMenu" class="sidebar">
+            <div class="sidebar-content">
+                <h2>Categorías</h2>
+                
+                <ul class="category-list">
+                    <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
+                    <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
+                    <li><a href="#" class="category-btn"><span>🕹️</span> animaciones</a></li>
+                    <li><a href="#" class="category-btn"><span>🐶</span> animales</a></li>
+                    <li><a href="#" class="category-btn"><span>🌄</span> aventuras</a></li>
+                    <li><a href="#" class="category-btn"><span>🏎️</span> carreras</a></li>
+                    <li><a href="#" class="category-btn"><span>🃏</span> cartas</a></li>
+                    <li><a href="#" class="category-btn"><span>👻</span> clásicos</a></li>
+                    <li><a href="#" class="category-btn"><span>👱‍♀️</span> muñecas</a></li>
+                    <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
+                    <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
+                </ul>
+
+                <button id="closeMenuBtn" class="close-btn">X cerrar</button>
+            </div>
+        </div>
+        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
+        <div id="overlay" class="overlay"></div>
 
     <div class="form-login">
         <h2 class="form-title">Inicio de sesión</h2>
@@ -83,7 +109,8 @@
         </div>
     </div>
 
-    <!-- Script para simular la animación y validación -->
+
     <script src="loginAnimation.js"></script>
+    <script src="/js/navBar.js"></script>
 </body>
 </html>

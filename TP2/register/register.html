@@ -15,7 +15,7 @@
         <nav>
             <!--izquierda-->
             <div class="izquierda">
-                <img src="../assets/img/menu.png" alt="menu" class="menu"> 
+                <img src="../assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
                 <a href="../index.html">
                     <img src="../assets/img/logo.png" alt="logo" class="logo">
                 </a>            
@@ -37,6 +37,32 @@
         </nav>
     </header>
 
+
+    <!-- Menú lateral desplegable (Sidebar de Categorías) -->
+        <div id="sidebarMenu" class="sidebar">
+            <div class="sidebar-content">
+                <h2>Categorías</h2>
+                
+                <ul class="category-list">
+                    <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
+                    <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
+                    <li><a href="#" class="category-btn"><span>🕹️</span> animaciones</a></li>
+                    <li><a href="#" class="category-btn"><span>🐶</span> animales</a></li>
+                    <li><a href="#" class="category-btn"><span>🌄</span> aventuras</a></li>
+                    <li><a href="#" class="category-btn"><span>🏎️</span> carreras</a></li>
+                    <li><a href="#" class="category-btn"><span>🃏</span> cartas</a></li>
+                    <li><a href="#" class="category-btn"><span>👻</span> clásicos</a></li>
+                    <li><a href="#" class="category-btn"><span>👱‍♀️</span> muñecas</a></li>
+                    <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
+                    <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
+                </ul>
+
+                <button id="closeMenuBtn" class="close-btn">X cerrar</button>
+            </div>
+        </div>
+        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
+        <div id="overlay" class="overlay"></div>
+
     <div class="form-register">
         <h2 class="form-title">Formulario de Registro</h2>
         
@@ -44,15 +70,15 @@
         <form id="registerForm" action="../index.html" method="get">
             <div class="input-group">
                 <label for="nombre">Nombre <span class="required">*</span></label>
-                <input type="text" name="nombre" placeholder="Ingrese su nombre." required>
+                <input type="text" name="nombre" placeholder="Ingrese su nombre" required>
             </div>
             <div class="input-group">
                 <label for="apellido">Apellido <span class="required">*</span></label>
-                <input type="text" name="apellido" placeholder="Ingrese su apellido." required>
+                <input type="text" name="apellido" placeholder="Ingrese su apellido" required>
             </div>
             <div class="input-group">
                 <label for="nombreUsuario">Nombre de Usuario </label>
-                <input type="text" name="nombreUsuario" placeholder="Elija un apodo para su cuenta." >
+                <input type="text" name="nombreUsuario" placeholder="Elija un apodo para su cuenta" >
             </div>
             <div class="input-group">
                 <label for="edad">Edad <span class="required">*</span></label>
@@ -64,11 +90,11 @@
             </div>
             <div class="input-group">
                 <label for="password">Contraseña <span class="required">*</span></label>
-                <input type="password" name="password" placeholder="Elija una contraseña." required>
+                <input type="password" name="password" placeholder="Elija una contraseña" required>
             </div>    
             <div class="input-group">
                 <label for="confirm-password">Repetir contraseña <span class="required">*</span></label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita la contraseña elegida." required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Repita la contraseña elegida" required>
             </div> 
             <div class="captcha-container">
                 <img src="../assets/img/captcha.png" alt="captcha" class="captcha"> 
@@ -105,7 +131,8 @@
         </div>
     </div>
 
-    <!-- Script exclusivo para el registro -->
+
     <script src="registerAnimation.js"></script>
+    <script src="../js/navBar.js"></script>
 </body>
 </html>
