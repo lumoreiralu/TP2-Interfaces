@@ -215,6 +215,45 @@ body{
   background-color: var(--btn-hover);
 }
 
+/* Estilo exclusivo solo para el botón de Me gusta */
+.like-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ocultar el corazón por defecto */
+.like-btn .heart-icon {
+  display: none;
+  color: #e74c3c; /* Color rojo característico del corazón */
+  stroke: #e74c3c;
+}
+
+/* Al poner el mouse encima de .like-btn */
+.like-btn:hover .thumb-icon {
+  display: none; /* Oculta el pulgar */
+}
+
+.like-btn:hover .heart-icon {
+  display: block; /* Muestra el corazón */
+  animation: heartPop 0.4s ease-in-out forwards; /* Aplica la animación por porcentajes */
+}
+
+/* Animación Keyframe estrictamente con porcentajes (%) */
+@keyframes heartPop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.8); /* Efecto rebote que se agranda un poquito */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* Filtros de comentarios */
 .comment-filters {
   display: flex;
@@ -237,6 +276,31 @@ body{
 
 .filter-btn:hover {
   text-decoration: underline;
+}
+
+/* Contenedor de la lista de comentarios */
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Estilo y animación para cada comentario nuevo */
+.comment-item {
+  animation: slideInComment 0.4s ease-in-out forwards;
+}
+
+/* Animación keyframe con porcentajes solicitada */
+@keyframes slideInComment {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición original */
+  }
 }
 
 /* Contenedor principal de la sección de descripción */
