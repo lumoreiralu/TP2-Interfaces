@@ -7,7 +7,6 @@
     width: 100%;
     height: 80px;
     box-sizing: border-box;
-    margin-top: 0;
 }
 
 .navBar nav {
@@ -18,62 +17,54 @@
     width: 100%;
 }
 
-.izquierda, .derecha{
+.izquierda, .derecha {
     display: flex;
     align-items: center;
     gap: 1.25rem;
 }
 
-.menu{
+.menu, .user {
     cursor: pointer;
 }
 
-.logo{
+.logo {
     height: 19px;
     width: 24px;
 }
 
-.buscador{
+.buscador {
     background-color: #101225;
     border-radius: 9999px;
     width: 100%;
     max-width: 450px;
     padding: 0.35rem 1.2rem;
+    transition: background-color 0.2s ease;
 }
 
-.buscador form{
+.buscador form {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.buscador input{
+.buscador input {
     background-color: transparent;
     border: none;
     outline: none;
-    color: #101225;
+    color: #ffffff; /* CORREGIDO: Para que lo que escribas se vea blanco y no se pierda con el fondo */
     width: 100%;
+    font-family: 'Nunito', sans-serif;
 }
 
-.buscador input::placeholder{
+.buscador input::placeholder {
     color: #bd8d2f;
 }
 
-.buscador button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.buscador:hover{
+.buscador:hover {
     background-color: #292C4A;
-
 }
-.lupa-btn{
+
+.lupa-btn {
     width: 20px;
     height: 20px;
     background: transparent url('../assets/img/lupa.png') no-repeat center;
@@ -81,11 +72,12 @@
     border: none;
     cursor: pointer;
     flex-shrink: 0;
-
+    padding: 0;
 }
-.saludo-usuario{
+
+.saludo-usuario {
     color: #bd8d2f;
-    font-family: nunito, sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 0.95rem;
     margin: 0;
 }
@@ -93,15 +85,14 @@
 
 /* --- MENÚ HAMBURGUESA / SIDEBAR --- */
 
-/* Panel lateral oculto a la izquierda */
 .sidebar {
     position: fixed;
     top: 0;
-    left: -350px; /* Oculto fuera de la pantalla */
+    left: -350px;
     width: 300px;
     height: 100%;
     box-sizing: border-box;
-    background-color: #121420; /* Color oscuro acorde a tu diseño */
+    background-color: #121420;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
     transition: left 0.4s ease-in-out;
     z-index: 1000;
@@ -109,17 +100,14 @@
     padding: 2rem 1.5rem;
 }
 
+.sidebar.active {
+    left: 0;
+}
+
 .sidebar-content {
     display: flex;
     flex-direction: column;
-    min-height: 100%; /* Ocupa toda la altura del menú */
-    box-sizing: border-box;
-}
-
-
-/* Clase que activa la apertura del menú vía JS */
-.sidebar.active {
-    left: 0;
+    min-height: 100%;
 }
 
 .sidebar-content h2 {
@@ -130,7 +118,6 @@
     font-family: 'Nunito', sans-serif;
 }
 
-/* Lista de categorías en forma de cápsula */
 .category-list {
     list-style: none;
     padding: 0;
@@ -149,7 +136,7 @@
     color: #f0d58a;
     text-decoration: none;
     padding: 0.8rem 1.2rem;
-    border-radius: 50px; /* Estilo cápsula */
+    border-radius: 50px;
     border: 1px solid #2a2e45;
     font-size: 1rem;
     font-family: 'Nunito', sans-serif;
@@ -166,7 +153,6 @@
     transform: translateX(5px);
 }
 
-/* Botón de cerrar al final */
 .close-btn {
     display: block;
     width: 100%;
@@ -188,7 +174,6 @@
     opacity: 0.8;
 }
 
-/* Fondo oscuro semitransparente (Overlay) */
 .overlay {
     position: fixed;
     top: 0;
@@ -206,9 +191,3 @@
     visibility: visible;
     opacity: 1;
 }
-
-/* Cursor interactivo en la hamburguesa */
-.menu {
-    cursor: pointer;
-}
-

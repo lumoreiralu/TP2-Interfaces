@@ -22,24 +22,32 @@
 </head>
 
 <body>
+    <!--loading-->
+        <div id="loader-screen" class="loader-screen">
+        <div class="loader-content">
+            <div class="pacman-container">
+                <div class="pacman"></div>
+                <div class="dot dot-1"></div>
+                <div class="dot dot-2"></div>
+                <div class="dot dot-3"></div>
+            </div>
+            <h2 class="loader-title">Cargando GamingTeam</h2>
+            <div id="loading-progress" class="loader-progress">0%</div>
+        </div>
+    </div>
     <header class="navBar">
         <nav>
             <!--izquierda-->
             <div class="izquierda">
-                
                 <img src="assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
-                <a href="index.html">
-                    <img src="assets/img/logo.png" alt="logo" class="logo">
-                </a>           
+                <a href="index.html"><img src="assets/img/logo.png" alt="logo" class="logo"></a>           
             </div>
 
             <!--centro-->
             <div class="buscador">
                 <form action="search.html" method="get">
                     <input type="text" name="buscador" placeholder="Buscar un juego...">
-                    <button type="submit" class="lupa-btn" aria-label="Buscar">
-
-                    </button>
+                    <button type="submit" class="lupa-btn" aria-label="Buscar"></button>
                 </form>
             </div>
 
@@ -51,11 +59,10 @@
         </nav>
     </header>
 
-    <!-- Menú lateral desplegable (Sidebar de Categorías) -->
+    <!-- Menú lateral desplegable (Menu de Categorías) -->
         <div id="sidebarMenu" class="sidebar">
             <div class="sidebar-content">
                 <h2>Categorías</h2>
-                
                 <ul class="category-list">
                     <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
                     <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
@@ -69,28 +76,24 @@
                     <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
                     <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
                 </ul>
-
                 <button id="closeMenuBtn" class="close-btn">X cerrar</button>
             </div>
         </div>
-        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
+        <!-- Fondo oscuro semitransparente para cuando se abre el menú -->
         <div id="overlay" class="overlay"></div>
 
-        <!-- Menú lateral desplegable (Sidebar de User) -->
+        <!-- Menú lateral desplegable (Menu de User) -->
         <div id="sidebarUser" class="sidebar">
             <div class="sidebar-content">
-                
                 <ul class="category-list">
                     <li><a href="#" class="category-btn">Mis Favoritos</a></li>
                     <li><a href="#" class="category-btn">Mi Cuenta</a></li>
                     <li><a href="#" class="category-btn">Cerrar Sesión</a></li>
-
                 </ul>
-
                 <button id="closeUserBtn" class="close-btn">X cerrar</button>
             </div>
         </div>
-        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
+        <!-- Fondo oscuro semitransparente para cuando se abre el menú -->
         <div id="overlay" class="overlay"></div>
 
 
@@ -124,12 +127,10 @@
 
     <div class="seccion-carrusel">
         <h3 class="titulo-carrusel">Recomendados Para Ti</h3>
-
         <div class="carrusel-contenedor">
             <!-- Botón Izquierdo -->
             <button class="btn-carrusel-prev"><img src="assets/img/svg/flechaIzq.svg" alt=""
                     class="btn-carrusel"></button>
-
             <!-- La fila que contiene los juegos y se va a recortar -->
             <div class="carrusel-track">
                 <div class="juego-tarjeta">
@@ -646,5 +647,6 @@
     <script src="js/navBar.js"></script>
     <script src="js/userMenu.js"></script>
     <script src="js/carrusel.js"></script>
+    <script src="js/loading.js"></script>
 </body>
 </html>
