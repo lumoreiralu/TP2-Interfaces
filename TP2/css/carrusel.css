@@ -2,7 +2,7 @@
   background-color: #191b32; /* El mismo violeta de tu fondo */
   text-align: center;
   width: 100%;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   height: 260px;
 }
 
@@ -32,7 +32,7 @@
   padding-left: 20px;  /* Espacio a la izquierda para que no quede pegado */
   padding-right: 20px; /* Espacio a la derecha para la ultima tarjeta */
   gap: 20px;          /* Espacio entre cada juego */
-  scroll-behavior: smooth; /* Hace que el movimiento sea suave */
+  scroll-behavior: auto; /* El rebote lo anima el JS sobre scrollLeft, no el CSS */
   overflow-x: auto;   /* Permite moverlo con el dedo en celulares */
   overflow-y: hidden; /* Explicito: evita scrollbar vertical al hacer hover */
   width: 100%;         /* Ocupa todo el ancho del contenedor */
@@ -155,6 +155,13 @@
 }
 .btn-carrusel-prev { left: 20px; }
 .btn-carrusel-next { right: 20px; }
+
+/* Sin scroll en este lado: el JS desactiva la flecha */
+.btn-carrusel-prev:disabled,
+.btn-carrusel-next:disabled {
+  opacity: 0;
+  cursor: default;
+}
 
 
 /* --- Carrusel Destacado 3D (Altura al 50% y centrado en los 650px) --- */

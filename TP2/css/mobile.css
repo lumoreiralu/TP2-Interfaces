@@ -91,11 +91,12 @@
     scroll-snap-align: start;
   }
 
-  /* Los thumbs son 150x150: la imagen se mantiene cuadrada */
+  /* Los thumbs son 150x150 cuadrados: al pasar a 3/2 el cover recorta el
+     alto del dibujo del juego, pero la card ocupa 83px menos de alto */
   .juego-tarjeta img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 2;
     object-fit: cover;
     transition: none;
   }
@@ -169,19 +170,18 @@
   }
 
   /* ---------- PUBLICIDAD ---------- */
-  /* Tira scrolleable con 2 avisos por pantalla */
+  /* Grilla de 3 por fila en 2 filas: los 5 avisos entran sin desplazar.
+     3 x ((100% - 2 gaps) / 3) + 2 gaps = 100% exacto, no sobra scroll */
   .contenedor-publicidad {
-    justify-content: flex-start;
-    overflow-x: auto;
+    justify-content: center; /* centra la 2da fila, que queda con 2 avisos */
+    flex-wrap: wrap;
     padding: 16px 20px;
     gap: 12px;
-    scroll-snap-type: x proximity;
   }
 
   .publicidad {
-    flex: 0 0 46%;
-    aspect-ratio: 3 / 4;
-    scroll-snap-align: start;
+    flex: 0 0 calc((100% - 24px) / 3);
+    aspect-ratio: 1 / 1; /* caja cuadrada: la grilla queda prolija */
   }
 
   .publicidad img {
