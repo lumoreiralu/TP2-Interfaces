@@ -147,14 +147,27 @@
    POSICIONAMIENTO ESPECÍFICO DE CADA UNO
    ========================================== */
 
-/* --- Carrusel Común (Altura al 40%) --- */
+/* --- Centrado vertical y hover: los botones de los dos carruseles se
+       alinean al 50% y comparten el mismo dorado y animacion --- */
 .btn-carrusel-prev,
-.btn-carrusel-next {
+.btn-carrusel-next,
+.btn-3d-nav {
   top: 50%;
   transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
+
+.btn-carrusel-prev:hover,
+.btn-carrusel-next:hover,
+.btn-3d-nav:hover {
+  background-color: #bd8d2f; /* Color dorado más intenso al pasar el mouse */
+  transform: translateY(-50%) scale(1.05); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
 .btn-carrusel-prev { left: 20px; }
 .btn-carrusel-next { right: 20px; }
+.btn-3d-nav.prev { left: 20px; }
+.btn-3d-nav.next { right: 20px; }
 
 /* Sin scroll en este lado: el JS desactiva la flecha */
 .btn-carrusel-prev:disabled,
@@ -162,15 +175,6 @@
   opacity: 0;
   cursor: default;
 }
-
-
-/* --- Carrusel Destacado 3D (Altura al 50% y centrado en los 650px) --- */
-.btn-3d-nav {
-  top: 50%;
-  transform: translateY(-50%);
-}
-.btn-3d-nav.prev { left: 20px; }
-.btn-3d-nav.next { right: 20px; }
 
 .nombre-juego {
   color: #fff;

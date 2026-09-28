@@ -147,11 +147,20 @@
   }
 
   .card-3d {
-    position: static;
+    /* relative y no static: el overlay del boton Jugar se ancla a la card.
+       left: 0 limpia el 22.5% de escritorio, que con relative correria
+       la card y desbordaria el contenedor */
+    position: relative;
+    left: 0;
     width: 100%;
     height: auto;
     aspect-ratio: 1.31;
     box-shadow: none;
+  }
+
+  /* El boton Jugar es solo de escritorio: en mobile no se muestra */
+  .card-3d .overlay-jugar {
+    display: none;
   }
 
   .posicion-activa {
