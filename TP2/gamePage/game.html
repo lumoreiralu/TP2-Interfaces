@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="../css/navBar.css">
     <link rel="stylesheet" href="game.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    <title>GamingTeam - PegSolitaire PacMan</title>
     <link rel="stylesheet" href="../css/publicidad.css">
-        <link rel="stylesheet" href="../css/carrusel.css">
+    <link rel="stylesheet" href="../css/carrusel.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    
+    <title>GamingTeam - PegSolitaire PacMan</title>
 </head>
 <body>
     <header class="navBar">
@@ -17,17 +19,15 @@
             <div class="izquierda">
                 <img src="../assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
                 <a href="/index.html">
-                    <img src="/assets/img/logo.png" alt="logo" class="logo">
+                    <img src="../assets/img/logo.png" alt="logo" class="logo">
                 </a>            
             </div>
 
             <!--centro-->
             <div class="buscador">
-                <form action="search.html" method="get">
+                <form action="#" method="get">
                     <input type="text" name="buscador" placeholder="Buscar un juego...">
-                    <button type="submit" class="lupa-btn" aria-label="Buscar">
-                        
-                    </button>
+                    <button type="submit" class="lupa-btn" aria-label="Buscar"></button>
                 </form>
             </div>
 
@@ -41,46 +41,45 @@
 
 
     <!-- Menú lateral desplegable (Sidebar de Categorías) -->
-        <div id="sidebarMenu" class="sidebar">
-            <div class="sidebar-content">
-                <h2>Categorías</h2>
+    <div id="sidebarMenu" class="sidebar">
+        <div class="sidebar-content">
+            <h2>Categorías</h2>
                 
-                <ul class="category-list">
-                    <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
-                    <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
-                    <li><a href="#" class="category-btn"><span>🕹️</span> animaciones</a></li>
-                    <li><a href="#" class="category-btn"><span>🐶</span> animales</a></li>
-                    <li><a href="#" class="category-btn"><span>🌄</span> aventuras</a></li>
-                    <li><a href="#" class="category-btn"><span>🏎️</span> carreras</a></li>
-                    <li><a href="#" class="category-btn"><span>🃏</span> cartas</a></li>
-                    <li><a href="#" class="category-btn"><span>👻</span> clásicos</a></li>
-                    <li><a href="#" class="category-btn"><span>👱‍♀️</span> muñecas</a></li>
-                    <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
-                    <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
-                </ul>
+            <ul class="category-list">
+                <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
+                <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
+                <li><a href="#" class="category-btn"><span>🕹️</span> animaciones</a></li>
+                <li><a href="#" class="category-btn"><span>🐶</span> animales</a></li>
+                <li><a href="#" class="category-btn"><span>🌄</span> aventuras</a></li>
+                <li><a href="#" class="category-btn"><span>🏎️</span> carreras</a></li>
+                <li><a href="#" class="category-btn"><span>🃏</span> cartas</a></li>
+                <li><a href="#" class="category-btn"><span>👻</span> clásicos</a></li>
+                <li><a href="#" class="category-btn"><span>👱‍♀️</span> muñecas</a></li>
+                <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
+                <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
+            </ul>
 
-                <button id="closeMenuBtn" class="close-btn">X cerrar</button>
-            </div>
+            <button id="closeMenuBtn" class="close-btn">X cerrar</button>
         </div>
-        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
-        <div id="overlay" class="overlay"></div>
+    </div>
+    <!-- Fondo oscuro semitransparente para cuando se abre el menú -->
+    <div id="overlay" class="overlay"></div>
 
-                <!-- Menú lateral desplegable (Sidebar de User) -->
-        <div id="sidebarUser" class="sidebar">
-            <div class="sidebar-content">
+    <!-- Menú lateral desplegable (Sidebar de User) -->
+    <div id="sidebarUser" class="sidebar">
+        <div class="sidebar-content">
                 
-                <ul class="category-list">
-                    <li><a href="#" class="category-btn">Mis Favoritos</a></li>
-                    <li><a href="#" class="category-btn">Mi Cuenta</a></li>
-                    <li><a href="#" class="category-btn">Cerrar Sesión</a></li>
+            <ul class="category-list">
+                <li><a href="#" class="category-btn">Mis Favoritos</a></li>
+                <li><a href="#" class="category-btn">Mi Cuenta</a></li>
+                <li><a href="#" class="category-btn">Cerrar Sesión</a></li>
+            </ul>
 
-                </ul>
-
-                <button id="closeUserBtn" class="close-btn">X cerrar</button>
-            </div>
+            <button id="closeUserBtn" class="close-btn">X cerrar</button>
         </div>
-        <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
-        <div id="overlay" class="overlay"></div>
+    </div>
+    <!-- Fondo oscuro semitransparente para cuando se abre el menú -->
+    <div id="overlay" class="overlay"></div>
 
     <section class="seccion-juego">
         <!-- Título superior -->
@@ -91,210 +90,236 @@
             
             <!-- Botones superiores derechos (Configuración / Ayuda) -->
             <div class="juego-controles-top">
-            <button class="icono-btn" aria-label="Configuración">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-            </button>
-            <button class="icono-btn" aria-label="Ayuda">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/></svg>
-            </button>
+                <button class="icono-btn" aria-label="Configuración">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                </button>
+                <button class="icono-btn" aria-label="Ayuda">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/></svg>
+                </button>
             </div>
 
 
             <div class="juego-imagen-wrapper">
-            <img src="../assets/pegPacmanPage/principal.png" alt="PegSolitaire: versión PacMan" class="juego-screenshot">
+                <img src="../assets/pegPacmanPage/principal.png" alt="PegSolitaire: versión PacMan" class="juego-screenshot">
             </div>
 
+            <div class="boton-start-container">
+                <button class="btn-start">START</button>
+            </div>
             <!-- Estadísticas inferiores izquierdas -->
             <div class="juego-stats-bottom-left">
-            <div class="stat-card">
-                <span class="stat-label">Mejor puntuación</span>
-                <span class="stat-value">390</span>
-            </div>
-            <div class="stat-card">
-                <span class="stat-label">Movimientos</span>
-                <span class="stat-value">10/25</span>
-            </div>
+                <div class="stat-card">
+                    <span class="stat-label">Mejor puntuación</span>
+                    <span class="stat-value">390</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Movimientos</span>
+                    <span class="stat-value">10/25</span>
+                </div>
             </div>
 
             <!-- Controles inferiores derechos (Audio / Pantalla completa) -->
             <div class="juego-controles-bottom-right">
-            <button class="icono-btn" aria-label="Silenciar">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-            </button>
-            <button class="icono-btn" aria-label="Pantalla completa">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-            </button>
+                <button class="icono-btn" aria-label="Silenciar">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
+                <button class="icono-btn" aria-label="Pantalla completa">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                </button>
             </div>
 
         </div>
-        </section>
 
-
-
-
+    </section>
 
     <section class="game-info-section">
         <div class="game-info-container">
             
             <!-- Columna Izquierda: Descripción y Compartir -->
             <div class="info-column">
-            <div class="info-block">
-                <h2 class="info-title">Descripción</h2>
-                <p class="info-text">
-                Peg Solitaire es un juego de lógica y estrategia para un jugador. El objetivo es eliminar las fichas del tablero realizando movimientos sobre otras fichas hasta dejar una sola. ¡Intentá resolver el tablero con la menor cantidad de movimientos posible!
-                </p>
-            </div>
-
-            <!-- Detalles y Compartir en dos columnas internas -->
-            <div class="details-share-row">
-                <div class="game-details">
-                <span class="detail-title">Peg Solitaire</span>
-                <span class="detail-item">⭐ 4.5/5</span>
-                <span class="detail-item">🧩 Puzzle</span>
-                <span class="detail-item">👤 1 jugador</span>
+                <div class="info-block">
+                    <h2 class="info-title">Descripción</h2>
+                    <p class="info-text">Peg Solitaire es un juego de lógica y estrategia para un jugador. El objetivo es eliminar las fichas del tablero realizando movimientos sobre otras fichas hasta dejar una sola. ¡Intentá resolver el tablero con la menor cantidad de movimientos posible!
+                    </p>
                 </div>
 
-                <div class="share-block">
-                <span class="share-title">Compartir juego:</span>
-                <div class="social-buttons">
-                    <!-- Instagram -->
-                    <button class="icono-btn" aria-label="Compartir en Instagram">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                    </svg>
-                    </button>
-                    <!-- X (Twitter) -->
-                    <button class="icono-btn" aria-label="Compartir en X">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    </button>
-                    <!-- Facebook -->
-                    <button class="icono-btn" aria-label="Compartir en Facebook">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                    </svg>
-                    </button>
+                <!-- Detalles y Compartir en dos columnas internas -->
+                <div class="details-share-row">
+                    <div class="game-details">
+                        <span class="detail-title">Peg Solitaire</span>
+                        <span class="detail-item">⭐ 4.5/5</span>
+                        <span class="detail-item">🧩 Puzzle</span>
+                        <span class="detail-item">👤 1 jugador</span>
+                    </div>
+
+                    <div class="share-block">
+                        <span class="share-title">Compartir juego:</span>
+                        <div class="social-buttons">
+                            <!-- Instagram -->
+                            <button class="icono-btn" aria-label="Compartir en Instagram">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </button>
+                            <!-- X (Twitter) -->
+                            <button class="icono-btn" aria-label="Compartir en X">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </button>
+                            <!-- Facebook -->
+                            <button class="icono-btn" aria-label="Compartir en Facebook">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </div>
             </div>
 
             <!-- Columna Derecha: Cómo jugar -->
             <div class="info-column">
-            <div class="info-block">
-                <h2 class="info-title">Cómo jugar: Peg Solitaire version pacman</h2>
-                <ul class="instructions-list">
-                <li><strong>Objetivo:</strong> Eliminar tantas fichas como sea posible hasta que quede una sola en el centro del tablero.</li>
-                <li><strong>Movimiento:</strong> Seleccioná una ficha y saltá por encima de una ficha adyacente hacia un espacio vacío contiguo (en horizontal o vertical).</li>
-                <li><strong>Captura:</strong> La ficha sobre la que saltaste se retira del tablero.</li>
-                <li><strong>Fin de la partida:</strong> El juego termina cuando lográs dejar una única ficha o cuando ya no quedan movimientos válidos posibles.</li>
-                <li><strong>Controles:</strong> Clic o arrastrar sobre la ficha que quieras mover.</li>
-                </ul>
+                <div class="info-block">
+                    <h2 class="info-title">Cómo jugar: Peg Solitaire version pacman</h2>
+                    <ul class="instructions-list">
+                        <li><strong>Objetivo:</strong> Eliminar tantas fichas como sea posible hasta que quede una sola en el centro del tablero.</li>
+                        <li><strong>Movimiento:</strong> Seleccioná una ficha y saltá por encima de una ficha adyacente hacia un espacio vacío contiguo (en horizontal o vertical).</li>
+                        <li><strong>Captura:</strong> La ficha sobre la que saltaste se retira del tablero.</li>
+                        <li><strong>Fin de la partida:</strong> El juego termina cuando lográs dejar una única ficha o cuando ya no quedan movimientos válidos posibles.</li>
+                        <li><strong>Controles:</strong> Clic o arrastrar sobre la ficha que quieras mover.</li>
+                    </ul>
+                </div>
             </div>
-            </div>
-
         </div>
-        </section>
-    <div class="comments-section">
-  <!-- Título principal -->
-  <div class="comments-header">
-    <svg class="icon-title" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-    </svg>
-    <h2>Comentarios</h2>
-  </div>
+    </section>
 
-<!-- Contenedor donde se cargarán dinámicamente los comentarios nuevos -->
 
-    <!-- Bloque para escribir comentario ("Tú") -->
-    <div class="comment-block">
-    <div class="comment-user">
-        <svg class="icon-user" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        <span>Tú</span>
-    </div>
-    <div class="comment-input-wrapper">
-        <input type="text" id="commentInput" placeholder="Escribe tu comentario aqui.." class="comment-input">
-        <button id="sendCommentBtn" class="icono-btn" aria-label="Enviar comentario">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-        </svg>
-        </button>
-    </div>
-    </div>
 
-  <!-- Pestañas de filtro -->
-  <div class="comment-filters">
-    <button class="filter-btn active">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-      </svg>
-      Comentarios destacados
-    </button>
-    <button class="filter-btn">
-      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
-      </svg>
-      Comentarios recientes
-    </button>
-  </div>
-
-  <div id="commentsContainer" class="comments-container"></div>
-
-    <div class="comment-block">
-        <div class="comment-user">
-        <svg class="icon-user" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        <span>User18930</span>
-        </div>
-        <div class="comment-input-wrapper">
-        <div class="comment-text">Muy divertida esta version!! Llegué al nivel 58 y contando...</div>
-        
-        <!-- Agregamos la clase 'like-btn' y ambos SVGs -->
-        <button class="icono-btn like-btn" aria-label="Me gusta">
-            <!-- Ícono por defecto (Pulgar arriba) -->
-            <svg class="thumb-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
-            </svg>
-            <!-- Ícono de Corazón (Oculto inicialmente) -->
-            <svg class="heart-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-        </button>
-        </div>
-    </div>
 
     <div class="seccion-carrusel">
         <h3 class="titulo-carrusel">Imagenes / Videos</h3>
-
         <div class="carrusel-contenedor">
-            
-            <button class="btn-carrusel-prev"><img src="../assets/img/botonIzquierdaCarrusel.png" alt=""
+            <!-- Botón Izquierdo -->
+            <button class="btn-carrusel-prev"><img src="../assets/img/svg/flechaIzq.svg" alt=""
                     class="btn-carrusel"></button>
+            <!-- La fila que contiene los juegos y se va a recortar -->
+            <div class="carrusel-track">
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/video1.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img3.png" alt="img3">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img4.png" alt="img4">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/video2.png" alt="v2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img5.png" alt="img5">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img6.png" alt="img6">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img7.png" alt="img7">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/video3.png" alt="vid3">
 
-            
-            <div class="carrusel-trackv2">
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/video1.png" alt="video1"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img1.png" alt="img1"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img2.png" alt="img2"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img3.png" alt="img3"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img4.png" alt="img4"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/video2.png" alt="video2"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img5.png" alt="img5"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img6.png" alt="img6"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img7.png" alt="img7"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/img8.png" alt="img8"></div>
-                <div class="juego-tarjetav2"><img src="../assets/pegPacmanPage/video3.png" alt="video3"></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img8.png" alt="img8">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pegPacmanPage/img9.png" alt="img9">
+
+                </div>
             </div>
-            
-            <button class="btn-carrusel-next"><img src="../assets/img/botonDerechaCarrusel.png" alt=""
+            <!-- Botón Derecho -->
+            <button class="btn-carrusel-next"><img src="../assets/img/svg/flechaDer.svg" alt=""
                     class="btn-carrusel"></button>
+        </div>
+    </div>
+
+
+    <div class="comments-section">
+    <!-- Título principal -->
+        <div class="comments-header">
+            <svg class="icon-title" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+            <h2>Comentarios</h2>
+        </div>
+
+        <!-- Bloque para escribir comentario ("Tú") -->
+        <div class="comment-block">
+            <div class="comment-user">
+                <svg class="icon-user" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span>Tú</span>
+            </div>
+            <div class="comment-input-wrapper">
+                <input type="text" id="commentInput" placeholder="Escribe tu comentario aqui.." class="comment-input">
+                <button id="sendCommentBtn" class="icono-btn" aria-label="Enviar comentario">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    <!-- Pestañas de filtro -->
+    <div class="comment-filters">
+        <button class="filter-btn active">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+        Comentarios destacados
+        </button>
+        <button class="filter-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+            </svg>
+        Comentarios recientes
+        </button>
+    </div>
+
+     <div id="commentsContainer" class="comments-container"></div>
+
+    <div class="comment-block">
+        <div class="comment-user">
+            <svg class="icon-user" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span>User18930</span>
+        </div>
+        <div class="comment-input-wrapper">
+            <div class="comment-text">Muy divertida esta version!! Llegué al nivel 58 y contando...</div>
+        
+            <!-- Agregamos la clase 'like-btn' y ambos SVGs -->
+            <button class="icono-btn like-btn" aria-label="Me gusta">
+                <!-- Ícono por defecto (Pulgar arriba) -->
+                <svg class="thumb-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                </svg>
+                <!-- Ícono de Corazón (Oculto inicialmente) -->
+                <svg class="heart-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </button>
         </div>
     </div>
 
@@ -310,35 +335,143 @@
         </div>
     </div>
 
-        <div class="seccion-carrusel">
+    <div class="seccion-carrusel">
         <h3 class="titulo-carrusel">Recomendados Para Ti</h3>
-
         <div class="carrusel-contenedor">
             <!-- Botón Izquierdo -->
-            <button class="btn-carrusel-prev"><img src="../assets/img/botonIzquierdaCarrusel.png" alt=""
+            <button class="btn-carrusel-prev"><img src="../assets/img/svg/flechaIzq.svg" alt=""
                     class="btn-carrusel"></button>
-
             <!-- La fila que contiene los juegos y se va a recortar -->
             <div class="carrusel-track">
-                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fancyPants.png" alt="Stickman"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/motoTrap.png" alt="Moto"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/tastyPlanet.png" alt="Monstruo"></div>
-                <div class="juego-tarjeta"><img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl"></div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fireboyWatergirl.png" alt="Fireboy Watergirl">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fireboy & Watergirl</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Monstruo">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Tasty Planet</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Stickman">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Fancy Pants</span>
+                    </div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto">
+                    <div class="info-juego">
+                        <span class="nombre-juego">Moto Trap</span>
+                    </div>
+                </div>
             </div>
             <!-- Botón Derecho -->
-            <button class="btn-carrusel-next"><img src="../assets/img/botonDerechaCarrusel.png" alt=""
+            <button class="btn-carrusel-next"><img src="../assets/img/svg/flechaDer.svg" alt=""
                     class="btn-carrusel"></button>
         </div>
     </div>
@@ -425,8 +558,9 @@
         </div>
     </footer>
 
-    <script src="/js/navBar.js"></script>
-    <script src="/js/userMenu.js"></script>
+    <script src="../js/navBar.js"></script>
+    <script src="../js/userMenu.js"></script>
     <script src="comment.js"></script>
+    <script src="../js/carrusel.js"></script>
 </body>
 </html>
