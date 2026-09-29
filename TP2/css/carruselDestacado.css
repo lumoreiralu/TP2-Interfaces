@@ -73,7 +73,7 @@
   z-index: 2;
 }
 
-s/* Boton Jugar: solo se muestra sobre la card que esta al frente */
+/* Boton Jugar: solo se muestra sobre la card que esta al frente */
 
 .card-3d .overlay-jugar {
   position: absolute;
@@ -81,8 +81,8 @@ s/* Boton Jugar: solo se muestra sobre la card que esta al frente */
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  /* El boton va bajo, a 56px del borde inferior de la card */
-  padding-bottom: 56px;
+  /* El boton va bien abajo, a 28px del borde inferior de la card */
+  padding-bottom: 70px;
   background-color: rgba(9, 11, 20, 0.72);
   opacity: 0;
   visibility: hidden;
@@ -95,21 +95,26 @@ s/* Boton Jugar: solo se muestra sobre la card que esta al frente */
   visibility: visible;
 }
 
+/* Diseno del boton (pildora) con la barra de carga llenandose en el hover */
 .btn-jugar {
   position: relative;
   overflow: hidden;
-  padding: 12px 40px;
-  border: 3px solid #5c431c;
-  border-radius: 12px;
-  background-color: #d4a33b;
-  color: #101225;
-  font-family: 'nunito', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  letter-spacing: 1px;
+  width: 225px;
+  height: 67px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 45px;
+  background-color: #191B32;
+  color: #FEBD2C;
+  font-family: nunito, sans-serif;
+  font-size: 40px;
+  font-weight: 100;
+  letter-spacing: 10px;
+  text-shadow: 5px 6px 4px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 18px 20px rgba(0, 0, 0, 0.35);
   cursor: not-allowed;
   opacity: 0.55;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition: opacity 0.25s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 /* La barra de carga: el boton se llena de izquierda a derecha */
@@ -122,6 +127,13 @@ s/* Boton Jugar: solo se muestra sobre la card que esta al frente */
 
 .btn-jugar-texto {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* Compensa el letter-spacing, que empuja el texto hacia la izquierda */
+  padding-left: 10px;
 }
 
 .card-3d.posicion-activa:hover .btn-jugar-relleno,
@@ -134,13 +146,25 @@ s/* Boton Jugar: solo se muestra sobre la card que esta al frente */
   to   { width: 100%; }
 }
 
+/* El gate: el click solo se habilita cuando la barra termina de llenarse.
+   El :hover y el :active van gateados con data-listo para que el boton
+   no se levante mientras todavia esta deshabilitado */
 .btn-jugar[data-listo='true'] {
   cursor: pointer;
   opacity: 1;
+  /* El texto era dorado y la barra tambien: al llenarse pasa a oscuro */
+  color: #191B32;
+  text-shadow: none;
 }
 
 .btn-jugar[data-listo='true']:hover {
-  transform: translateY(-2px);
+  transform: translateY(-7px);
+  box-shadow: 0 21px 24px rgba(0, 0, 0, 0.4);
+}
+
+.btn-jugar[data-listo='true']:active {
+  transform: translateY(15px);
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* El boton Jugar es de escritorio: en tactil no hay hover y el overlay

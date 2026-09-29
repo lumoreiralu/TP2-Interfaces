@@ -185,63 +185,6 @@ p, h4, ul a{
 /* OCULTAR */
 
 .loader-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* Centrado absoluto del botón dentro de la tarjeta activa */
-.boton-start-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centrado matemático perfecto */
-    z-index: 30; /* Por encima de todas las tarjetas del carrusel */
-    text-decoration: none;
-    pointer-events: auto; /* Asegura que se pueda hacer clic en el botón */
-}
-
-.btn-start {
-    width: 325px;
-    height: 97px;
-
-    background-color: #191B32;
-    color: #FEBD2C;
-
-    border: none;
-    border-radius: 45px;
-
-    font-family: monospace;
-    font-size: 40px;
-    font-weight: 100;
-    letter-spacing: 10px;
-
-    cursor: pointer;
-
-    /* Sombra del botón */
-    box-shadow:
-        0 18px 20px rgba(0, 0, 0, 0.35);
-
-    /* Sombra del texto */
-    text-shadow:
-        5px 6px 4px rgba(0, 0, 0, 0.45);
-
-    transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
-}
-
-/* Efecto al pasar el mouse */
-.btn-start:hover {
-    transform: translateY(-7px);
-
-    box-shadow:
-        0 21px 24px rgba(0, 0, 0, 0.4);
-}
-
-/* Efecto al hacer click */
-.btn-start:active {
-    transform: translateY(15px);
-
-    box-shadow:
-        0 10px 12px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  visibility: hidden;
 }

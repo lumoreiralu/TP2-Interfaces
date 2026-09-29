@@ -156,12 +156,24 @@
   transform: translateY(-50%);
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
-
+/* El :active va DESPUES del :hover a proposito. Al mantener presionado el
+   boton matchean los dos a la vez, tienen la misma especificidad (0,2,0) y
+   gana el ultimo: si el :active va primero, el :hover lo pisa. */
 .btn-carrusel-prev:hover,
 .btn-carrusel-next:hover,
 .btn-3d-nav:hover {
   background-color: #bd8d2f; /* Color dorado más intenso al pasar el mouse */
   transform: translateY(-50%) scale(1.05); /* Pequeño efecto de zoom al pasar el mouse */
+}
+
+.btn-carrusel-prev:active,
+.btn-carrusel-next:active,
+.btn-3d-nav:active {
+  transition: none; /* Quita la animación para que el efecto de presionar sea instantáneo */
+  background-color: #a97a2b; /* Color dorado más oscuro al pres
+  /* Mantiene el translateY(-50%) del centrado vertical: sin el, el boton
+     cae media altura mientras lo presionas */
+  transform: translateY(-50%) scale(0.95);
 }
 
 .btn-carrusel-prev { left: 20px; }
