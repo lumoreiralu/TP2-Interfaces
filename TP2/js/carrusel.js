@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const DURACION = 620;
 
     // Deslizamiento: avanza rapido y frena. Es la primera fase
-    function easeOutCubic(t) {
+    function easeOutQuad(t) {
         return 1 - Math.pow(1 - t, 2);
     }
 
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Primera fase: deslizamiento hasta el objetivo
             if (t < GLIDE) {
-                valor = desde + delta * easeOutCubic(t / GLIDE);
+                valor = desde + delta * easeOutQuad(t / GLIDE);
 
             // Segunda fase: rebote alrededor del objetivo ya alcanzado
             } else {
