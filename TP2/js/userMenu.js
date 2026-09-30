@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const userBtn = document.getElementById('userBtn');
-    const sidebarUser = document.getElementById('sidebarUser');
+    const sidebarUser = document.getElementById('sidebarUserRight');
     const closeUserBtn = document.getElementById('closeUserBtn');
     const overlay = document.getElementById('overlay');
 
