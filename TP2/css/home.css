@@ -63,7 +63,7 @@ p, h4, ul a{
     border-radius: 50%;
     z-index: 2;
     animation:
-        movePacman 7s linear forwards,
+        movePacman 5s linear forwards,
         mouth 0.30s ease-in-out infinite;
 }
 
@@ -98,13 +98,13 @@ p, h4, ul a{
 
 .dot-1 {
     left: 80px;
-    animation: eatDot 4s linear forwards;
-    animation-delay: 0.70s;
+    animation: eatDot 2s linear forwards;
+    animation-delay: 0.60s;
 }
 
 .dot-2 {
     left: 140px;
-    animation: eatDot 4s linear forwards;
+    animation: eatDot 3s linear forwards;
     animation-delay: 1.75s;
 }
 
