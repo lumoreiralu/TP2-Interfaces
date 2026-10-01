@@ -176,6 +176,36 @@ document.addEventListener('DOMContentLoaded', function() {
             if (card.classList.contains('posicion-activa')) activa = i;
         });
 
+        /* Los puntos de posicion los crea el JS y no el HTML: asi siguen
+           la cantidad de cards si alguna vez se agrega o se saca una.
+           Se cuelgan de la seccion (que es flex column) para que queden
+           centrados abajo del coverflow */
+        const dots = document.createElement('div');
+        dots.className = 'destacado-dots';
+
+        cards.forEach(function(card, i) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'destacado-dot';
+            dot.setAttribute('aria-label', 'Juego destacado ' + (i + 1));
+
+            dot.addEventListener('click', function() {
+                // Ir a ese juego es girar la cantidad de posiciones que
+                // falta: el mismo camino que usan las flechas y el arrastre
+                girar(i - activa);
+            });
+
+            dots.appendChild(dot);
+        });
+
+        contenedor.parentElement.appendChild(dots);
+
+        function marcarDot(indice) {
+            dots.querySelectorAll('.destacado-dot').forEach(function(dot, i) {
+                dot.classList.toggle('activo', i === indice);
+            });
+        }
+
         function pintar() {
             cards.forEach(function(card, i) {
                 for (let p = 0; p < posiciones.length; p++) {
@@ -183,17 +213,176 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 card.classList.add(posiciones[(i - activa + cards.length) % cards.length]);
             });
+
+            marcarDot(activa);
+        }
+
+        // Un solo camino para girar: lo usan las flechas
+        function girar(paso) {
+            activa = (activa + paso + cards.length) % cards.length;
+            pintar();
         }
 
         btnNext.addEventListener('click', function() {
-            activa = (activa + 1) % cards.length;
-            pintar();
+            girar(1);
         });
 
         btnPrev.addEventListener('click', function() {
-            activa = (activa - 1 + cards.length) % cards.length;
-            pintar();
+            girar(-1);
         });
+
+        /* ---------- ARRASTRE (DEDO O MOUSE) ----------
+           En mobile las flechas no entran, asi que el coverflow gira arrastrando,
+           pero es el mismo coverflow de escritorio: se arrastra directo sobre la
+           card de adelante (no sobre los dots) y el gesto vertical se deja pasar
+           para poder scrollear la pagina.
+
+           Se usan Pointer Events y no Touch Events porque asi el mismo codigo
+           sirve para el dedo, el mouse y el stylus. Con touchstart/touchmove el
+           arrastre con el mouse nooria porque esos eventos no existen.
+
+           Durante el arrastre se escriben a mano las transformadas que el CSS
+           pone con las clases .posicion-*: con un numero entero de posiciones
+           de distancia sale exactamente la misma transformada, y con un
+           numero fractional queda la card a medio camino. Al soltar se borran
+           los estilos inline y el carrusel vuelve a girar por clases, asi el
+           transition de carruselDestacado.css termina de acomodarlo. */
+
+        // Distancia minima de arrastre, en fraccion de una posicion, para
+        // que el gesto cuente como cambio de juego
+        const UMBRAL = 0.35;
+
+        let x0 = 0;
+        let y0 = 0;
+        let avance = 0;
+        let puntero = null;
+
+        // Cuanto hay que arrastrar para pasar de una posicion a la otra: el
+        // 60% del ancho de la card, que es el desplazamiento que usa
+        // translate3d(60%) de .posicion-derecha / .posicion-izquierda.
+        // Con esa cuenta la card de adelante sigue al dedo 1:1
+        function pasoPx() {
+            const ancho = cards[0].offsetWidth;
+            return ancho ? ancho * 0.6 : 0;
+        }
+
+        // A que transformada llega la card i segun cuantas posiciones este
+        // del frente. Los valores son los de .posicion-activa,
+        // .posicion-derecha e .posicion-izquierda, interpolados: en d = +-1
+        // sale translate3d(60%, 0, -150px) rotateY(35deg) scale(.85) con
+        // opacidad .4
+        function escribir(card, d) {
+            const lejos = Math.min(Math.abs(d), 1);
+
+            card.style.transform =
+                'translate3d(' + (d * 60) + '%, 0, ' + (-150 * lejos) + 'px) ' +
+                'rotateY(' + (d * 35) + 'deg) ' +
+                'scale(' + (1 - lejos * 0.15) + ')';
+
+            card.style.opacity = 1 - lejos * 0.6;
+            card.style.zIndex = 5 - Math.round(lejos * 3);
+        }
+
+        // Cuantas posiciones esta la card i del frente, en el circulo de 3:
+        // en reposo sale lo que ya impone pintar(), y durante el gesto queda
+        // a medio camino entre dos posiciones
+        function posicionesDe(i) {
+            const n = cards.length;
+            const d = (i - activa) - avance;
+            return d - n * Math.round(d / n);
+        }
+
+        // Al soltar se limpian los estilos inline: las cards vuelven a tomar
+        // la transformada de su clase .posicion-* y el transition del CSS
+        // termina de acomodarlas
+        function soltar() {
+            const paso = avance >= UMBRAL ? 1 : (avance <= -UMBRAL ? -1 : 0);
+
+            cards.forEach(function(card) {
+                card.style.transform = '';
+                card.style.opacity = '';
+                card.style.zIndex = '';
+                card.style.transition = '';
+            });
+
+            puntero = null;
+            avance = 0;
+
+            if (paso) girar(paso);
+            else pintar();
+        }
+
+        /* El arrastre se registra solo en mobile, que es donde no hay flechas.
+           El breakpoint es el mismo de mobile.css: en escritorio siguen
+           mandando unicamente las flechas */
+        if (window.matchMedia('(max-width: 768px)').matches) {
+            contenedor.addEventListener('pointerdown', function(e) {
+                // Solo el primer puntero: un segundo dedo no reinicia el gesto
+                if (!e.isPrimary || puntero !== null) return;
+
+                // Con mouse solo el boton izquierdo arrastra
+                if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+                // El gesto arranca sobre el START: eso es un click, no arrastre
+                if (e.target.closest('.btn-start')) return;
+
+                // setPointerCapture: los pointermove siguen llegando aunque el
+                // cursor o el dedo se salgan de la card
+                puntero = e.pointerId;
+                contenedor.setPointerCapture(e.pointerId);
+
+                x0 = e.clientX;
+                y0 = e.clientY;
+                avance = 0;
+
+                // Sin transition mientras se arrastra, o la card se queda atras
+                cards.forEach(function(card) {
+                    card.style.transition = 'none';
+                });
+            });
+
+            contenedor.addEventListener('pointermove', function(e) {
+                if (puntero === null || e.pointerId !== puntero) return;
+
+                const dx = e.clientX - x0;
+                const dy = e.clientY - y0;
+
+                // Gesto vertical: no se toca nada y el scroll de la pagina sigue
+                if (Math.abs(dy) > Math.abs(dx)) {
+                    soltar();
+                    return;
+                }
+
+                // Gesto horizontal: se avisa al navegador antes de que scrollee
+                if (e.cancelable) e.preventDefault();
+
+                const paso = pasoPx();
+                if (!paso) return;
+
+                // Arrastrar a la derecha (dx > 0) trae la card de la izquierda.
+                // Se limita a una sola posicion: con solo 3 cards, un arrastre mas
+                // largo daria la vuelta al circulo y al soltar la card volveria
+                // para atras
+                avance = Math.max(-1, Math.min(1, -dx / paso));
+
+                cards.forEach(function(card, i) {
+                    escribir(card, posicionesDe(i));
+                });
+
+                marcarDot((Math.round(activa + avance) % cards.length + cards.length) % cards.length);
+            });
+
+            contenedor.addEventListener('pointerup', function(e) {
+                if (e.pointerId !== puntero) return;
+                contenedor.releasePointerCapture(e.pointerId);
+                soltar();
+            });
+
+            contenedor.addEventListener('pointercancel', function(e) {
+                if (e.pointerId !== puntero) return;
+                soltar();
+            });
+        }
 
         pintar();
     }

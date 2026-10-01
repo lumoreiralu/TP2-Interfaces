@@ -167,10 +167,22 @@
   box-shadow: 0 10px 12px rgba(0, 0, 0, 0.35);
 }
 
+/* Los puntos de posicion los crea carrusel.js. En mobile los muestra
+   mobile.css; en desktop quedan ocultos porque siguen las flechas */
+.destacado-dots {
+  display: none;
+}
+
 /* El boton Jugar es de escritorio: en tactil no hay hover y el overlay
    se oculta con display:none desde mobile.css */
 
 @media (prefers-reduced-motion: reduce) {
+  /* El carrusel gira con un transition de transform: sin movimiento
+     reducido la card se teletransporta de posicion */
+  .card-3d {
+    transition: none;
+  }
+
   .card-3d.posicion-activa .btn-jugar-relleno {
     animation: none;
     width: 100%;

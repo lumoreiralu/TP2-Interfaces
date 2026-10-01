@@ -135,47 +135,72 @@
   }
 
   /* ---------- JUEGO DESTACADO ---------- */
-  /* La imagen del juego ocupa todo el ancho (la foto es 801x610) */
+  /* El coverflow es el de escritorio: no se redefinen cards ni transformadas,
+     asi que la geometria 3D (card del 55% a 22.5%, laterales con
+     translate3d(60%) + rotateY(35deg) + scale(.85) y opacidad .4) queda
+     identica y lo unico que cambia es como se gira: sin flechas, arrastrando
+     con el dedo (carrusel.js interpola las mismas posiciones). */
   .carrusel-3d-contenedor {
+    /* los 450px fijos de escritorio, con la card al 55%, dan una proporción
+       de 1000x450. En una pantalla de 375px de ancho, 450px de alto dejaria
+       la card altisima y angosta, asi que se mantiene la proporcion */
     height: auto;
-    max-width: 100%;
-    perspective: none;
+    aspect-ratio: 1000 / 450;
   }
 
   .cards-3d-wrapper {
-    height: auto;
+    /* pan-y: el navegador sigue scrolleando la pagina en vertical y nos
+       deja el touchmove horizontal para el arrastre */
+    touch-action: pan-y;
   }
 
+  /* La img de la card cubre el 100% de ella y en HTML5 las imagenes se
+     arrastran solas: sin esto el gesto dispara el drag nativo del navegador
+     y el pointermove se cancela. Sin seleccion de texto tampoco */
   .card-3d {
-    /* relative y no static: el overlay del boton Jugar se ancla a la card.
-       left: 0 limpia el 22.5% de escritorio, que con relative correria
-       la card y desbordaria el contenedor */
-    position: relative;
-    left: 0;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1.31;
-    box-shadow: none;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
-  /* El boton Jugar es solo de escritorio: en mobile no se muestra */
-  .card-3d .overlay-jugar {
-    display: none;
-  }
-
-  .posicion-activa {
-    transform: none;
-    opacity: 1;
-    z-index: auto;
-  }
-
-  .posicion-izquierda,
-  .posicion-derecha {
-    display: none;
-  }
-
+  /* Las flechas no entran en mobile: se desliza con el dedo (carrusel.js) */
   .btn-3d-nav {
     display: none;
+  }
+
+  /* Puntos de posicion del carrusel 3D. Los crea carrusel.js; en desktop
+     estan ocultos y siguen mandando las flechas (carruselDestacado.css) */
+  .destacado-dots {
+    display: flex;
+    gap: 4px;
+    margin-top: 18px;
+  }
+
+  /* El boton mide 24x24 para que el dedo lo alcance; el punto de 8px se
+     dibuja en el ::after para no agrandar el area clickeable */
+  .destacado-dot {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .destacado-dot::after {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: rgba(189, 141, 47, 0.45);
+    transition: width 0.2s ease, background 0.2s ease;
+  }
+
+  .destacado-dot.activo::after {
+    width: 18px;
+    border-radius: 5px;
+    background: #00E5FF;
   }
 
   /* ---------- PUBLICIDAD ---------- */
@@ -200,24 +225,53 @@
   }
 
   /* ---------- FOOTER ---------- */
-  /* Una sola columna con lo importante: logo, legales y redes */
+  /* Mobile muestra TODOS los links del footer de desktop: las 5 secciones
+     en una grilla de 2 columnas y logo + redes/suscripcion a ancho
+     completo. No se oculta ninguna columna. */
   .seccion-footer {
     height: auto; /* los 400px fijos no sirven apilado */
     padding: 24px 20px;
     margin-top: 24px;
   }
 
+  /* El flex de desktop pasa a grilla: apilados los 22 links en una sola
+     columna el footer quedaba larguisimo. repeat(2, 1fr) reparte las
+     5 secciones en 3 filas (la ultima, Ayuda, queda sola). */
   .footer-columnas {
-    flex-direction: column;
-    align-items: center; /* centrado, no alineado a la izquierda */
-    text-align: center; /* centra los links de Legales y el CTA */
-    gap: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 18px;
+    align-items: start;
+    text-align: left; /* las listas van alineadas a la izquierda */
   }
 
-  /* Oculta Categorias Populares, Cookies, Acerca de Nosotros y Ayuda.
-     La 2da <div> (.footer-columnas) es la de Legales y se conserva. */
-  .footer-columnas > .footer-col:not(:nth-of-type(2)) {
-    display: none;
+  /* El logo arriba y redes abajo ocupan la fila entera, centrados */
+  .footer-col-logo-col,
+  .footer-col-redes-suscripcion-col {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  .footer-col-logo-col {
+    align-self: center;
+  }
+
+  /* Los h4 no tienen regla en footer.css: con los margenes default del
+     browser (1.33em) se desarma el ritmo de la grilla */
+  .footer-col h4,
+  .footer-col-redes-suscripcion-col h4 {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin: 0 0 10px;
+  }
+
+  /* 16px de desktop no entran en una columna de ~150px: los textos largos
+     ("Terminos y condiciones de uso") bajan de tamaño y cortan por palabra */
+  .footer-col .footer-link,
+  .footer-col-redes-suscripcion-col .footer-link {
+    font-size: 0.85rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
   }
 
   .footer-columnas ul li {
@@ -240,16 +294,21 @@
     height: 27px;
   }
 
+  /* El h4 de suscripcion cuelga de los iconos: lo separa un poco mas */
+  .titulo-suscripcion {
+    margin-top: 18px;
+  }
+
   .footer-copyright {
-    margin-top: 24px;
+    margin-top: 32px;
     font-size: 12px;
   }
   /*btn start mobile*/
   .boton-start-container .btn-start {
         
-        width: 150px ; 
-        height: 55px ; 
-        font-size: 25px;
+        width: 120px ; 
+        height: 46px ; 
+        font-size: 20px;
         letter-spacing: 1px;
         
         
