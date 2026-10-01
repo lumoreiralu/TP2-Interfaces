@@ -1,9 +1,11 @@
-body{
+/* =========================================
+   ESTILOS GENERALES Y LAYOUT
+========================================= */
+body {
     background-color: #101225;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
     margin: 0;
-
     padding-top: 60px;
     display: flex;
     flex-direction: column;
@@ -12,8 +14,9 @@ body{
     padding-bottom: 50px;
 }
 
-.form-register{
-    margin-top: 100px;
+/* Agrupamos ambas clases de contenedores */
+.form-register,
+.form-login {
     background-color: #191b32;
     width: 100%;
     max-width: 480px;
@@ -25,34 +28,38 @@ body{
     margin: 50px auto;
 }
 
-.form-title{
+.form-title {
     color: #bd8d2f;
     font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 2rem;
     text-align: center;
-
 }
- 
-.form-register form{
+
+/* Agrupamos los formularios internos */
+.form-register form,
+.form-login form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.input-group{
+/* =========================================
+   INPUTS Y CAMPOS
+========================================= */
+.input-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.5rem;
 }
 
-.input-group label{
+.input-group label {
     color: #bd8d2f;
     font-size: 0.95rem;
     margin-bottom: 0.5rem;
 }
 
-.input-group input{
+.input-group input {
     background-color: #92939f;
     border: 1px solid #7577a3;
     border-radius: 10px;
@@ -62,10 +69,25 @@ body{
     outline: none;
 }
 
-.input-group input::placeholder{
-    color: #2b2b36
+.input-group input::placeholder {
+    color: #2b2b36;
 }
 
+/* Clases exclusivas del Registro (El Login las ignorará) */
+.required {
+    color: red;
+}
+
+.captcha-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   BOTÓN SUBMIT Y SPINNER
+========================================= */
 .btn-submit {
     background: linear-gradient(180deg, #4c5180 0%, #686ea7 100%);
     border: 1px solid #7d85c4;
@@ -77,46 +99,97 @@ body{
     cursor: pointer;
     margin-top: 0.8rem;
     margin-bottom: 2rem;
-
-        position: relative;
+    position: relative;
     overflow: hidden;
 }
 
-
-/* Creación del efecto espejo / brillo */
 .btn-submit::after {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%; /* Empieza fuera del botón a la izquierda */
+    left: -100%;
     width: 100%;
     height: 100%;
     background: linear-gradient(
         120deg,
         transparent,
-        rgba(255, 255, 255, 0.3), /* Brillo blanco semitransparente */
+        rgba(255, 255, 255, 0.3),
         transparent
     );
     transition: none;
 }
 
-/* Al hacer hover, el brillo se desliza hacia la derecha */
 .btn-submit:hover::after {
     left: 100%;
-    transition: left 0.7s ease-in-out; /* Velocidad del efecto espejo */
+    transition: left 0.7s ease-in-out;
 }
 
-.captcha-container {
-    flex-direction: column;
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #ffffff;
+    animation: spin 0.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =========================================
+   REDES SOCIALES Y LINKS INFERIORES
+========================================= */
+.text-social {
+    color: #f0d58a;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.social-btn {
     display: flex;
     align-items: center;
-    margin-bottom: 1.5rem;
-
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #ffffff;
+    border: 1px solid #e1e1e1;
+    transition: all 0.25s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.required{
-    color: red;
+.social-btn i {
+    font-size: 1.1rem;
 }
+
+.facebook-btn { color: #333333; }
+.facebook-btn i { color: #1877f2; }
+
+.google-btn { color: #333333; }
+.google-btn i { color: #ea4335; }
+
+.social-btn:hover {
+    background-color: #f8f9fa;
+    border-color: #d0d0d0;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .text-footer {
     color: #f0d58a;
     font-size: 0.9rem;
@@ -133,82 +206,9 @@ body{
     text-decoration: none;
 }
 
-.text-social {
-    color: #f0d58a;
-    text-align: center;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-}
-
-.social-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
-}
-/* Estilo base de la cápsula */
-.social-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.7rem;
-    padding: 0.75rem 1.25rem;
-    border-radius: 50px; /* Forma de cápsula */
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    background-color: #ffffff;
-    border: 1px solid #e1e1e1;
-    transition: all 0.25s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-/* Tamaños y colores oficiales para los iconos */
-.social-btn i {
-    font-size: 1.1rem;
-}
-
-.facebook-btn {
-    color: #333333; /* Texto oscuro elegante */
-}
-.facebook-btn i {
-    color: #1877f2; /* Azul oficial de Facebook */
-}
-
-.google-btn {
-    color: #333333;
-}
-.google-btn i {
-    color: #ea4335; /* Rojo/Multicolor representativo de Google */
-}
-
-/* Efecto hover */
-.social-btn:hover {
-    background-color: #f8f9fa;
-    border-color: #d0d0d0;
-    transform: translateY(-10px); /*hace que se eleve la capsula*/
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Spinner de carga dentro del botón */
-.spinner {
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top-color: #ffffff;
-    animation: spin 0.8s ease-in-out infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Animación del contenedor de éxito */
+/* =========================================
+   ANIMACIONES DE ÉXITO
+========================================= */
 .success-message {
     display: flex;
     flex-direction: column;
@@ -237,7 +237,6 @@ body{
     font-size: 0.95rem;
 }
 
-/* Keyframes con porcentajes estrictos */
 @keyframes fadeIn {
     0% { opacity: 0; transform: scale(0.95); }
     100% { opacity: 1; transform: scale(1); }

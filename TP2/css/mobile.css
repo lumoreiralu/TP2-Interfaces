@@ -244,4 +244,27 @@
     margin-top: 24px;
     font-size: 12px;
   }
+  /*btn start mobile*/
+  .boton-start-container .btn-start {
+        
+        width: 150px ; 
+        height: 55px ; 
+        font-size: 25px;
+        letter-spacing: 1px;
+        
+        
+        transition: none; 
+    }
+
+    
+    .btn-start:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    
+    .btn-start:active {
+        transform: none;
+        box-shadow: none;
+    }
 }

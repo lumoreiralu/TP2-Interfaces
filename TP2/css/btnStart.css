@@ -1,0 +1,41 @@
+.boton-start-container {
+    position: absolute;
+    top: 80%; /* para bajarlo o subirlo*/
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centrado matemático perfecto */
+    z-index: 20; /* Por encima de la imagen y de otros controles */
+}
+.btn-start {
+    width: 325px;
+    height: 97px;
+
+    background-color: #191B32;
+    color: #bd8d2f;
+
+    border: none;
+    border-radius: 45px;
+
+    font-family: 'Nunito' sans-serif;
+    font-size: 40px;
+    font-weight: 100;
+    letter-spacing: 10px;
+
+    cursor: pointer;
+
+}
+
+/* Efecto al pasar el mouse */
+.btn-start:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 21px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Efecto al hacer click */
+.btn-start:active {
+    transform: translateY(15px);
+
+    box-shadow:
+        0 10px 12px rgba(0, 0, 0, 0.35);
+}
