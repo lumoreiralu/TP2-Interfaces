@@ -35,6 +35,107 @@ body{
   font-weight: 600;
 }
 
+.seccion-juego {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Título del juego arriba */
+.juego-titulo {
+  color: #bd8d2f;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Contenedor relativo para posicionar los elementos flotantes en las esquinas */
+.juego-contenedor-principal {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen del juego */
+.juego-imagen-wrapper {
+  width: 100%;
+  max-width: 600px; 
+  display: flex;
+  justify-content: center;
+}
+
+.juego-screenshot {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+
+/* Botones genéricos de iconos (esquinas superior e inferior derecha) */
+.juego-controles-top,
+.juego-controles-bottom-right {
+  position: absolute;
+  display: flex;
+  gap: 20px;
+  z-index: 10;
+}
+
+.juego-controles-top {
+  top: 2px;
+  right: 2px;
+}
+
+.juego-controles-bottom-right {
+  bottom: 2px;
+  right: 2px;
+}
+
+/* Estadísticas inferiores izquierdas */
+.juego-stats-bottom-left {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.stat-card {
+  background-color: #090b14;
+  border: 1px solid #222644;
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  color: #92939f;
+  margin-bottom: 2px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+
 /* Configuración general y de colores */
 
 
