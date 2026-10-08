@@ -11,7 +11,7 @@
   color: #BD8D2F; /* El color amarillo/dorado del texto */
   margin-top: 40px;
   margin-bottom: 40px;
-  font-family:'nunito', sans-serif;
+  font-family:'Nunito', sans-serif;
   font-size: 28px;
 }
 
@@ -66,6 +66,14 @@
   z-index: 2;
 }
 
+.posicion-izquierda .boton-start-container{
+  opacity: 0; /* Oculta el botón Jugar en la tarjeta izquierda */
+  pointer-events: none; /* Evita que el botón sea clickeable */
+}
+.posicion-derecha .boton-start-container{
+  opacity: 0; /* Oculta el botón Jugar en la tarjeta izquierda */
+  pointer-events: none; /* Evita que el botón sea clickeable */
+}
 /* 3. Tarjeta Derecha (Atrás, achicada e inclinada hacia el otro lado) */
 .posicion-derecha {
   transform: translate3d(60%, 0, -150px) rotateY(35deg) scale(0.85);
@@ -73,7 +81,6 @@
   z-index: 2;
 }
 
-/* Boton Jugar: solo se muestra sobre la card que esta al frente */
 
 .card-3d .overlay-jugar {
   position: absolute;
@@ -81,7 +88,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  /* El boton va bien abajo, a 28px del borde inferior de la card */
+
   padding-bottom: 70px;
   background-color: rgba(9, 11, 20, 0.72);
   opacity: 0;
@@ -95,77 +102,8 @@
   visibility: visible;
 }
 
-/* Diseno del boton (pildora) con la barra de carga llenandose en el hover */
-.btn-jugar {
-  position: relative;
-  overflow: hidden;
-  width: 225px;
-  height: 67px;
-  padding: 0 20px;
-  border: none;
-  border-radius: 45px;
-  background-color: #191B32;
-  color: #FEBD2C;
-  font-family: nunito, sans-serif;
-  font-size: 40px;
-  font-weight: 100;
-  letter-spacing: 10px;
-  text-shadow: 5px 6px 4px rgba(0, 0, 0, 0.45);
-  box-shadow: 0 18px 20px rgba(0, 0, 0, 0.35);
-  cursor: not-allowed;
-  opacity: 0.55;
-  transition: opacity 0.05s ease, transform 0.05s ease, box-shadow 0.05s ease;
-}
 
-/* La barra de carga: el boton se llena de izquierda a derecha */
-.btn-jugar-relleno {
-  position: absolute;
-  inset: 0;
-  width: 0;
-  background-color: #bd8d2f;
-}
 
-.btn-jugar-texto {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  /* Compensa el letter-spacing, que empuja el texto hacia la izquierda */
-  padding-left: 10px;
-}
-
-.card-3d.posicion-activa:hover .btn-jugar-relleno,
-.card-3d.posicion-activa:focus-within .btn-jugar-relleno {
-  animation: llenar-barra 0.5s ease-out forwards;
-}
-
-@keyframes llenar-barra {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-
-/* El gate: el click solo se habilita cuando la barra termina de llenarse.
-   El :hover y el :active van gateados con data-listo para que el boton
-   no se levante mientras todavia esta deshabilitado */
-.btn-jugar[data-listo='true'] {
-  cursor: pointer;
-  opacity: 1;
-  /* El texto era dorado y la barra tambien: al llenarse pasa a oscuro */
-  color: #191B32;
-  text-shadow: none;
-}
-
-.btn-jugar[data-listo='true']:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 21px 24px rgba(0, 0, 0, 0.4);
-}
-
-.btn-jugar[data-listo='true']:active {
-  transform: translateY(15px);
-  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.35);
-}
 
 /* Los puntos de posicion los crea carrusel.js. En mobile los muestra
    mobile.css; en desktop quedan ocultos porque siguen las flechas */
@@ -183,8 +121,5 @@
     transition: none;
   }
 
-  .card-3d.posicion-activa .btn-jugar-relleno {
-    animation: none;
-    width: 100%;
-  }
+
 }

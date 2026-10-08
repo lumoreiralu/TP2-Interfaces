@@ -4,11 +4,16 @@
     padding: 20px;
     margin-top: 50px;
     height: 400px;
+    font-family: 'Nunito', sans-serif;
 }
 
 .footer-columnas{
     display: flex;
     justify-content: space-between;
+}
+
+.seccion-footer a{
+    font-family: 'Nunito', sans-serif;
 }
 
 .footer-link {
@@ -32,4 +37,30 @@
 .footer-logo {
     width: 117px;
     height: 94px;
+}
+
+.redes-iconos {
+    display: flex;
+    gap: 10px;
+}
+
+.icono-btn,
+.social-btn {
+  background-color: #101225;
+  color: #bd8d2f;
+  border: none;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.icono-btn:hover,
+.social-btn:hover {
+  background-color: #1b2038;
+  border-color: #bd8d2f;
 }

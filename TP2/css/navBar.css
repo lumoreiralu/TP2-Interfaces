@@ -51,7 +51,7 @@
     background-color: transparent;
     border: none;
     outline: none;
-    color: #ffffff; /* CORREGIDO: Para que lo que escribas se vea blanco y no se pierda con el fondo */
+    color: #ffffff; 
     width: 100%;
     font-family: 'Nunito', sans-serif;
 }
@@ -154,24 +154,26 @@
 }
 
 .close-btn {
-    display: block;
-    width: 100%;
-    background: none;
-    border: none;
-    color: #00E5FF; 
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    font-family: 'Nunito', sans-serif;
-    transition: opacity 0.2s;
+  background-color: #101225;
+  color: #bd8d2f;
+  border: none;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .close-btn:hover {
-    opacity: 0.8;
+    background-color: #1b2038;
+    border-color: #bd8d2f;
+}
+.sidebar-content .close-btn {
+    align-self: flex-end;
+    margin-bottom: 1rem;
 }
 
 .overlay {
@@ -195,19 +197,19 @@
 .sidebarRight {
     position: fixed;
     top: 0;
-    right: -350px; /* 1. Cambiado de 'left' a 'right' para ocultarlo a la derecha */
+    right: -350px; 
     width: 300px;
     height: 100%;
     box-sizing: border-box;
     background-color: #121420;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5); /* 2. Cambiado a -4px para que la sombra se proyecte hacia el centro de la página */
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5); 
     transition: right 0.4s ease-in-out;
     z-index: 1000;
     overflow-y: auto;
     padding: 2rem 1.5rem;
 }
 
-/* 3. Clase para cuando el menú se abre (asegúrate de agregarla con JavaScript) */
+/* 3. Clase para cuando el menú se abre  */
 .sidebarRight.active {
     right: 0;
 }

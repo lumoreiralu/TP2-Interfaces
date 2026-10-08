@@ -1,6 +1,6 @@
 body{
     background-color: #191b32;
-    font-family: 'nunito', sans-serif;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
     padding: 80px 0 0 0;
     display: flex;
@@ -108,30 +108,9 @@ body{
 }
 
 
-.carrusel-trackv2 {
-  height: 150px;       /* Ocupa todo el alto del contenedor */  
-  display: flex;
-  padding-left: 20px;  /* Espacio a la izquierda para que no quede pegado */
-  gap: 50px;          /* Espacio entre cada juego */
-  scroll-behavior: smooth; /* Hace que el movimiento sea suave */
-  overflow-x: auto;   /* Permite moverlo con el dedo en celulares */
-  width: 100%;         /* Ocupa todo el ancho del contenedor */
-}
-
-.juego-tarjetav2 img {
-  width: 120px;       /* Ajusta al tamaño de tus iconos */
-  height: 120px;
-  border-radius: 12px;
-  object-fit: cover;
-}
 
 /* Configuración general y de colores */
-:root {
-  --bg-dark: #191b32;
-  --accent-yellow: #bd8d2f;
-  --btn-bg: #090b14;
-  --btn-hover: #1b2038;
-}
+
 
 .comments-section {
   max-width: 1200px;
@@ -146,8 +125,9 @@ body{
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--accent-yellow);
+  color: #bd8d2f;
   margin-bottom: 24px;
+  font-family: 'Nunito', sans-serif;
 }
 
 .comments-header h2 {
@@ -165,7 +145,7 @@ body{
   display: flex;
   align-items: center;
   gap: 8px;
-  color: var(--accent-yellow);
+  color: #bd8d2f;
   font-size: 0.95rem;
   margin-bottom: 8px;
 }
@@ -213,7 +193,7 @@ body{
 }
 
 .icono-btn:hover {
-  background-color: var(--btn-hover);
+  background-color: #292C4A;
 }
 
 /* Estilo exclusivo solo para el botón de Me gusta */
@@ -255,28 +235,37 @@ body{
   }
 }
 
-/* Filtros de comentarios */
+
+/* Contenedor de las pestañas */
 .comment-filters {
   display: flex;
-  justify-content: center; /* Centra los elementos horizontalmente */
-  gap: 24px;
-  margin: 16px auto 24px auto; /* Eliminamos el margen izquierdo fijo y usamos 'auto' para centrar */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; /* Los pone uno al lado del otro */
+  gap: 10px;           /* Espacio entre los dos botones */
+  margin: 50px 0 20px 0;
 }
 
-.filter-btn {
-  background: none;
+/* Botones para filtrar comentarior */
+.comment-filters .filter-btn {
+  background-color: #101225;
+  color: #bd8d2f;
   border: none;
-  color: #00E5FF;
+  border-radius: 10px;
+  padding: 0 16px;     /* Padding horizontal cómodo */
+  height: 48px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.85rem;
+  justify-content: center;
   cursor: pointer;
-  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  white-space: nowrap; /* Evita que el texto se rompa hacia abajo */
+  transition: background-color 0.2s;
 }
 
-.filter-btn:hover {
-  text-decoration: underline;
+.comment-filters .filter-btn:hover {
+  background-color: #292C4A;
 }
 
 /* Contenedor de la lista de comentarios */
@@ -320,12 +309,6 @@ body{
   gap: 60px;
 }
 
-@media (max-width: 768px) {
-  .game-info-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
 
 /* Títulos con el color amarillo característico */
 .info-title {
@@ -429,3 +412,29 @@ body{
   font-weight: 600;
 }
 
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  color: #b0b3c6; /* Color claro para el texto fijo y separadores */
+}
+
+.breadcrumbs a {
+  color: #00E5FF; /* Celeste brillante para los enlaces interactivos */
+  text-decoration: none; 
+  transition: opacity 0.2s;
+}
+
+.breadcrumbs a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.breadcrumbs .current {
+  color: #f0d58a; /* Un color destacado para indicar la página actual */
+  font-weight: 600;
+}

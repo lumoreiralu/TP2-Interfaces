@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/navBar.css">
-    <link rel="stylesheet" href="css/formStyle.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/navBar.css">
+    <link rel="stylesheet" href="../css/publicidad.css">
+    <link rel="stylesheet" href="../css/userMenu.css">
+    <link rel="stylesheet" href="../css/formAnimation.css">
+    <link rel="stylesheet" href="../css/formStyle.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">    
-    <title>GamingTeam - Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>GamingTeam - Login</title>
 </head>
 <body>
     <header class="navBar">
         <nav>
             <!--izquierda-->
             <div class="izquierda">
-                <img src="assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
-                <a href="index.html">
-                    <img src="assets/img/logo.png" alt="logo" class="logo">
+                <img src="../assets/img/menu.png" alt="menu" class="menu" id="menuBtn"> 
+                <a href="../index.html">
+                    <img src="../assets/img/logo.png" alt="logo" class="logo">
                 </a>           
              </div>
 
@@ -31,7 +36,7 @@
             <!--derecha-->
             <div class="derecha">
                 <span class="saludo-usuario">Hola, Usuario</span>
-                <img src="assets/img/user.png" alt="user" class="user" id="userBtn">
+                <img src="../assets/img/user.png" alt="user" class="user" id="userBtn">
             </div>
         </nav>
     </header>
@@ -40,8 +45,8 @@
     <!-- Menú lateral desplegable (Sidebar de Categorías) -->
         <div id="sidebarMenu" class="sidebar">
             <div class="sidebar-content">
+                <button id="closeMenuBtn" class="close-btn">X</button>
                 <h2>Categorías</h2>
-                
                 <ul class="category-list">
                     <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
                     <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
@@ -55,8 +60,6 @@
                     <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
                     <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
                 </ul>
-
-                <button id="closeMenuBtn" class="close-btn">X cerrar</button>
             </div>
         </div>
         <!-- Fondo oscuro semitransparente opcional para cuando se abre el menú -->
@@ -66,10 +69,10 @@
         <div id="sidebarUserRight" class="sidebarRight">
             <div class="sidebar-content">
                 <ul class="category-list">
+                    <li><button id="closeUserBtn" class="close-btn">X</button></li>
                     <li><a href="#" class="category-btn">Mis Favoritos</a></li>
                     <li><a href="#" class="category-btn">Mi Cuenta</a></li>
                 </ul>
-                <button id="closeUserBtn" class="close-btn">X cerrar</button>
             </div>
         </div>
         <!-- Fondo oscuro semitransparente para cuando se abre el menú -->
@@ -79,7 +82,7 @@
         <h2 class="form-title">Inicio de sesión</h2>
         
         <!-- Agregamos un ID al formulario para controlarlo con JS -->
-        <form id="loginForm" action="index.html" method="get">
+        <form id="loginForm" action="../index.html" method="get">
             <div class="input-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="ejemplo@gamingteam.com" required>
@@ -108,7 +111,7 @@
             </div>
     
             <p class="text-footer">
-                ¿No tenés cuenta? <a href="register/register.html" class="text-link"> Regístrate acá</a>
+                ¿No tenés cuenta? <a href="../register/register.html" class="text-link"> Regístrate acá</a>
             </p>
         </form>
 
@@ -121,8 +124,8 @@
     </div>
 
 
-    <script src="js/formAnimation.js"></script>
-    <script src="js/navBar.js"></script>
-    <script src="js/userMenu.js"></script>
+    <script src="../js/formAnimation.js"></script>
+    <script src="../js/navBar.js"></script>
+    <script src="../js/userMenu.js"></script>
 </body>
 </html>

@@ -41,10 +41,6 @@ function llenarCarruselPorClase(selectorClase, listaJuegos) {
             </div>
         `;
 
-        // Redirigir al detalle pasando el ID
-        tarjeta.addEventListener('click', () => {
-            window.location.href = `gamePage/game.html?id=${juego.id}`;
-        });
 
         track.appendChild(tarjeta);
     });

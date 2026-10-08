@@ -1,3 +1,4 @@
+"use strict";
 // Carruseles: desplazamiento con rebote en los comunes y suave en el destacado
 document.addEventListener('DOMContentLoaded', function() {
 

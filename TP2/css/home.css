@@ -2,21 +2,21 @@ body{
     background-color: #191B32;
     margin: 0;
     padding: 0;
+    font-family: 'Nunito', sans-serif;
 }
 
-p, h4, ul a{
-    font-family:'Nunito', sans-serif;
-}
+
+
 /* --- PANTALLA DE CARGA --- */
 
 .loader-screen {
     position: fixed;
-    inset: 0;
-    background: #191B32;
+    inset: 0; /* Abreviatura para top: 0, right: 0, bottom: 0, left: 0 (cubre toda la pantalla) */
+    background: #191B32; /*si lo saco el pacman aparece sobre el carrusel principal*/
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
-    z-index: 9999;
+    z-index: 9999; /* Asegura que esté por encima de todo el contenido */
     opacity: 1;
     visibility: visible;
     transition:
@@ -35,7 +35,6 @@ p, h4, ul a{
 
 .loader-title {
     color: #f0d58a;
-    font-family: 'Nunito', sans-serif;
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -46,8 +45,8 @@ p, h4, ul a{
 
 .pacman-container {
     position: relative;
-    width: 260px;
-    height: 50px;
+    width: 260px; /*ancho fijo de la pista/contenedor de pacman*/
+    height: 50px; /*alto fijo de la pista/contenedor de pacman*/
     display: flex;
     align-items: center;
 }
@@ -56,14 +55,14 @@ p, h4, ul a{
 
 .pacman {
     position: absolute;
-    left: 0;
-    width: 42px;
-    height: 42px;
+    right: 215px; /* Inicia desde la izquierda de la pista/contenedor */
+    left: 0; /*ancho del circulo del pacman*/
+    height: 42px;/*alto del circulo del pacman*/
     background: #bd8d2f;
-    border-radius: 50%;
-    z-index: 2;
+    border-radius: 50%;/* Hace que el pacman sea un círculo */
+    z-index: 2; /* Asegura que Pac-Man esté por encima de los puntos */
     animation:
-        movePacman 5s linear forwards,
+        movePacman 5s linear forwards, /*desplaza el pacman por el contenedor durante 5 segundos*/
         mouth 0.30s ease-in-out infinite;
 }
 
@@ -73,14 +72,22 @@ p, h4, ul a{
     content: "";
     position: absolute;
     inset: 0;
-    background: #191B32;
-    clip-path: polygon(
+    background: #191B32; /* Color de fondo igual al de la pantalla para "recortar" y simular la boca */
+    clip-path: polygon( /* Recorta el elemento en forma de triángulo para hacer la abertura de la boca */
         50% 50%,
         100% 20%,
         100% 80%
     );
-    animation: mouthShape 0.35s ease-in-out infinite;
+    animation: mouthShape 0.35s ease-in-out infinite; /* Anima la apertura y cierre constante de la boca */
 }
+
+/*
+Pacman: 
+Esq sup Izq 0% 0% 
+esq sup Der 100% 0%
+esq inf Der 100% 100%
+esq inf Izq 0% 100%
+centro %50 %50*/
 
 /* PUNTOS */
 
@@ -125,24 +132,24 @@ p, h4, ul a{
     }
 }
 
-/* BOCA */
+/* BOCA*/ 
 
 @keyframes mouthShape {
-    0% {
+    0% { /*Boca semiabierta*/
         clip-path: polygon(
             50% 50%,
             100% 42%,
             100% 58%
         );
     }
-    50% {
+    50% { /*boca totalmente abierta*/
         clip-path: polygon(
             50% 50%,
             100% 15%,
             100% 85%
         );
     }
-    100% {
+    100% { /*Boca semiabierta*/
         clip-path: polygon(
             50% 50%,
             100% 42%,
@@ -150,23 +157,47 @@ p, h4, ul a{
         );
     }
 }
+/*
+ @keyframes mouthShape {
+    0% { 
+        clip-path: polygon(
+            50% 50%,
+            0% 30%,
+            0% 80%
+        );
+    }
+    50% { 
+        clip-path: polygon(
+            50% 50%,
+            0% 70%,
+            0% 90%
+        );
+    }
+    100% { 
+        clip-path: polygon(
+            50% 50%,
+            0% 30%,
+            0% 80%
+        );
+    }
+}*/
 
 /* DESAPARECER PUNTOS */
 
 @keyframes eatDot {
-    0% {
+    0% { /* Comienza visible y a tamaño normal */
         opacity: 1;
         transform: scale(1);
     }
-    15% {
+    15% {/* Mantiene la visibilidad y tamaño normal */
         opacity: 1;
         transform: scale(1);
     }
-    55% {
+    55% {/*se encoge hasta desaparecer*/
         opacity: 0;
         transform: scale(0);
     }
-    100% {
+    100% {/*permanece oculto*/
         opacity: 0;
         transform: scale(0);
     }
@@ -176,7 +207,6 @@ p, h4, ul a{
 
 .loader-progress {
     color: #bd8d2f;
-    font-family: 'Nunito', sans-serif;
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 1px;
@@ -188,3 +218,4 @@ p, h4, ul a{
   opacity: 0;
   visibility: hidden;
 }
+

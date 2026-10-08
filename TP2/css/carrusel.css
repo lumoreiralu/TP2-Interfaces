@@ -185,6 +185,7 @@
 .btn-carrusel-prev:disabled,
 .btn-carrusel-next:disabled {
   opacity: 0;
+  pointer-events: none; /* Evita que el mouse haga click en el boton cuando esta oculto */
   cursor: default;
 }
 
