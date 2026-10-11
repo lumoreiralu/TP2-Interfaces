@@ -22,7 +22,6 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    /* Aseguramos que el texto esté centrado correctamente con flexbox */
     padding-left: 10px; /* Compensación visual por el letter-spacing */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

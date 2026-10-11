@@ -34,6 +34,70 @@ body{
   color: #f0d58a; 
   font-weight: 600;
 }
+/*Contenedor principal de la sección del juego */
+.seccion-menu-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100svh - 80px);
+    text-align: center;
+    box-sizing: border-box;
+    padding: clamp(24px, 5vw, 48px) 20px;
+}
+.menu-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: min(100%, 720px);
+    box-sizing: border-box;
+    padding: clamp(28px, 6vw, 56px);
+    border: 1px solid rgba(189, 141, 47, 0.35);
+    border-radius: 24px;
+    background: linear-gradient(145deg, rgba(35, 39, 72, 0.96), rgba(16, 18, 37, 0.96));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+.menu-titulo-principal {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    color: #f39c12; /* Ajustá al color de tu temática */
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.menu-subtitulo {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    margin: 0;
+}
+
+.menu-instrucciones-rapidas {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 0.95rem;
+    max-width: 500px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    line-height: 1.6;
+}
+
+.menu-instrucciones-rapidas p {
+    margin: 0;
+}
+
+.seccion-menu-principal .boton-start-container {
+    position: static;
+    transform: none;
+    z-index: auto;
+}
+
+.seccion-menu-principal .btn-start {
+    width: min(325px, 70vw);
+    height: 80px;
+    box-sizing: border-box;
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+}
 
 .seccion-juego {
   width: 100%;
@@ -43,6 +107,7 @@ body{
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Título del juego arriba */
@@ -55,11 +120,55 @@ body{
   text-align: center;
 }
 
+.juego-canvas-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+#canvas {
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.blocka-mensaje {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #fff;
+  text-align: center;
+}
+
+.blocka-mensaje[hidden] {
+  display: none;
+}
+
+.blocka-siguiente {
+  padding: 10px 16px;
+  border: 1px solid #bd8d2f;
+  border-radius: 8px;
+  background: #101225;
+  color: #f0d58a;
+  font: inherit;
+  cursor: pointer;
+}
+
+.blocka-siguiente:hover {
+  background: #292c4a;
+}
+
 /* Contenedor relativo para posicionar los elementos flotantes en las esquinas */
 .juego-contenedor-principal {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -437,4 +546,40 @@ body{
 .instructions-list li strong {
   color: #bd8d2f;
   font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .menu-content-wrapper {
+    gap: 18px;
+    padding: 28px 18px;
+  }
+
+  .menu-subtitulo {
+    font-size: 1rem;
+  }
+
+  .menu-instrucciones-rapidas {
+    font-size: 0.85rem;
+  }
+
+  .seccion-juego {
+    padding: 16px 10px;
+  }
+
+  .juego-stats-bottom-left {
+    left: 8px;
+    bottom: 8px;
+    gap: 4px;
+  }
+
+  .juego-stats-bottom-left .stat-card {
+    min-width: 0;
+    padding: 6px 8px;
+  }
+
+  .juego-controles-bottom-right {
+    right: 8px;
+    bottom: 8px;
+    gap: 6px;
+  }
 }
