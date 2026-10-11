@@ -91,7 +91,32 @@
             Blocka
         </a>
     </div>
-    <section class="seccion-juego" id="blocka-juego">
+
+    <!-- ================= PANTALLA 1: MENÚ PRINCIPAL ================= -->
+    <section class="seccion-menu-principal" id="menuPrincipal">
+        <div class="menu-content-wrapper">
+            <h1 class="menu-titulo-principal">BLOCKA</h1>
+            <p class="menu-subtitulo">Juego de rompecabezas de imágenes basado en rotación</p>
+            
+            <!-- Botón Start que ya tenías con la animación -->
+            <div class="boton-start-container">
+                <a href="#" class="btn-start" id="startBlocka">
+                    <span style="--i: 1">S</span>
+                    <span style="--i: 2">T</span>
+                    <span style="--i: 3">A</span>
+                    <span style="--i: 4">R</span>
+                    <span style="--i: 5">T</span>
+                </a>
+            </div>
+
+            <div class="menu-instrucciones-rapidas">
+                <p>💡 <strong>Cómo jugar:</strong> Clic izquierdo gira a la izquierda | Clic derecho gira a la derecha.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PANTALLA 2: JUEGO ACTIVO (Canvas y Estadísticas) ================= -->
+    <section class="seccion-juego" id="blocka-juego" style="display: none;">
         <!-- Título superior -->
         <h2 class="juego-titulo">Blocka: Rompecabezas de Imágenes</h2>
 
@@ -108,27 +133,15 @@
                 </button>
             </div>
 
-            <!-- Contenedor del Canvas en lugar de la imagen estática -->
+            <!-- Contenedor del Canvas -->
             <div class="juego-canvas-wrapper">
-                <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;">
+                <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" willReadFrequently>
                     <p>Su navegador no soporta HTML5</p>
                 </canvas>                
-                <!-- Mensaje o pantalla inicial dentro del wrapper si se desea -->
+                <div id="blocka-mensaje" class="blocka-mensaje" role="status" aria-live="polite" hidden></div>
             </div>
 
-            <div class="boton-start-container">
-                <div class="boton-start-container">
-                    <a href="./gamePage/game.html" class="btn-start">
-                        <span style="--i: 1">S</span>
-                        <span style="--i: 2">T</span>
-                        <span style="--i: 3">A</span>
-                        <span style="--i: 4">R</span>
-                        <span style="--i: 5">T</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Estadísticas inferiores izquierdas (Adaptadas a Temporizador y Nivel) -->
+            <!-- Estadísticas inferiores -->
             <div class="juego-stats-bottom-left">
                 <div class="stat-card">
                     <span class="stat-label">Nivel</span>
@@ -144,7 +157,7 @@
                 </div>
             </div>
 
-            <!-- Controles inferiores derechos (Audio / Pantalla completa) -->
+            <!-- Controles inferiores derechos -->
             <div class="juego-controles-bottom-right">
                 <button class="icono-btn" id="btn-audio" aria-label="Silenciar">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
@@ -243,22 +256,22 @@
             <!-- La fila que contiene los juegos y se va a recortar -->
             <div class="carrusel-track ">
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img1.png" alt="img1">
+                    <img src="../assets/blocka/blocka1.png" alt="img1">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img2.png" alt="img2">
+                    <img src="../assets/blocka/blocka2.png" alt="img2">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/video1.png" alt="vid1">
+                    <img src="../assets/blocka/blocka3.png" alt="img3">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img3.png" alt="img3">
+                    <img src="../assets/blocka/blocka4.png" alt="img3">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img4.png" alt="img4">
+                    <img src="../assets/blocka/blocka5.png" alt="img4">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/video2.png" alt="v2">
+                    <img src="../assets/blocka/blocka6.png" alt="v2">
                 </div>
                 <div class="juego-tarjeta">
                     <img src="../assets/pegPacmanPage/img5.png" alt="img5">
@@ -603,7 +616,7 @@
     <script src="../js/navBar.js"></script>
     <script src="../js/userMenu.js"></script>
     <script src="../js/carrusel.js"></script>
-    <script src="comment.js"></script>
+    <script src="../gamePage/comment.js"></script>
     <script src="../js/api-juegos.js"></script>
     <script src="blocka.js"></script>
     
