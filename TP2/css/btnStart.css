@@ -1,41 +1,60 @@
 .boton-start-container {
     position: absolute;
-    top: 80%; /* para bajarlo o subirlo*/
+    top: 80%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Centrado matemático perfecto */
-    z-index: 20; /* Por encima de la imagen y de otros controles */
+    transform: translate(-50%, -50%);
+    z-index: 20;
 }
+
 .btn-start {
     width: 325px;
     height: 97px;
-
     background-color: #191B32;
     color: #bd8d2f;
-
     border: none;
     border-radius: 45px;
-
-    font-family: 'Nunito' sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 40px;
     font-weight: 100;
     letter-spacing: 10px;
-
     cursor: pointer;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    /* Aseguramos que el texto esté centrado correctamente con flexbox */
+    padding-left: 10px; /* Compensación visual por el letter-spacing */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Efecto al pasar el mouse */
+/* Hacemos que cada letra sea un bloque independiente para que pueda moverse */
+.btn-start span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto de ola al hacer hover sobre el botón */
+.btn-start:hover span {
+    animation: wave-letter 0.5s ease infinite alternate;
+    /* Cada letra se anima con un retraso basado en su número (--i) */
+    animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes wave-letter {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-8px); /* Altura de la ola */
+    }
+}
+
 .btn-start:hover {
     transform: translateY(-7px);
-
-    box-shadow:
-        0 21px 24px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 21px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Efecto al hacer click */
 .btn-start:active {
     transform: translateY(15px);
-
-    box-shadow:
-        0 10px 12px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.35);
 }
