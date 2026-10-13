@@ -1,3 +1,4 @@
+// Maneja el envío de comentarios en la página del juego
 document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.getElementById('sendCommentBtn');
     const commentInput = document.getElementById('commentInput');
@@ -5,15 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createComment() {
         const text = commentInput.value.trim();
-        
-        // Si está vacío, no hace nada
         if (text === '') return;
 
-        // Crear el contenedor del nuevo comentario
         const commentItem = document.createElement('div');
         commentItem.classList.add('comment-item');
 
-        // Estructura interna del comentario (usando tus clases existentes)
         commentItem.innerHTML = `
             <div class="comment-user">
               <svg class="icon-user" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -26,17 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Agregar el comentario al contenedor principal
         commentsContainer.appendChild(commentItem);
-
-        // Limpiar el input después de enviar
         commentInput.value = '';
     }
 
-    // Evento al hacer clic en el botón de enviar
     sendBtn.addEventListener('click', createComment);
-
-    // Evento opcional para enviar presionando la tecla "Enter"
     commentInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
             createComment();

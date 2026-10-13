@@ -1,9 +1,5 @@
-/* ==========================================
-   DISEÑO MOBILE  (ancho <= 768px)
-   Linkeado al final del <head> para que gane por
-   orden de cascada sin tocar los CSS de desktop.
-   Breakpoint unico: 768px
-   ========================================== */
+/* Estilos responsivos para pantallas móviles */
+
 
 @media (max-width: 768px) {
 
@@ -98,6 +94,7 @@
     height: auto;
     aspect-ratio: 3 / 2;
     object-fit: cover;
+
     transition: none;
   }
 
@@ -135,11 +132,6 @@
   }
 
   /* ---------- JUEGO DESTACADO ---------- */
-  /* El coverflow es el de escritorio: no se redefinen cards ni transformadas,
-     asi que la geometria 3D (card del 55% a 22.5%, laterales con
-     translate3d(60%) + rotateY(35deg) + scale(.85) y opacidad .4) queda
-     identica y lo unico que cambia es como se gira: sin flechas, arrastrando
-     con el dedo (carrusel.js interpola las mismas posiciones). */
   .carrusel-3d-contenedor {
     /* los 450px fijos de escritorio, con la card al 55%, dan una proporción
        de 1000x450. En una pantalla de 375px de ancho, 450px de alto dejaria
@@ -194,6 +186,7 @@
     margin: 0 auto;
     border-radius: 50%;
     background: rgba(189, 141, 47, 0.45);
+
     transition: width 0.2s ease, background 0.2s ease;
   }
 

@@ -1,9 +1,10 @@
+// Maneja la pantalla de carga y el contador de porcentaje
 document.addEventListener('DOMContentLoaded', function() {
     const loaderScreen = document.getElementById('loader-screen');
     const progressText = document.getElementById('loading-progress');
 
-    const totalTime = 5000; // 5 segundos exactos
-    const intervalTime = 50; // Cada cuánto se actualiza el número (ms)
+    const totalTime = 5000;
+    const intervalTime = 50;
     let currentProgress = 0;
 
     const increment = 100 / (totalTime / intervalTime);
@@ -14,12 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentProgress >= 100) {
             currentProgress = 100;
             clearInterval(loadingTimer);
-
-            // Ocultar pantalla de carga con desvanecimiento suave
             loaderScreen.classList.add('hidden');
         }
 
-        // Mostrar el porcentaje redondeado
         progressText.textContent = Math.round(currentProgress) + '%';
     }, intervalTime);
 });

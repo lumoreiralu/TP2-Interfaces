@@ -38,6 +38,8 @@
     width: 100%;
     max-width: 450px;
     padding: 0.35rem 1.2rem;
+
+    /* Anima el cambio de color al enfocar el buscador */
     transition: background-color 0.2s ease;
 }
 
@@ -94,6 +96,7 @@
     box-sizing: border-box;
     background-color: #121420;
     box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5);
+    /* Animación del menú lateral izquierdo */
     transition: left 0.4s ease-in-out;
     z-index: 1000;
     overflow-y: auto;
@@ -140,6 +143,7 @@
     border: 1px solid #2a2e45;
     font-size: 1rem;
     font-family: 'Nunito', sans-serif;
+    /* Transición para el hover de botones de categoría */
     transition: all 0.3s ease;
 }
 
@@ -164,7 +168,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
 }
 
 .close-btn:hover {
@@ -185,6 +189,7 @@
     background-color: rgba(0, 0, 0, 0.6);
     visibility: hidden;
     opacity: 0;
+    /* Transición del overlay */
     transition: opacity 0.3s ease, visibility 0.3s ease;
     z-index: 999;
 }
@@ -202,7 +207,8 @@
     height: 100%;
     box-sizing: border-box;
     background-color: #121420;
-    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5); 
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.5);
+    /* Animación del menú lateral derecho */
     transition: right 0.4s ease-in-out;
     z-index: 1000;
     overflow-y: auto;

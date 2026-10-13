@@ -52,6 +52,8 @@
   border-radius: 12px;
   overflow: hidden;   /* 👈 Recorta la imagen al border-radius (la tarjeta es la que escala) */
   cursor: pointer;
+
+  /* Transición al hacer hover sobre las tarjetas */
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -80,6 +82,8 @@
   /* Estado inicial: oculto y empujado hacia abajo */
   opacity: 0;
   transform: translateY(10px);
+
+  /* Transición para el texto del juego al hacer hover */
   transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
@@ -154,6 +158,8 @@
 .btn-3d-nav {
   top: 50%;
   transform: translateY(-50%);
+
+  /* Transición al hacer hover sobre las flechas */
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
 /* El :active va DESPUES del :hover a proposito. Al mantener presionado el
@@ -169,10 +175,9 @@
 .btn-carrusel-prev:active,
 .btn-carrusel-next:active,
 .btn-3d-nav:active {
-  transition: none; /* Quita la animación para que el efecto de presionar sea instantáneo */
-  background-color: #a97a2b; /* Color dorado más oscuro al pres
-  /* Mantiene el translateY(-50%) del centrado vertical: sin el, el boton
-     cae media altura mientras lo presionas */
+  /* Efecto inmediato al presionar la flecha */
+  transition: none;
+  background-color: #a97a2b;
   transform: translateY(-50%) scale(0.95);
 }
 

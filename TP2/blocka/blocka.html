@@ -116,6 +116,28 @@
     </section>
 
     <!-- ================= PANTALLA 2: JUEGO ACTIVO (Canvas y Estadísticas) ================= -->
+
+    <section class="seccion-seleccion" id="pantallaSeleccion" style="display:none;">
+      <div class="seleccion-contenedor">
+        <h2 class="seleccion-titulo">Elige o sortea la imagen para este nivel</h2>
+        <p class="seleccion-subtitulo">Se mostrará con cuál imagen se jugará antes de iniciar</p>
+        <div class="config-piezas">
+          <label for="selCantidadPiezas">Cantidad de piezas</label>
+          <select id="selCantidadPiezas">
+            <option value="4" selected>4 (2x2)</option>
+            <option value="6">6 (2x3)</option>
+            <option value="8">8 (2x4)</option>
+          </select>
+        </div>
+        <div class="galeria-thumbs" id="galeriaThumbs"></div>
+        <div class="seleccion-acciones">
+          <button type="button" class="btn-seleccion" id="btnSortear">Sortear imagen</button>
+          <button type="button" class="btn-seleccion btn-confirmar" id="btnConfirmarSeleccion" disabled>Confirmar y jugar</button>
+          <button type="button" class="btn-seleccion btn-volver-menu" id="btnVolverMenuSeleccion">Volver al menú principal</button>
+        </div>
+        <p class="seleccion-info" id="infoSorteo" hidden></p>
+      </div>
+    </section>
     <section class="seccion-juego" id="blocka-juego" style="display: none;">
         <!-- Título superior -->
         <h2 class="juego-titulo">Blocka: Rompecabezas de Imágenes</h2>
@@ -123,51 +145,64 @@
         <!-- Contenedor principal del juego -->
         <div class="juego-contenedor-principal">
             
-            <!-- Botones superiores derechos (Configuración / Ayuda) -->
+            <!-- Controles superiores -->
             <div class="juego-controles-top">
-                <button class="icono-btn" id="btn-config" aria-label="Configuración">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-                </button>
-                <button class="icono-btn" id="btn-help" aria-label="Ayuda e Instrucciones">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 16h-2v-2h2v2zm1.07-7.75l-.9.92C13.45 11.9 13 12.5 13 14h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.03-.42 1.98-1.07 2.75z"/></svg>
-                </button>
-            </div>
-
-            <!-- Contenedor del Canvas -->
-            <div class="juego-canvas-wrapper">
-                <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" willReadFrequently>
-                    <p>Su navegador no soporta HTML5</p>
-                </canvas>                
-                <div id="blocka-mensaje" class="blocka-mensaje" role="status" aria-live="polite" hidden></div>
-            </div>
-
-            <!-- Estadísticas inferiores -->
-            <div class="juego-stats-bottom-left">
-                <div class="stat-card">
-                    <span class="stat-label">Nivel</span>
-                    <span class="stat-value" id="val-nivel">1</span>
+                <div class="grupo-izq">
+                    <button type="button" id="btnVolverMenuJuego" class="icono-btn" title="Volver al menú principal" aria-label="Volver al menú principal">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button type="button" id="btn-config" class="icono-btn" title="Configuración" aria-label="Configuración">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+                    </button>
+                    <button type="button" id="btnAyudita" class="icono-btn" title="Ayudita: coloca una pieza correcta (suma +5 segundos)" aria-label="Ayudita">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2a7 7 0 0 0-7 7c0 3.87 3.13 7 7 7s7-3.13 7-7a7 7 0 0 0-7-7zm0 12a5 5 0 1 1 5-5 5 5 0 0 1-5 5zm1 4h-2v4h2v-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Ayudita</span>
+                    </button>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-label">Tiempo</span>
-                    <span class="stat-value" id="val-tiempo">00:00</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">Récord</span>
-                    <span class="stat-value" id="val-record">--:--</span>
-                </div>
+                <div class="grupo-der"></div>
             </div>
 
-            <!-- Controles inferiores derechos -->
-            <div class="juego-controles-bottom-right">
-                <button class="icono-btn" id="btn-audio" aria-label="Silenciar">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-                </button>
-                <button class="icono-btn" id="btn-fullscreen" aria-label="Pantalla completa">
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
-                </button>
-            </div>
+                
 
+                <!-- Estadísticas inferiores -->
+                    <div class="juego-stats-bottom-left">
+                        <div class="stat-card">
+                            <span class="stat-label">Nivel</span>
+                            <span class="stat-value" id="val-nivel">1</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Tiempo</span>
+                            <span class="stat-value" id="val-tiempo">00:00</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Récord</span>
+                            <span class="stat-value" id="val-record">--:--</span>
+                        </div>
+                    </div>
+
+
+                    <!-- Contenedor del Canvas -->
+                    <div class="juego-canvas-wrapper">
+                        <canvas id="canvas" width="900" height="600" style="border:#000 solid 1px;" willReadFrequently>
+                            <p>Su navegador no soporta HTML5</p>
+                        </canvas>                
+                        
+                    </div>
+                <!-- Controles inferiores derechos -->
+                    <div class="juego-controles-bottom-right">
+                        <button class="icono-btn" id="btn-audio" aria-label="Silenciar">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                        </button>
+                        <button class="icono-btn" id="btn-fullscreen" aria-label="Pantalla completa">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+                        </button>
+                    </div>
         </div>
+        <div id="blocka-mensaje" class="blocka-mensaje" role="status" aria-live="polite" hidden></div>
     </section>
 
 
@@ -274,24 +309,40 @@
                     <img src="../assets/blocka/blocka6.png" alt="v2">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img5.png" alt="img5">
+                    <img src="../assets/blocka/blocka1.png" alt="img1">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img6.png" alt="img6">
+                    <img src="../assets/blocka/blocka2.png" alt="img2">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img7.png" alt="img7">
+                    <img src="../assets/blocka/blocka3.png" alt="img3">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/video3.png" alt="vid3">
-
+                    <img src="../assets/blocka/blocka4.png" alt="img3">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img8.png" alt="img8">
+                    <img src="../assets/blocka/blocka5.png" alt="img4">
                 </div>
                 <div class="juego-tarjeta">
-                    <img src="../assets/pegPacmanPage/img9.png" alt="img9">
-
+                    <img src="../assets/blocka/blocka6.png" alt="v2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka3.png" alt="img3">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka4.png" alt="img3">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka5.png" alt="img4">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/blocka6.png" alt="v2">
                 </div>
             </div>
             <!-- Botón Derecho -->

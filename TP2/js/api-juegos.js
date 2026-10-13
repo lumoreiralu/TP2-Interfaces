@@ -11,7 +11,7 @@ async function cargarJuegosDelSitio() {
         const juegos = await response.json();
         
         if (juegos && juegos.length > 0) {
-            // Llenamos cada carrusel apuntando a su clase específica y cortando trozos distintos del array
+            // Distribuye juegos en los carruseles
             llenarCarruselPorClase('.track-recomendados', juegos.slice(0, 25));
             llenarCarruselPorClase('.track-mas-jugados', juegos.slice(25, 50));
             llenarCarruselPorClase('.track-lanzamientos', juegos.slice(50, 65));
@@ -27,7 +27,7 @@ function llenarCarruselPorClase(selectorClase, listaJuegos) {
     const track = document.querySelector(selectorClase);
     if (!track) return;
 
-    // Vaciamos el contenido estático anterior
+    // Limpia el carrusel
     track.innerHTML = '';
 
     listaJuegos.forEach(juego => {
@@ -41,10 +41,14 @@ function llenarCarruselPorClase(selectorClase, listaJuegos) {
             </div>
         `;
 
+        // Redirigir al detalle pasando el ID
+        tarjeta.addEventListener('click', () => {
+            window.location.href = `gamePage/game.html?id=${juego.id}`;
+        });
 
         track.appendChild(tarjeta);
     });
 }
 
-// Ejecutar cuando cargue la página
+// Inicializa al cargar la página
 document.addEventListener('DOMContentLoaded', cargarJuegosDelSitio);

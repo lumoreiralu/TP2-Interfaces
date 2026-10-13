@@ -1,6 +1,7 @@
+// Maneja la animación de carga y éxito en formularios de login y registro
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Capturamos ambos formularios (uno existirá y el otro será null dependiendo de la página)
+    // Capturamos ambos formularios (uno existira y el otro sera nu
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('registerForm');
 
@@ -8,9 +9,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // LÓGICA PARA EL LOGIN
     // ==========================================
     if (loginForm) {
+        // Login: al enviar, no recarga la pagina (preventDefault) y ar
         loginForm.addEventListener('submit', function(e) {
+            /* Corta el comportamiento por defecto del form (que seria
+               recargar la pagina). Sin esto, la pagina se recarga en el
+               instante y no se ve ni el spinner ni el mensaje. */
             e.preventDefault();
-            // Ejecutamos la animación y redirigimos al Home
+            /* Ejecutamos la animacion y redirigimos al Home. Todo el trabajo
+               esta en ejecutarAnimacion (abajo). */
             ejecutarAnimacion(loginForm, '../index.html');
         });
     }
@@ -22,14 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // 1. Validación de contraseñas (exclusiva del registro)
+            // 1. Validacion de contrasenas (exclusiva del registro).
             const passwords = registerForm.querySelectorAll('input[type="password"]');
             if (passwords.length >= 2 && passwords[0].value !== passwords[1].value) {
                 alert('Las contraseñas no coinciden. Por favor, revísalas.');
-                return; // Corta la ejecución si no coinciden
+                return; // Corta la ejecucion si no coinciden
             }
 
-            // 2. Si todo está bien, ejecutamos la animación y redirigimos al Login
+            /* 2. Si todo esta bien, animamos y redirigimos al login (no al
+               home: el recien registrado todavia no entro). */
             ejecutarAnimacion(registerForm, '../login/login.html');
         });
     }
@@ -37,24 +44,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // ==========================================
     // FUNCIÓN COMPARTIDA (Animación y Redirección)
     // ==========================================
+    // MOTOR COMPARTIDO por login y registro. Hace 3 pasos en el ti
     function ejecutarAnimacion(formElement, urlDestino) {
         const btnText = document.querySelector('.btn-text');
         const spinner = document.querySelector('.spinner');
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
 
-        // 1. Desactivar botón y activar spinner de carga
+        // 1. Desactivar boton y activar spinner de carga.
         submitBtn.disabled = true;
         btnText.style.display = 'none';
         spinner.style.display = 'inline-block';
 
-        // 2. Simular tiempo de respuesta (1.5 segundos)
+        // 2. Simula el tiempo de respuesta del servidor (1.5 segundos)
         setTimeout(() => {
-            // Ocultar formulario y mostrar cartel de éxito con animación
             formElement.style.display = 'none';
             successMessage.style.display = 'flex';
 
-            // 3. Redirigir a la URL correspondiente después de 1.5 segundos más
+            // 3. Redirigir pasado un rato.
             setTimeout(() => {
                 window.location.href = urlDestino; 
             }, 1500);

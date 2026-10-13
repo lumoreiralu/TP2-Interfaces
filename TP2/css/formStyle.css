@@ -1,3 +1,4 @@
+/* Estilos compartidos para formularios de login y registro */
 /* =========================================
    ESTILOS GENERALES Y LAYOUT
 ========================================= */
@@ -121,6 +122,8 @@ body {
 
 .btn-submit:hover::after {
     left: 100%;
+    /* ACA se define la duracion real del barrido. Si cambias la duracion,
+       cambiala en las dos partes de este comentario y en la de arriba. */
     transition: left 0.7s ease-in-out;
 }
 
