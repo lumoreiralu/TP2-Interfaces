@@ -60,7 +60,7 @@ body{
 
 .menu-titulo-principal {
     font-size: clamp(2.5rem, 8vw, 3.5rem);
-    color: #f39c12; /* Ajustá al color de tu temática */
+    color: #bd8d2f;
     letter-spacing: 2px;
     margin: 0;
 }
@@ -614,7 +614,7 @@ body{
 }
 
 .seleccion-titulo {
-  color: #f0d58a;
+  color: #bd8d2f;
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   margin: 0;
 }
@@ -633,7 +633,7 @@ body{
   border-radius: 999px;
   background: rgba(36, 41, 66, 0.9);
   border: 1px solid rgba(189, 141, 47, 0.4);
-  color: #f0d58a;
+  color: #bd8d2f;
   font-weight: 600;
   flex-wrap: wrap;
   justify-content: center;
@@ -641,7 +641,7 @@ body{
 
 .config-piezas select {
   background: #101225;
-  color: #f0d58a;
+  color: #bd8d2f;
   border: 1px solid rgba(189, 141, 47, 0.5);
   border-radius: 0.75rem;
   padding: 0.4rem 0.75rem;
@@ -706,7 +706,7 @@ body{
 
 .btn-seleccion {
   background: #242942;
-  color: #f0d58a;
+  color: #bd8d2f;
   border: 1px solid rgba(189, 141, 47, 0.45);
   border-radius: 999px;
   padding: 0.65rem 1.5rem;
@@ -740,7 +740,7 @@ body{
 }
 
 .seleccion-info {
-  color: #f0d58a;
+  color: #bd8d2f;
   margin: 0;
   min-height: 1.25rem;
 }

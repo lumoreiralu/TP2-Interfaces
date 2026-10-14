@@ -197,14 +197,42 @@ class BlockaGame {
     // Aplica filtro según nivel y copia a canvas fuente
     configurarCanvasYFiltros() {
         this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-        this.ctx.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
-        let imageData = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height);
-        if (this.nivelActual === 1) this.filtroGrises(imageData);
-        else if (this.nivelActual === 2) this.filtroBrillo(imageData,30);
-        else if (this.nivelActual === 3) this.filtroNegativo(imageData);
-        else this.filtroGrises(imageData);
-        this.ctxFuente.drawImage(this.canvas,0,0);
+        if (this.nivelActual === 4) {
+            this.ctxFuente.clearRect(0,0,this.canvas.width,this.canvas.height);
+            this.ctxFuente.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
+            this.aplicarFiltrosAleatoriosPorPieza();
+        } else {
+            this.ctx.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
+            let imageData = this.ctx.getImageData(0,0,this.canvas.width,this.canvas.height);
+            if (this.nivelActual === 1) this.filtroGrises(imageData);
+            else if (this.nivelActual === 2) this.filtroBrillo(imageData,30);
+            else this.filtroNegativo(imageData);
+            this.ctxFuente.clearRect(0,0,this.canvas.width,this.canvas.height);
+            this.ctxFuente.drawImage(this.canvas,0,0);
+        }
         this.inicializarPiezas();
+    }
+    // Distribuye aleatoriamente los tres filtros entre las subimagenes.
+    aplicarFiltrosAleatoriosPorPieza() {
+        const filtros = Array.from(
+            { length: this.cantidadPiezas },
+            (_, indice) => ["grises", "brillo", "negativo"][indice % 3]
+        );
+        for (let indice = filtros.length - 1; indice > 0; indice--) {
+            const aleatorio = Math.floor(Math.random() * (indice + 1));
+            [filtros[indice], filtros[aleatorio]] = [filtros[aleatorio], filtros[indice]];
+        }
+
+        filtros.forEach((filtro, indice) => {
+            const columna = indice % this.columnas;
+            const fila = Math.floor(indice / this.columnas);
+            const x = columna * this.anchoPieza;
+            const y = fila * this.altoPieza;
+            const datos = this.ctxFuente.getImageData(x,y,this.anchoPieza,this.altoPieza);
+            if (filtro === "grises") this.filtroGrises(datos,this.ctxFuente,x,y);
+            else if (filtro === "brillo") this.filtroBrillo(datos,30,this.ctxFuente,x,y);
+            else this.filtroNegativo(datos,this.ctxFuente,x,y);
+        });
     }
     // Crea piezas mezcladas con ángulos aleatorios
     inicializarPiezas() {
@@ -294,6 +322,7 @@ class BlockaGame {
         if (this.perdido||this.nivelCompletado) return;
         this.perdido=true; clearInterval(this.temporizadorInterval);
         this.canvas.onclick=null; this.canvas.oncontextmenu=null;
+        this.mostrarImagenOriginalAlFinal();
         if (this.mensajeVictoria) {
             this.mensajeVictoria.hidden=false; this.mensajeVictoria.replaceChildren();
             const s=document.createElement("span"); s.textContent=`${motivo} No lograste completar el nivel a tiempo.`; this.mensajeVictoria.append(s);
@@ -327,11 +356,11 @@ class BlockaGame {
         this.actualizarVistaRecord();
     }
     // Aplica filtro de escala de grises
-    filtroGrises(imageData){var s=this.ctx.createImageData(imageData.width,imageData.height);for(var x=0;x<imageData.width;x++){for(var y=0;y<imageData.height;y++){var r=this.getRed(imageData,x,y),g=this.getGreen(imageData,x,y),b=this.getBlue(imageData,x,y),gr=(r+g+b)/3;this.setPixel(s,x,y,gr,gr,gr,255);}}this.ctx.putImageData(s,0,0);}
+    filtroGrises(imageData,contexto=this.ctx,x=0,y=0){var s=contexto.createImageData(imageData.width,imageData.height);for(var px=0;px<imageData.width;px++){for(var py=0;py<imageData.height;py++){var r=this.getRed(imageData,px,py),g=this.getGreen(imageData,px,py),b=this.getBlue(imageData,px,py),gr=(r+g+b)/3;this.setPixel(s,px,py,gr,gr,gr,255);}}contexto.putImageData(s,x,y);}
     // Aplica filtro de brillo
-    filtroBrillo(imageData,p){var s=this.ctx.createImageData(imageData.width,imageData.height),aj=255*(p/100);for(var x=0;x<imageData.width;x++){for(var y=0;y<imageData.height;y++){var r=Math.min(255,this.getRed(imageData,x,y)+aj),g=Math.min(255,this.getGreen(imageData,x,y)+aj),b=Math.min(255,this.getBlue(imageData,x,y)+aj);this.setPixel(s,x,y,r,g,b,255);}}this.ctx.putImageData(s,0,0);}
+    filtroBrillo(imageData,p,contexto=this.ctx,x=0,y=0){var s=contexto.createImageData(imageData.width,imageData.height),aj=255*(p/100);for(var px=0;px<imageData.width;px++){for(var py=0;py<imageData.height;py++){var r=Math.min(255,this.getRed(imageData,px,py)+aj),g=Math.min(255,this.getGreen(imageData,px,py)+aj),b=Math.min(255,this.getBlue(imageData,px,py)+aj);this.setPixel(s,px,py,r,g,b,255);}}contexto.putImageData(s,x,y);}
     // Aplica filtro negativo
-    filtroNegativo(imageData){var s=this.ctx.createImageData(imageData.width,imageData.height);for(var x=0;x<imageData.width;x++){for(var y=0;y<imageData.height;y++){var r=255-this.getRed(imageData,x,y),g=255-this.getGreen(imageData,x,y),b=255-this.getBlue(imageData,x,y);this.setPixel(s,x,y,r,g,b,255);}}this.ctx.putImageData(s,0,0);}
+    filtroNegativo(imageData,contexto=this.ctx,x=0,y=0){var s=contexto.createImageData(imageData.width,imageData.height);for(var px=0;px<imageData.width;px++){for(var py=0;py<imageData.height;py++){var r=255-this.getRed(imageData,px,py),g=255-this.getGreen(imageData,px,py),b=255-this.getBlue(imageData,px,py);this.setPixel(s,px,py,r,g,b,255);}}contexto.putImageData(s,x,y);}
     // Establece color de un píxel
     setPixel(id,x,y,r,g,b,a){let i=(x+y*id.width)*4;id.data[i+0]=r;id.data[i+1]=g;id.data[i+2]=b;id.data[i+3]=a;}
     // Obtiene canal rojo
@@ -340,6 +369,12 @@ class BlockaGame {
     getGreen(id,x,y){return id.data[(x+y*id.width)*4+1];}
     // Obtiene canal azul
     getBlue(id,x,y){return id.data[(x+y*id.width)*4+2];}
+    // Revela la imagen sin filtros al finalizar el nivel 4.
+    mostrarImagenOriginalAlFinal() {
+        if (this.nivelActual !== 4 || !this.imagenSeleccionada) return;
+        this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
+        this.ctx.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
+    }
     // Verifica si todas las piezas están correctas
     verificarVictoria() {
         if (this.perdido || this.nivelCompletado) return;
@@ -350,14 +385,15 @@ class BlockaGame {
             this.canvas.onclick=null; this.canvas.oncontextmenu=null;
             if (this.btnAyudita) this.btnAyudita.disabled=true;
             this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-            if (this.imagenSeleccionada) this.ctx.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
+            if (this.nivelActual === 4) this.mostrarImagenOriginalAlFinal();
+            else if (this.imagenSeleccionada) this.ctx.drawImage(this.imagenSeleccionada,0,0,this.canvas.width,this.canvas.height);
             let ra=localStorage.getItem(`record_nivel_${this.nivelActual}`);
             const nr=!ra||tf<parseInt(ra,10);
             if (nr){localStorage.setItem(`record_nivel_${this.nivelActual}`,tf); this.actualizarVistaRecord();}
             if (this.mensajeVictoria) {
                 this.mensajeVictoria.hidden=false; this.mensajeVictoria.replaceChildren();
                 const m=document.createElement("span"); m.textContent=nr?`Nuevo récord! Nivel ${this.nivelActual} completado en ${tf} segundos.`:`Felicitaciones! Nivel ${this.nivelActual} completado en ${tf} segundos.`; this.mensajeVictoria.append(m);
-                if (this.nivelActual<3){ const bs=document.createElement("button"); bs.type="button"; bs.className="blocka-siguiente"; bs.textContent=`Continuar al nivel ${this.nivelActual+1}`; bs.onclick=()=>this.iniciarNivel(this.nivelActual+1,this.imagenElegidaSrc); this.mensajeVictoria.append(bs); }
+                if (this.nivelActual<4){ const bs=document.createElement("button"); bs.type="button"; bs.className="blocka-siguiente"; bs.textContent=`Continuar al nivel ${this.nivelActual+1}`; bs.onclick=()=>this.iniciarNivel(this.nivelActual+1,this.imagenElegidaSrc); this.mensajeVictoria.append(bs); }
                 else { const mf=document.createElement("span"); mf.textContent=" Completaste todos los niveles!"; this.mensajeVictoria.append(mf); }
                 const vmv=document.createElement("button"); vmv.type="button"; vmv.className="blocka-volver"; vmv.textContent="Volver al menú principal"; vmv.onclick=()=>this.volverAlMenu(); this.mensajeVictoria.append(vmv);
             }
