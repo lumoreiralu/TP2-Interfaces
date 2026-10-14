@@ -5,10 +5,9 @@ body{
     font-family: 'Nunito', sans-serif;
 }
 
-p, h4, ul a{
-    font-family:'Nunito', sans-serif;
-}
-/* Estilos de la pantalla de carga */
+
+
+/* --- PANTALLA DE CARGA --- */
 
 .loader-screen {
     position: fixed;
@@ -20,7 +19,6 @@ p, h4, ul a{
     z-index: 9999; /* Asegura que esté por encima de todo el contenido */
     opacity: 1;
     visibility: visible;
-
     transition:
         opacity 0.6s ease,
         visibility 0.6s ease;
@@ -61,11 +59,11 @@ p, h4, ul a{
     left: 0; /*ancho del circulo del pacman*/
     height: 42px;/*alto del circulo del pacman*/
     background: #bd8d2f;
-    border-radius: 50%;
-    z-index: 2;
+    border-radius: 50%;/* Hace que el pacman sea un círculo */
+    z-index: 2; /* Asegura que Pac-Man esté por encima de los puntos */
     animation:
-        movePacman 5s linear forwards,
-        mouthShape 0.30s ease-in-out infinite;
+        movePacman 5s linear forwards, /*desplaza el pacman por el contenedor durante 5 segundos*/
+        mouth 0.30s ease-in-out infinite;
 }
 
 /* Boca de Pac-Man */
@@ -80,7 +78,7 @@ p, h4, ul a{
         100% 20%,
         100% 80%
     );
-    animation: mouthShape 0.35s ease-in-out infinite;
+    animation: mouthShape 0.35s ease-in-out infinite; /* Anima la apertura y cierre constante de la boca */
 }
 
 /*
@@ -113,14 +111,12 @@ centro %50 %50*/
 
 .dot-2 {
     left: 140px;
-    /* Desaparición del punto */
     animation: eatDot 3s linear forwards;
     animation-delay: 1.75s;
 }
 
 .dot-3 {
     left: 200px;
-    /* Desaparición del punto */
     animation: eatDot 4s linear forwards;
     animation-delay: 2.85s;
 }
@@ -128,7 +124,6 @@ centro %50 %50*/
 /* MOVIMIENTO */
 
 @keyframes movePacman {
-    /* Trayectoria de movimiento de Pac-Man */
     0% {
         transform: translateX(0);
     }
@@ -137,11 +132,10 @@ centro %50 %50*/
     }
 }
 
-/* BOCA */
+/* BOCA*/ 
 
 @keyframes mouthShape {
-    /* Forma de apertura y cierre de la boca */
-    0% {
+    0% { /*Boca semiabierta*/
         clip-path: polygon(
             50% 50%,
             100% 42%,
@@ -188,11 +182,10 @@ centro %50 %50*/
     }
 }*/
 
-/* Animación de desaparición de los puntos */
+/* DESAPARECER PUNTOS */
 
 @keyframes eatDot {
-    0% {
->>>>>>> Stashed changes
+    0% { /* Comienza visible y a tamaño normal */
         opacity: 1;
         transform: scale(1);
     }
