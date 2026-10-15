@@ -160,11 +160,31 @@ class BlockaGame {
     calcularGrilla(cant) {
         const total = parseInt(cant, 10) || 4;
         this.cantidadPiezas = total;
-        if (total === 6) { this.columnas = 3; this.filas = 2; }
-        else if (total === 8) { this.columnas = 4; this.filas = 2; }
-        else { this.columnas = 2; this.filas = 2; this.cantidadPiezas = 4; }
+        
+        if (total === 6) { 
+            this.columnas = 3; 
+            this.filas = 2; 
+        } else if (total === 8) { 
+            this.columnas = 4; 
+            this.filas = 2; 
+        } else { 
+            this.columnas = 2; 
+            this.filas = 2; 
+            this.cantidadPiezas = 4; 
+        }
+
+        // Para asegurar que cada subimagen sea cuadrada y evitar deformaciones/superposiciones:
+        // Tomamos como base el ancho disponible dividido las columnas, o ajustamos al alto.
+        // Hacemos que el tamaño de la pieza sea cuadrado basándonos en el ancho o alto disponible:
         this.anchoPieza = this.canvas.width / this.columnas;
-        this.altoPieza = this.canvas.height / this.filas;
+        this.altoPieza = this.anchoPieza; // ¡Clave para que sea un cuadrado perfecto!
+
+        // Si la altura total resultante supera el alto del canvas (600px), 
+        // recalculamos basándonos en el alto para que encaje perfecto y escondemos el sobrante horizontal.
+        if (this.altoPieza * this.filas > this.canvas.height) {
+            this.altoPieza = this.canvas.height / this.filas;
+            this.anchoPieza = this.altoPieza; // Cuadrado basado en el alto
+        }
     }
     // Inicia un nivel con imagen y filtros
     iniciarNivel(nivel, srcForzado = null) {
@@ -238,10 +258,27 @@ class BlockaGame {
     inicializarPiezas() {
         this.calcularGrilla(this.cantidadPiezas);
         this.piezas = [];
-        for (let f=0;f<this.filas;f++) {
-            for (let c=0;c<this.columnas;c++) {
-                const ang = [90,180,270][Math.floor(Math.random()*3)];
-                this.piezas.push({xOriginal:c*this.anchoPieza,yOriginal:f*this.altoPieza,posX:c*this.anchoPieza,posY:f*this.altoPieza,ancho:this.anchoPieza,alto:this.altoPieza,angulo:ang,fija:false});
+
+        // Calculamos un desplazamiento (offset) para centrar el área de corte si sobra espacio
+        const anchoTotalGrilla = this.anchoPieza * this.columnas;
+        const altoTotalGrilla = this.altoPieza * this.filas;
+        const offsetX = (this.canvas.width - anchoTotalGrilla) / 2;
+        const offsetY = (this.canvas.height - altoTotalGrilla) / 2;
+
+        for (let f = 0; f < this.filas; f++) {
+            for (let c = 0; c < this.columnas; c++) {
+                const ang = [90, 180, 270][Math.floor(Math.random() * 3)];
+                
+                this.piezas.push({
+                    xOriginal: c * this.anchoPieza,
+                    yOriginal: f * this.altoPieza,
+                    posX: offsetX + (c * this.anchoPieza), // Posición centrada en el canvas
+                    posY: offsetY + (f * this.altoPieza), // Posición centrada en el canvas
+                    ancho: this.anchoPieza,
+                    alto: this.altoPieza,
+                    angulo: ang,
+                    fija: false
+                });
             }
         }
         this.dibujarTablero();
@@ -271,18 +308,46 @@ class BlockaGame {
         this.canvas.oncontextmenu = (e)=>{e.preventDefault(); this.manejarClick(e,'derecho');};
     }
     // Maneja giro de piezas al hacer click
-    manejarClick(e,tipo) {
-        if (this.nivelCompletado||this.perdido) return;
+// Maneja giro de piezas al hacer click de forma directa por índice de matriz
+    manejarClick(e, tipo) {
+        if (this.nivelCompletado || this.perdido) return;
         const rect = this.canvas.getBoundingClientRect();
-        const x = e.clientX-rect.left, y = e.clientY-rect.top;
-        this.piezas.forEach(p => {
-            if (p.fija) return;
-            if (x>=p.posX&&x<=p.posX+p.ancho&&y>=p.posY&&y<=p.posY+p.alto) {
-                if (tipo==='izquierdo') p.angulo=(p.angulo-90+360)%360;
-                else p.angulo=(p.angulo+90)%360;
+        
+        // Obtenemos la escala por si el canvas está reescalado por CSS en la pantalla
+        const escalaX = this.canvas.width / rect.width;
+        const escalaY = this.canvas.height / rect.height;
+
+        const x = (e.clientX - rect.left) * escalaX;
+        const y = (e.clientY - rect.top) * escalaY;
+
+        // Calculamos el desplazamiento de la grilla centrada
+        const anchoTotalGrilla = this.anchoPieza * this.columnas;
+        const altoTotalGrilla = this.altoPieza * this.filas;
+        const offsetX = (this.canvas.width - anchoTotalGrilla) / 2;
+        const offsetY = (this.canvas.height - altoTotalGrilla) / 2;
+
+        // Verificamos si el click está dentro del área total del tablero
+        if (x >= offsetX && x <= offsetX + anchoTotalGrilla && y >= offsetY && y <= offsetY + altoTotalGrilla) {
+            
+            // Determinamos exactamente qué columna y fila fue presionada
+            const col = Math.floor((x - offsetX) / this.anchoPieza);
+            const fila = Math.floor((y - offsetY) / this.altoPieza);
+
+            // Buscamos la pieza que coincide exactamente con esa columna y fila en la matriz
+            const indice = fila * this.columnas + col;
+            const piezaSeleccionada = this.piezas[indice];
+
+            if (piezaSeleccionada && !piezaSeleccionada.fija) {
+                if (tipo === 'izquierdo') {
+                    piezaSeleccionada.angulo = (piezaSeleccionada.angulo - 90 + 360) % 360;
+                } else {
+                    piezaSeleccionada.angulo = (piezaSeleccionada.angulo + 90) % 360;
+                }
             }
-        });
-        this.dibujarTablero(); this.verificarVictoria();
+        }
+
+        this.dibujarTablero(); 
+        this.verificarVictoria();
     }
     // Inicia contador con límite por nivel
     iniciarTemporizador() {
