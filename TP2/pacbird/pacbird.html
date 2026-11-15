@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/navBar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/publicidad.css">
+    <link rel="stylesheet" href="../css/carrusel.css">
+    <link rel="stylesheet" href="../css/btnStart.css">
+    <link rel="stylesheet" href="pacbird.css">
+
+    <title>GamingTeam - PacBird</title>
+</head>
+<body>
+    <header class="navBar">
+        <nav>
+            <div class="izquierda">
+                <img src="../assets/img/menu.png" alt="menu" class="menu" id="menuBtn">
+                <a href="../index.html">
+                    <img src="../assets/img/logo.png" alt="logo" class="logo">
+                </a>
+            </div>
+
+            <div class="buscador">
+                <form action="#" method="get">
+                    <input type="text" name="buscador" placeholder="Buscar un juego...">
+                    <button type="submit" class="lupa-btn" aria-label="Buscar"></button>
+                </form>
+            </div>
+
+            <div class="derecha">
+                <span class="saludo-usuario">Hola, Usuario</span>
+                <img src="../assets/img/user.png" alt="user" class="user" id="userBtn">
+            </div>
+        </nav>
+    </header>
+
+    <div id="sidebarMenu" class="sidebar">
+        <div class="sidebar-content">
+            <button id="closeMenuBtn" class="close-btn">X</button>
+            <h2>Categorías</h2>
+            <ul class="category-list">
+                <li><a href="#" class="category-btn"><span>👯</span> dos jugadores</a></li>
+                <li><a href="#" class="category-btn"><span>🎯</span> acción</a></li>
+                <li><a href="#" class="category-btn"><span>🕹️</span> animaciones</a></li>
+                <li><a href="#" class="category-btn"><span>🐶</span> animales</a></li>
+                <li><a href="#" class="category-btn"><span>🌄</span> aventuras</a></li>
+                <li><a href="#" class="category-btn"><span>🏎️</span> carreras</a></li>
+                <li><a href="#" class="category-btn"><span>🃏</span> cartas</a></li>
+                <li><a href="#" class="category-btn"><span>👻</span> clásicos</a></li>
+                <li><a href="#" class="category-btn"><span>👱‍♀️</span> muñecas</a></li>
+                <li><a href="#" class="category-btn"><span>🍲</span> cocina</a></li>
+                <li><a href="#" class="category-btn"><span>🏀</span> deportes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div id="sidebarUserRight" class="sidebarRight">
+        <div class="sidebar-content">
+            <ul class="category-list">
+                <li><button id="closeUserBtn" class="close-btn">X</button></li>
+                <li><a href="#" class="category-btn">Mis Favoritos</a></li>
+                <li><a href="#" class="category-btn">Mi Cuenta</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="breadcrumbs">
+        <a href="../index.html">Home</a>
+        <span class="separator">></span>
+        <a href="#">Juegos Destacados</a>
+        <span class="separator">></span>
+        <a href="pacbird.html">PacBird</a>
+    </div>
+
+    <section class="seccion-juego" id="pacbird-juego">
+        <h2 class="juego-titulo">PacBird</h2>
+
+        <div class="juego-contenedor-principal">
+            <div class="juego-controles-top">
+                <div class="pacbird-grupo-izq">
+                    <a href="../index.html" class="icono-btn" title="Volver al inicio" aria-label="Volver al inicio">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <button type="button" id="btnVolverMenu" class="icono-btn" title="Volver al menú del juego" aria-label="Volver al menú del juego">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 10.5 12 3l9 7.5"></path>
+                            <path d="M5 9.5V21h14V9.5"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="pacbird-hud">
+                    <div class="stat-card">
+                        <span class="stat-label">Puntos</span>
+                        <span class="stat-value" id="hudPuntos">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">Vidas</span>
+                        <span class="stat-value" id="hudVidas">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pacbird-escenario-wrapper">
+                <div class="pacbird-escenario" id="escenario" tabindex="0" role="application"
+                     aria-label="PacBird. Presioná espacio, flecha arriba o hacé clic para aletear.">
+                    <div class="capa" data-sprite="fondo1" data-factor="0.1" data-ancho-tile="900"></div>
+                    <div class="capa" data-sprite="fondo2" data-factor="0.25" data-ancho-tile="900"></div>
+                    <div class="capa" data-sprite="fondo3" data-factor="0.5" data-ancho-tile="900"></div>
+                    <div class="capa" data-sprite="fondo4" data-factor="1" data-ancho-tile="900"></div>
+
+                    <div class="jugador" id="jugador">
+                        <img class="jugador-sprite" id="jugadorSprite" alt="">
+                    </div>
+
+                    <div class="pacbird-pantalla" id="menuInicio">
+                        <h3 class="pacbird-titulo">PACBIRD</h3>
+                        <p class="pacbird-texto">Ayudá a Pac-Man a volar por el laberinto.<br>Esquivá los obstáculos y sumá puntos.</p>
+                        <button type="button" class="pacbird-btn" id="btnStart" disabled>START</button>
+                        <p class="pacbird-hint">ESPACIO / ↑ / clic para aletear</p>
+                    </div>
+
+                    <div class="pacbird-pantalla" id="menuFin" hidden>
+                        <h3 class="pacbird-titulo">FIN DEL JUEGO</h3>
+                        <p class="pacbird-texto" id="finDetalle">Puntos: 0</p>
+                        <div class="pacbird-acciones">
+                            <button type="button" class="pacbird-btn" id="btnReintentar">Reintentar</button>
+                            <a href="../index.html" class="pacbird-btn pacbird-btn-secundario">Volver al inicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="pacbird-controles">Controles: <strong>Espacio</strong>, <strong>↑</strong> o <strong>clic</strong> sobre el escenario.</p>
+        </div>
+    </section>
+
+    <section class="game-info-section">
+        <div class="game-info-container">
+            <div class="info-column">
+                <div class="info-block">
+                    <h2 class="info-title">Descripción</h2>
+                    <p class="info-text">
+                        PacBird es un juego de habilidad inspirado en Flappy Bird y ambientado en el universo de Pac-Man.
+                        Controlás a Pac-Man mientras cae por un laberinto infinito: cada pulsación le da un impulso hacia
+                        arriba y tenés que mantenerlo en el aire para atravesar los obstáculos sin chocar.
+                        En esta primera versión ya está implementado el movimiento, el impulso, la gravedad,
+                        el parallax de cuatro capas y los estados de menú, juego y fin.
+                    </p>
+                </div>
+
+                <div class="details-share-row">
+                    <div class="game-details">
+                        <span class="detail-title">PacBird</span>
+                        <span class="detail-item">⭐ 4.5/5</span>
+                        <span class="detail-item">🎯 Arcade</span>
+                        <span class="detail-item">👤 1 jugador</span>
+                    </div>
+
+                    <div class="share-block">
+                        <span class="share-title">Compartir juego:</span>
+                        <div class="social-buttons">
+                            <button class="icono-btn" aria-label="Compartir en Instagram">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </button>
+                            <button class="icono-btn" aria-label="Compartir en X">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                            </button>
+                            <button class="icono-btn" aria-label="Compartir en Facebook">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-column">
+                <div class="info-block">
+                    <h2 class="info-title">Cómo jugar: PacBird</h2>
+                    <ul class="instructions-list">
+                        <li><strong>Objetivo:</strong> mantener a Pac-Man volando y esquivar los obstáculos del laberinto.</li>
+                        <li><strong>Movimiento:</strong> cada pulsación aplica un impulso hacia arriba; la gravedad lo hace caer.</li>
+                        <li><strong>Controles:</strong> Espacio, flecha arriba o clic sobre el escenario.</li>
+                        <li><strong>Inicio:</strong> presioná START en el menú principal.</li>
+                        <li><strong>Próximamente:</strong> tubos, colisiones, vidas, ítems y puntaje.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="seccion-carrusel">
+        <h3 class="titulo-carrusel">Más juegos como este</h3>
+        <div class="carrusel-contenedor">
+            <button class="btn-carrusel-prev"><img src="../assets/img/svg/flechaIzq.svg" alt="" class="btn-carrusel"></button>
+            <div class="carrusel-track">
+                <div class="juego-tarjeta">
+                    <img src="../assets/blocka/cardBlocka.png" alt="Blocka">
+                    <div class="info-juego"><span class="nombre-juego">Blocka</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/pegSolitaireCuadrado.png" alt="Peg Solitaire Pac-Man">
+                    <div class="info-juego"><span class="nombre-juego">Peg Solitaire</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fancyPants.png" alt="Fancy Pants">
+                    <div class="info-juego"><span class="nombre-juego">Fancy Pants</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/motoTrap.png" alt="Moto Trap">
+                    <div class="info-juego"><span class="nombre-juego">Moto Trap</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/tastyPlanet.png" alt="Tasty Planet">
+                    <div class="info-juego"><span class="nombre-juego">Tasty Planet</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/fireboyWatergirl.png" alt="Fireboy & Watergirl">
+                    <div class="info-juego"><span class="nombre-juego">Fireboy & Watergirl</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/sonic.png" alt="Sonic">
+                    <div class="info-juego"><span class="nombre-juego">Sonic</span></div>
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/img/granny.png" alt="Granny">
+                    <div class="info-juego"><span class="nombre-juego">Granny</span></div>
+                </div>
+            </div>
+            <button class="btn-carrusel-next"><img src="../assets/img/svg/flechaDer.svg" alt="" class="btn-carrusel"></button>
+        </div>
+    </div>
+
+    <div class="seccion-publicidad">
+        <div class="contenedor-publicidad">
+            <div class="publicidad"><img src="../assets/img/publiOreo.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiHamburguesa.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiBFChica.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiAuto.png" alt="Publicidad"></div>
+            <div class="publicidad"><img src="../assets/img/publiCoca.png" alt="Publicidad"></div>
+        </div>
+    </div>
+
+    <footer class="seccion-footer">
+        <div class="footer-columnas">
+            <div class="footer-col-logo-col"><img class="footer-logo" src="../assets/img/logo.png" alt="Gaming Team Logo"></div>
+
+            <div class="footer-col">
+                <h4>Legales</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Términos y condiciones de uso</a></li>
+                    <li><a class="footer-link" href="#">Políticas de privacidad</a></li>
+                    <li><a class="footer-link" href="#">Derechos de Autor / Copyright</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Categorías Populares</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Animales</a></li>
+                    <li><a class="footer-link" href="#">Carreras</a></li>
+                    <li><a class="footer-link" href="#">Clásicos</a></li>
+                    <li><a class="footer-link" href="#">Muñecas</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Cookies | Preferencias</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Configuración de cookies</a></li>
+                    <li><a class="footer-link" href="#">Políticas de cookies</a></li>
+                    <li><a class="footer-link" href="#">Preferencias de accesibilidad</a></li>
+                    <li><a class="footer-link" href="#">Idioma / Región</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Acerca de Nosotros</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">¿Quiénes somos?</a></li>
+                    <li><a class="footer-link" href="#">Publicá tu juego</a></li>
+                    <li><a class="footer-link" href="#">Blog de Novedades</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a class="footer-link" href="#">Preguntas frecuentes (FAQ)</a></li>
+                    <li><a class="footer-link" href="#">Soporte técnico</a></li>
+                    <li><a class="footer-link" href="#">Seguridad de la cuenta</a></li>
+                    <li><a class="footer-link" href="#">Contacto comercial y prensa</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col-redes-suscripcion-col">
+                <h4>Nuestras redes</h4>
+                <div class="redes-iconos">
+                    <button class="icono-btn" aria-label="Compartir en Instagram">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </button>
+                    <button class="icono-btn" aria-label="Compartir en Facebook">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </button>
+                    <button class="icono-btn" aria-label="Compartir en X">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <h4 class="titulo-suscripcion">Suscripción</h4>
+                <a class="footer-link" href="#">Recibí nuevos juegos en tu correo</a>
+            </div>
+        </div>
+
+        <div class="footer-copyright">
+            <p>Todos los derechos reservados Copyright &copy; 2026 Gamingteam.com - Juegos Gratis online</p>
+        </div>
+    </footer>
+
+    <script src="../js/navBar.js"></script>
+    <script src="../js/userMenu.js"></script>
+    <script src="../js/carrusel.js"></script>
+    <script src="pacbird.js"></script>
+</body>
+</html>

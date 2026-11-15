@@ -1,0 +1,509 @@
+/* ============================================================
+   PacBird - estilos del juego y de la sección de información
+   ============================================================ */
+
+.seccion-juego {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+.juego-titulo {
+    color: #bd8d2f;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 8px 0;
+    text-align: center;
+}
+
+.juego-contenedor-principal {
+    position: relative;
+    width: 100%;
+    max-width: 940px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ------------------------------------------------------------
+   Controles superiores y HUD
+   ------------------------------------------------------------ */
+
+.juego-controles-top {
+    position: relative;
+    width: 900px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    z-index: 10;
+}
+
+.pacbird-grupo-izq {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pacbird-hud {
+    display: flex;
+    gap: 10px;
+}
+
+.stat-card {
+    background-color: #090b14;
+    border: 1px solid #222644;
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: #92939f;
+    margin-bottom: 2px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.icono-btn {
+    background-color: #101225;
+    color: #bd8d2f;
+    border: none;
+    border-radius: 10px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.icono-btn:hover {
+    background-color: #292c4a;
+}
+
+/* ------------------------------------------------------------
+   Escenario
+   ------------------------------------------------------------ */
+
+.pacbird-escenario-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.pacbird-escenario {
+    position: relative;
+    width: 900px;
+    height: 600px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 14px;
+    border: 2px solid #1b2a5e;
+    background: #050818;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55), inset 0 0 90px rgba(0, 0, 0, 0.65);
+    outline: none;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.pacbird-escenario:focus-visible {
+    border-color: #ffd400;
+    box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.25), 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+
+/* ------------------------------------------------------------
+   Capas de parallax (fallback por si no hay sprites)
+   ------------------------------------------------------------ */
+
+.capa {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    will-change: background-position;
+    pointer-events: none;
+}
+
+.capa[data-sprite="fondo1"] {
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    background-color: #050818;
+    background-image:
+        radial-gradient(1.5px 1.5px at 12% 18%, #ffffff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 64% 10%, #cfe3ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 35% 32%, #ffffff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 84% 26%, #cfe3ff 50%, transparent 51%),
+        radial-gradient(1.5px 1.5px at 48% 46%, #ffffff 50%, transparent 51%),
+        linear-gradient(180deg, #040716 0%, #091538 55%, #102a66 100%);
+    background-size: 340px 340px, 420px 420px, 300px 300px, 480px 480px, 380px 380px, 100% 100%;
+}
+
+.capa[data-sprite="fondo2"] {
+    bottom: 0;
+    height: 58%;
+    z-index: 2;
+    background-color: transparent;
+    background-image:
+        repeating-linear-gradient(90deg,
+            rgba(24, 48, 120, 0.95) 0 46px,
+            transparent 46px 74px,
+            rgba(18, 38, 96, 0.95) 74px 132px,
+            transparent 132px 150px),
+        linear-gradient(180deg, transparent 0 30%, #0b1c4a 30% 100%);
+    background-size: 900px 100%, 100% 100%;
+    opacity: 0.85;
+}
+
+.capa[data-sprite="fondo3"] {
+    bottom: 0;
+    height: 34%;
+    z-index: 3;
+    background-color: #0a0f2b;
+    background-image:
+        repeating-linear-gradient(90deg, #1b2f7a 0 8px, transparent 8px 90px),
+        repeating-linear-gradient(0deg, rgba(60, 110, 255, 0.25) 0 8px, transparent 8px 44px),
+        linear-gradient(180deg, rgba(10, 16, 45, 0) 0%, #0a0f2b 55%);
+    background-size: 900px 100%, 900px 100%, 100% 100%;
+}
+
+.capa[data-sprite="fondo4"] {
+    bottom: 0;
+    height: 12%;
+    z-index: 4;
+    background-color: #050814;
+    background-image:
+        repeating-linear-gradient(90deg, #ffd400 0 28px, transparent 28px 56px),
+        linear-gradient(180deg, #173a8f 0 6px, #050814 6px 100%);
+    background-size: 900px 100%, 100% 100%;
+    opacity: 0.9;
+}
+
+/* ------------------------------------------------------------
+   Jugador
+   ------------------------------------------------------------ */
+
+.jugador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 44px;
+    z-index: 20;
+    transform: translate3d(150px, 250px, 0);
+    will-change: transform;
+    filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.55));
+}
+
+.jugador::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #fff7b0 0%, #ffd400 45%, #e6a700 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 50%, 100% 62%, 100% 100%, 0 100%);
+}
+
+.esta-jugando .jugador::before {
+    animation: masticar 0.24s infinite;
+}
+
+@keyframes masticar {
+    0%, 100% {
+        clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 50%, 100% 62%, 100% 100%, 0 100%);
+    }
+    50% {
+        clip-path: polygon(0 0, 100% 0, 100% 47%, 50% 50%, 100% 53%, 100% 100%, 0 100%);
+    }
+}
+
+.jugador-sprite {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.jugador.con-sprite::before {
+    display: none;
+}
+
+.jugador.con-sprite .jugador-sprite {
+    opacity: 1;
+}
+
+/* ------------------------------------------------------------
+   Pantallas superpuestas (menú y fin)
+   ------------------------------------------------------------ */
+
+.pacbird-pantalla {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    text-align: center;
+    background: radial-gradient(circle at 50% 40%, rgba(10, 16, 45, 0.55) 0%, rgba(3, 5, 15, 0.88) 70%);
+    backdrop-filter: blur(3px);
+}
+
+.pacbird-pantalla[hidden] {
+    display: none;
+}
+
+.pacbird-titulo {
+    margin: 0;
+    font-size: 3rem;
+    letter-spacing: 0.12em;
+    color: #ffd400;
+    text-shadow: 0 0 18px rgba(255, 212, 0, 0.55), 0 4px 0 #8a6a00;
+}
+
+.pacbird-texto {
+    margin: 0;
+    max-width: 520px;
+    color: #d7dcf5;
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.pacbird-hint {
+    margin: 4px 0 0;
+    color: #8f97bd;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+.pacbird-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.pacbird-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ffe95c 0%, #ffd400 55%, #e0a800 100%);
+    color: #1a1400;
+    font: inherit;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #8a6a00, 0 10px 24px rgba(255, 212, 0, 0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.pacbird-btn:hover:not(:disabled) {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+}
+
+.pacbird-btn:active:not(:disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #8a6a00, 0 6px 14px rgba(255, 212, 0, 0.2);
+}
+
+.pacbird-btn:disabled {
+    cursor: wait;
+    filter: grayscale(0.6) brightness(0.8);
+    box-shadow: 0 6px 0 #4a3a00;
+}
+
+.pacbird-btn-secundario {
+    background: #101225;
+    color: #ffd400;
+    border: 1px solid #2a3260;
+    box-shadow: 0 6px 0 #05060d, 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.pacbird-btn-secundario:active:not(:disabled) {
+    box-shadow: 0 2px 0 #05060d;
+}
+
+.pacbird-controles {
+    margin: 0;
+    color: #bd8d2f;
+    font-size: 0.92rem;
+    text-align: center;
+}
+
+/* ------------------------------------------------------------
+   Sección de información
+   ------------------------------------------------------------ */
+
+.game-info-section {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px 20px 32px;
+    background-color: #191b32;
+    color: #bd8d2f;
+    box-sizing: border-box;
+}
+
+.game-info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.info-title {
+    color: #bd8d2f;
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.info-text {
+    color: #bd8d2f;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.details-share-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-title {
+    color: #bd8d2f;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.detail-item {
+    color: #bd8d2f;
+    font-size: 0.9rem;
+}
+
+.share-block {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.share-title {
+    color: #bd8d2f;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.instructions-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.instructions-list li {
+    color: #bd8d2f;
+    font-size: 0.93rem;
+    line-height: 1.5;
+}
+
+.instructions-list li strong {
+    color: #bd8d2f;
+    font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 980px) {
+    .juego-controles-top {
+        width: 100%;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 780px) {
+    .pacbird-titulo {
+        font-size: 2.2rem;
+    }
+
+    .pacbird-texto {
+        font-size: 0.92rem;
+    }
+
+    .game-info-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .details-share-row {
+        margin-top: 20px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .esta-jugando .jugador::before {
+        animation: none;
+    }
+
+    .pacbird-btn {
+        transition: none;
+    }
+}
