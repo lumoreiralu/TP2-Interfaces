@@ -1,3 +1,221 @@
+body{
+    background-color: #191b32;
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 80px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content:center;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+  color: #b0b3c6; 
+}
+
+.breadcrumbs a {
+  color: #00E5FF; 
+  text-decoration: none; 
+  transition: opacity 0.2s;
+}
+
+.breadcrumbs a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.breadcrumbs .current {
+  color: #f0d58a; 
+  font-weight: 600;
+}
+
+.comments-section {
+  max-width: 1200px;
+  width: 94%;
+  margin: 0 auto;
+  background-color: #191b32;
+  padding: 20px;
+}
+
+/* Cabecera */
+.comments-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #bd8d2f;
+  margin-bottom: 24px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.comments-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Bloque de comentarios */
+.comment-block {
+  margin-bottom: 20px;
+}
+
+.comment-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #bd8d2f;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+
+.comment-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.comment-input, .comment-text {
+  flex-grow: 1;
+  background-color: #92939f;
+  border: 1px solid #7577a3;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  color: #1d1e2c;
+  outline: none;
+}
+
+.comment-input::placeholder {
+  color: #2b2b36;
+}
+
+.comment-text {
+  display: flex;
+  align-items: center;
+}
+
+/* Botones laterales (Enviar / Like) */
+.icono-btn {
+  background-color: #101225;
+  color: #bd8d2f;
+  border: none;
+  border-radius: 10px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.icono-btn:hover {
+  background-color: #292C4A;
+}
+
+/* Estilo exclusivo solo para el botón de Me gusta */
+.like-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ocultar el corazón por defecto */
+.like-btn .heart-icon {
+  display: none;
+  color: #e74c3c; /* Color rojo característico del corazón */
+  stroke: #e74c3c;
+}
+
+/* Al poner el mouse encima de .like-btn */
+.like-btn:hover .thumb-icon {
+  display: none; /* Oculta el pulgar */
+}
+
+.like-btn:hover .heart-icon {
+  display: block; /* Muestra el corazón */
+  animation: heartPop 0.4s ease-in-out forwards; /* Aplica la animación por porcentajes */
+}
+
+/* Animación Keyframe estrictamente con porcentajes (%) */
+@keyframes heartPop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.8); /* Efecto rebote que se agranda un poquito */
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* Contenedor de las pestañas */
+.comment-filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row; /* Los pone uno al lado del otro */
+  gap: 10px;           /* Espacio entre los dos botones */
+  margin: 50px 0 20px 0;
+}
+
+/* Botones para filtrar comentarior */
+.comment-filters .filter-btn {
+  background-color: #101225;
+  color: #bd8d2f;
+  border: none;
+  border-radius: 10px;
+  padding: 0 16px;     /* Padding horizontal cómodo */
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  white-space: nowrap; /* Evita que el texto se rompa hacia abajo */
+  transition: background-color 0.2s;
+}
+
+.comment-filters .filter-btn:hover {
+  background-color: #292C4A;
+}
+
+/* Contenedor de la lista de comentarios */
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+/* Estilo y animación para cada comentario nuevo */
+.comment-item {
+  animation: slideInComment 0.4s ease-in-out forwards;
+}
+
+/* Animación keyframe con porcentajes solicitada */
+@keyframes slideInComment {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Empieza desplazado hacia abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Termina en su posición original */
+  }
+}
+
 /* ============================================================
    PacBird - estilos del juego y de la sección de información
    ============================================================ */
