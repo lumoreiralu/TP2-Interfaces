@@ -83,39 +83,32 @@
         <h2 class="juego-titulo">PacBird</h2>
 
         <div class="juego-contenedor-principal">
-            <div class="juego-controles-top">
-                <div class="pacbird-grupo-izq">
-                    <a href="../index.html" class="icono-btn" title="Volver al inicio" aria-label="Volver al inicio">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                    <button type="button" id="btnVolverMenu" class="icono-btn" title="Volver al menú del juego" aria-label="Volver al menú del juego">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 10.5 12 3l9 7.5"></path>
-                            <path d="M5 9.5V21h14V9.5"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="pacbird-hud">
-                    <div class="stat-card">
-                        <span class="stat-label">Puntos</span>
-                        <span class="stat-value" id="hudPuntos">0</span>
-                    </div>
-                    <div class="stat-card">
-                        <span class="stat-label">Vidas</span>
-                        <span class="stat-value" id="hudVidas" aria-live="polite"></span>
-                    </div>
-                </div>
-            </div>
-
             <div class="pacbird-escenario-wrapper">
                 <div class="pacbird-escenario" id="escenario" tabindex="0" role="application"
                      aria-label="PacBird. Presioná espacio, flecha arriba o hacé clic para aletear.">
-                    <div class="capa" data-sprite="fondo1" data-factor="0.1" data-ancho-tile="900"></div>
-                    <div class="capa" data-sprite="fondo2" data-factor="0.25" data-ancho-tile="900"></div>
-                    <div class="capa" data-sprite="fondo3" data-factor="0.5" data-ancho-tile="900"></div>
-                    <div class="capa" data-sprite="fondo4" data-factor="1" data-ancho-tile="900"></div>
+                    <div class="pacbird-hud-top">
+                        <button type="button" id="btnVolverMenu" class="icono-btn" title="Volver al menú del juego" aria-label="Volver al menú del juego">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 10.5 12 3l9 7.5"></path>
+                                <path d="M5 9.5V21h14V9.5"></path>
+                            </svg>
+                        </button>
+                        <div class="pacbird-hud">
+                            <div class="stat-card">
+                                <span class="stat-label">Puntos</span>
+                                <span class="stat-value" id="hudPuntos">0</span>
+                            </div>
+                            <div class="stat-card">
+                                <span class="stat-label">Vidas</span>
+                                <span class="stat-value" id="hudVidas" aria-live="polite"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="capa" data-sprite="fondo1" data-factor="0.1" data-ancho-tile="810"></div>
+                    <div class="capa" data-sprite="fondo2" data-factor="0.25" data-ancho-tile="810"></div>
+                    <div class="capa" data-sprite="fondo3" data-factor="0.5" data-ancho-tile="810"></div>
+                    <div class="capa" data-sprite="fondo4" data-factor="1" data-ancho-tile="810"></div>
 
                     <div class="pacbird-tubos" id="tubos"></div>
                     <div class="pacbird-fantasmas" id="fantasmas"></div>
@@ -212,6 +205,94 @@
             </div>
         </div>
     </section>
+
+
+    <div class="seccion-carrusel ">
+        <h3 class="titulo-carrusel">Imagenes / Videos</h3>
+        <div class="carrusel-contenedor">
+            <!-- Botón Izquierdo -->
+            <button class="btn-carrusel-prev"><img src="../assets/img/svg/flechaIzq.svg" alt=""
+                    class="btn-carrusel"></button>
+            <!-- La fila que contiene los juegos y se va a recortar -->
+            <div class="carrusel-track ">
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+               <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego1.png" alt="img1">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego2.png" alt="img2">
+                </div>
+                <div class="juego-tarjeta">
+                    <img src="../assets/pacbird/capturaDeJuego3.png" alt="vid1">
+                </div>
+            </div>
+            <!-- Botón Derecho -->
+            <button class="btn-carrusel-next"><img src="../assets/img/svg/flechaDer.svg" alt=""
+                    class="btn-carrusel"></button>
+        </div>
+    </div>
 
         <div class="comments-section">
     <!-- Título principal -->

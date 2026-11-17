@@ -3,8 +3,8 @@
 class PacBird {
     constructor() {
         // Medidas del escenario y físicas (px y px/s)
-        this.ANCHO = 900;
-        this.ALTO = 600;
+        this.ANCHO = 810;
+        this.ALTO = 510;
         this.GRAVEDAD = 1600;
         this.IMPULSO = 520;
         this.VEL_BASE = 220;
@@ -27,6 +27,8 @@ class PacBird {
         this.ALTO_PISO = 72;
         this.TIEMPO_INVULNERABLE = 2;
         this.tiempoInvulnerable = 0;
+        this.muriendo = false;
+        this.timerMuerte = null;
 
         // Ítem de energía (bola amarilla)
         this.TAMANO_ITEM = 26;
@@ -382,7 +384,7 @@ class PacBird {
         if (this.juego.vidas <= 1) {
             this.juego.vidas = 0;
             this.actualizarHud();
-            this.finalizar(tipo);
+            this.morir(tipo);
             return;
         }
 
@@ -394,6 +396,22 @@ class PacBird {
             this.jugador.y = this.ALTO - this.ALTO_PISO - this.jugador.alto - 1;
             this.jugador.vy = -this.IMPULSO * 0.65;
         }
+    }
+
+    morir(tipo) {
+        if (this.muriendo) return;
+        this.muriendo = true;
+        if (this.jugadorEl) this.jugadorEl.classList.add("desintegrando");
+        this.timerMuerte = setTimeout(() => this.finalizar(tipo), 1000);
+    }
+
+    cancelarMuerte() {
+        if (this.timerMuerte) {
+            clearTimeout(this.timerMuerte);
+            this.timerMuerte = null;
+        }
+        this.muriendo = false;
+        if (this.jugadorEl) this.jugadorEl.classList.remove("desintegrando");
     }
 
     iniciarInvulnerabilidad() {
@@ -554,6 +572,7 @@ class PacBird {
     }
 
     actualizar(dt) {
+        if (this.muriendo) return;
         this.actualizarPoderFantasma(dt);
 
         if (this.tiempoInvulnerable > 0) {
@@ -635,7 +654,10 @@ class PacBird {
                 const corazon = document.createElement("span");
                 const lleno = i < this.juego.vidas;
                 corazon.className = lleno ? "corazon" : "corazon corazon-vacio";
-                corazon.textContent = lleno ? "❤" : "♡";
+                corazon.innerHTML =
+                    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+                corazon.setAttribute("role", "img");
+                corazon.setAttribute("aria-label", lleno ? "Vida" : "Vida perdida");
                 corazones.push(corazon);
             }
             this.hudVidas.replaceChildren(...corazones);
@@ -651,6 +673,7 @@ class PacBird {
 
     empezar() {
         if (this.juego.estado === "jugando") return;
+        this.cancelarMuerte();
         this.juego.puntos = 0;
         this.juego.vidas = this.VIDAS_INICIALES;
         this.juego.tiempo = 0;
@@ -675,6 +698,7 @@ class PacBird {
 
     finalizar(tipo = "tubo") {
         if (this.juego.estado !== "jugando") return;
+        this.cancelarMuerte();
         this.detenerInvulnerabilidad();
         this.desactivarPoderFantasma();
         this.mostrarPantalla("fin");
@@ -685,6 +709,7 @@ class PacBird {
     }
 
     volverAlMenu() {
+        this.cancelarMuerte();
         this.detenerInvulnerabilidad();
         this.desactivarPequeno();
         this.desactivarPoderFantasma();

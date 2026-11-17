@@ -13,7 +13,7 @@ body{
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 0px;
   font-family: 'Nunito', sans-serif;
   font-size: 0.9rem;
   color: #b0b3c6; 
@@ -252,21 +252,14 @@ body{
 }
 
 /* ------------------------------------------------------------
-   Controles superiores y HUD
+   HUD dentro del escenario
    ------------------------------------------------------------ */
 
-.juego-controles-top {
-    position: relative;
-    width: 900px;
-    max-width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    z-index: 10;
-}
-
-.pacbird-grupo-izq {
+.pacbird-hud-top {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 45;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -312,13 +305,24 @@ body{
 }
 
 .corazon {
-    color: #ff4d6d;
-    text-shadow: 0 0 6px rgba(255, 77, 109, 0.75);
+    display: inline-flex;
 }
 
-.corazon-vacio {
-    color: #3a3f5c;
-    text-shadow: none;
+.corazon svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
+
+.corazon path {
+    fill: #ff4d6d;
+    filter: drop-shadow(0 0 4px rgba(255, 77, 109, 0.75));
+    transition: fill 0.2s;
+}
+
+.corazon-vacio path {
+    fill: #3a3f5c;
+    filter: none;
 }
 
 .icono-btn {
@@ -355,8 +359,8 @@ body{
 
 .pacbird-escenario {
     position: relative;
-    width: 900px;
-    height: 600px;
+    width: 810px;
+    height: 510px;
     flex: 0 0 auto;
     overflow: hidden;
     border-radius: 14px;
@@ -416,7 +420,7 @@ body{
             rgba(18, 38, 96, 0.95) 74px 132px,
             transparent 132px 150px),
         linear-gradient(180deg, transparent 0 30%, #0b1c4a 30% 100%);
-    background-size: 900px 100%, 100% 100%;
+    background-size: 810px 100%, 100% 100%;
     opacity: 0.85;
 }
 
@@ -429,7 +433,7 @@ body{
         repeating-linear-gradient(90deg, #1b2f7a 0 8px, transparent 8px 90px),
         repeating-linear-gradient(0deg, rgba(60, 110, 255, 0.25) 0 8px, transparent 8px 44px),
         linear-gradient(180deg, rgba(10, 16, 45, 0) 0%, #0a0f2b 55%);
-    background-size: 900px 100%, 900px 100%, 100% 100%;
+    background-size: 810px 100%, 810px 100%, 100% 100%;
 }
 
 .capa[data-sprite="fondo4"] {
@@ -440,7 +444,7 @@ body{
     background-image:
         repeating-linear-gradient(90deg, #ffd400 0 28px, transparent 28px 56px),
         linear-gradient(180deg, #173a8f 0 6px, #050814 6px 100%);
-    background-size: 900px 100%, 100% 100%;
+    background-size: 810px 100%, 100% 100%;
     opacity: 0.9;
 }
 
@@ -727,6 +731,42 @@ body{
     transition: transform 0.18s ease;
 }
 
+.jugador.desintegrando {
+    animation: desintegrar 0.9s ease-in forwards;
+}
+
+.jugador.desintegrando::before,
+.jugador.desintegrando .jugador-sprite {
+    animation: desintegrarParte 0.9s ease-in forwards;
+}
+
+@keyframes desintegrar {
+    0% {
+        opacity: 1;
+        filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.55));
+    }
+    40% {
+        opacity: 1;
+        filter: drop-shadow(0 0 18px #ff4d6d) blur(0);
+    }
+    100% {
+        opacity: 0;
+        filter: drop-shadow(0 0 30px #ff4d6d) blur(6px);
+    }
+}
+
+@keyframes desintegrarParte {
+    0% {
+        transform: scale(1) rotate(0);
+    }
+    45% {
+        transform: scale(1.15) rotate(14deg);
+    }
+    100% {
+        transform: scale(0.08) rotate(150deg);
+    }
+}
+
 /* ------------------------------------------------------------
    Pantallas superpuestas (menú y fin)
    ------------------------------------------------------------ */
@@ -935,14 +975,6 @@ body{
    Responsive
    ------------------------------------------------------------ */
 
-@media (max-width: 980px) {
-    .juego-controles-top {
-        width: 100%;
-        padding: 0 4px;
-        box-sizing: border-box;
-    }
-}
-
 @media (max-width: 780px) {
     .pacbird-titulo {
         font-size: 2.2rem;
@@ -980,6 +1012,12 @@ body{
     .jugador.poder-parpadeo {
         animation: none;
         opacity: 0.55;
+    }
+
+    .jugador.desintegrando,
+    .jugador.desintegrando::before,
+    .jugador.desintegrando .jugador-sprite {
+        animation: none;
     }
 
     .pacbird-btn {
