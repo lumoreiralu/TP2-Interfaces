@@ -104,7 +104,7 @@
                     </div>
                     <div class="stat-card">
                         <span class="stat-label">Vidas</span>
-                        <span class="stat-value" id="hudVidas">3</span>
+                        <span class="stat-value" id="hudVidas" aria-live="polite"></span>
                     </div>
                 </div>
             </div>
@@ -116,6 +116,10 @@
                     <div class="capa" data-sprite="fondo2" data-factor="0.25" data-ancho-tile="900"></div>
                     <div class="capa" data-sprite="fondo3" data-factor="0.5" data-ancho-tile="900"></div>
                     <div class="capa" data-sprite="fondo4" data-factor="1" data-ancho-tile="900"></div>
+
+                    <div class="pacbird-tubos" id="tubos"></div>
+                    <div class="pacbird-fantasmas" id="fantasmas"></div>
+                    <div class="pacbird-puntos" id="puntosFlotantes"></div>
 
                     <div class="jugador" id="jugador">
                         <img class="jugador-sprite" id="jugadorSprite" alt="">
@@ -152,8 +156,10 @@
                         PacBird es un juego de habilidad inspirado en Flappy Bird y ambientado en el universo de Pac-Man.
                         Controlás a Pac-Man mientras cae por un laberinto infinito: cada pulsación le da un impulso hacia
                         arriba y tenés que mantenerlo en el aire para atravesar los obstáculos sin chocar.
-                       <!-- En esta primera versión ya está implementado el movimiento, el impulso, la gravedad,
-                        el parallax de cuatro capas y los estados de menú, juego y fin.-->
+                       <!--                         Ya están implementados el movimiento, el impulso, la gravedad, el parallax de cuatro capas,
+                        los estados de menú, juego y fin, los pilares con huecos aleatorios, el puntaje de +20 por cada
+                        pilar superado y un sistema de 5 vidas: al chocar con un pilar o con el piso perdés un corazón y
+                        Pac-Man parpadea durante 2 segundos, pudiendo atravesar las estructuras.-->
                     </p>
                 </div>
 
@@ -198,7 +204,9 @@
                         <li><strong>Movimiento:</strong> cada pulsación aplica un impulso hacia arriba; la gravedad lo hace caer.</li>
                         <li><strong>Controles:</strong> Espacio, flecha arriba o clic sobre el escenario.</li>
                         <li><strong>Inicio:</strong> presioná START en el menú principal.</li>
-                       <!--  <li><strong>Próximamente:</strong> tubos, colisiones, vidas, ítems y puntaje.</li>-->
+                       <!--                          <li><strong>Puntos:</strong> cada pilar superado suma +20 y muestra el puntaje ganado sobre el hueco.</li>
+                        <li><strong>Vidas:</strong> tenés 5 corazones. Al chocar con un pilar o con el piso perdés uno y Pac-Man parpadea durante 2 segundos, pudiendo atravesar las estructuras.</li>
+                        <li><strong>Fin de la partida:</strong> cuando te queda una sola vida, el siguiente impacto detiene a Pac-Man y termina el juego.</li>-->
                     </ul>
                 </div>
             </div>

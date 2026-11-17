@@ -302,6 +302,25 @@ body{
     font-weight: 600;
 }
 
+#hudVidas {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    min-height: 1.1rem;
+    font-size: 0.82rem;
+    line-height: 1;
+}
+
+.corazon {
+    color: #ff4d6d;
+    text-shadow: 0 0 6px rgba(255, 77, 109, 0.75);
+}
+
+.corazon-vacio {
+    color: #3a3f5c;
+    text-shadow: none;
+}
+
 .icono-btn {
     background-color: #101225;
     color: #bd8d2f;
@@ -426,6 +445,201 @@ body{
 }
 
 /* ------------------------------------------------------------
+   Pilares / obstáculos
+   ------------------------------------------------------------ */
+
+.pacbird-tubos {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.tubo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    will-change: transform;
+}
+
+.tubo-parte {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    background:
+        repeating-linear-gradient(0deg, rgba(55, 247, 255, 0.12) 0 2px, transparent 2px 16px),
+        linear-gradient(90deg, #0a1230 0%, #16307d 50%, #0a1230 100%);
+    border: 2px solid #37f7ff;
+    box-shadow:
+        inset 0 0 14px rgba(55, 247, 255, 0.45),
+        0 0 14px rgba(55, 247, 255, 0.55);
+}
+
+.tubo-parte::after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    height: 10px;
+    background: #ffd400;
+    border-radius: 4px;
+    box-shadow: 0 0 12px rgba(255, 212, 0, 0.85);
+}
+
+.tubo-arriba {
+    top: 0;
+    border-radius: 0 0 10px 10px;
+}
+
+.tubo-arriba::after {
+    bottom: -4px;
+}
+
+.tubo-abajo {
+    bottom: 0;
+    border-radius: 10px 10px 0 0;
+}
+
+.tubo-abajo::after {
+    top: -4px;
+}
+
+.tubo-item {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 1;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle at 35% 35%, #fffbe0 0%, #ffe95c 35%, #ffd400 65%, #d99b00 100%);
+    box-shadow:
+        0 0 10px rgba(255, 212, 0, 0.95),
+        0 0 22px rgba(255, 212, 0, 0.6),
+        inset -2px -3px 6px rgba(120, 75, 0, 0.45);
+    animation: itemLatido 0.9s ease-in-out infinite alternate;
+}
+
+@keyframes itemLatido {
+    from {
+        transform: translate(-50%, -50%) scale(0.88);
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.12);
+    }
+}
+
+/* ------------------------------------------------------------
+   Fantasma multicolor
+   ------------------------------------------------------------ */
+
+.pacbird-fantasmas {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.fantasma {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(120deg, #ff4d6d, #ffd400, #37f7ff, #7a5cff, #ff4d6d);
+    background-size: 300% 300%;
+    clip-path: polygon(
+        50% 0%, 65% 3%, 78% 9%, 89% 20%, 96% 35%, 98% 50%, 98% 100%,
+        84% 87%, 68% 100%, 50% 87%, 32% 100%, 16% 87%, 2% 100%, 2% 50%,
+        4% 35%, 11% 20%, 22% 9%, 35% 3%
+    );
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.45));
+    will-change: transform;
+    animation: fantasmaColor 2.4s linear infinite;
+}
+
+.fantasma::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 12px 0 0 #ffffff;
+}
+
+.fantasma::after {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #0b1030;
+    box-shadow: 12px 0 0 #0b1030;
+}
+
+@keyframes fantasmaColor {
+    to {
+        background-position: 300% 0;
+    }
+}
+
+/* ------------------------------------------------------------
+   Puntos flotantes
+   ------------------------------------------------------------ */
+
+.pacbird-puntos {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.punto-flotante {
+    position: absolute;
+    transform: translate(-50%, 0);
+    color: #ffd400;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-shadow:
+        0 0 8px rgba(255, 212, 0, 0.95),
+        0 0 2px #ffffff,
+        0 2px 4px rgba(0, 0, 0, 0.8);
+    animation: puntoSube 1s ease-out forwards;
+}
+
+@keyframes puntoSube {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 10px) scale(0.75);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1.15);
+    }
+    60% {
+        opacity: 1;
+        transform: translate(-50%, -20px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -48px) scale(0.95);
+    }
+}
+
+/* ------------------------------------------------------------
    Jugador
    ------------------------------------------------------------ */
 
@@ -454,6 +668,27 @@ body{
     animation: masticar 0.24s infinite;
 }
 
+.jugador.invulnerable {
+    animation: parpadeo 0.24s linear infinite;
+}
+
+.jugador.poder {
+    filter: drop-shadow(0 0 10px #37f7ff) drop-shadow(0 0 18px #ff4d6d);
+}
+
+.jugador.poder-parpadeo {
+    animation: parpadeo 0.24s linear infinite;
+}
+
+@keyframes parpadeo {
+    0%, 49% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0.15;
+    }
+}
+
 @keyframes masticar {
     0%, 100% {
         clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 50%, 100% 62%, 100% 100%, 0 100%);
@@ -479,6 +714,17 @@ body{
 
 .jugador.con-sprite .jugador-sprite {
     opacity: 1;
+}
+
+.jugador.chico::before,
+.jugador.chico .jugador-sprite {
+    transform: scale(0.6);
+    transform-origin: center center;
+}
+
+.jugador::before,
+.jugador .jugador-sprite {
+    transition: transform 0.18s ease;
 }
 
 /* ------------------------------------------------------------
@@ -719,6 +965,21 @@ body{
 @media (prefers-reduced-motion: reduce) {
     .esta-jugando .jugador::before {
         animation: none;
+    }
+
+    .jugador.invulnerable {
+        animation: none;
+        opacity: 0.55;
+    }
+
+    .tubo-item,
+    .fantasma {
+        animation: none;
+    }
+
+    .jugador.poder-parpadeo {
+        animation: none;
+        opacity: 0.55;
     }
 
     .pacbird-btn {
