@@ -1,3 +1,4 @@
+/* Define el fondo, la tipografía y la disposición general de la página. */
 body{
     background-color: #191b32;
     font-family: 'Nunito', sans-serif;
@@ -9,6 +10,7 @@ body{
     justify-content:center;
 }
 
+/* Muestra la ruta de navegación en una fila horizontal. */
 .breadcrumbs {
   display: flex;
   align-items: center;
@@ -19,22 +21,26 @@ body{
   color: #b0b3c6; 
 }
 
+/* Estilos de los enlaces de la ruta de navegación. */
 .breadcrumbs a {
   color: #00E5FF; 
   text-decoration: none; 
   transition: opacity 0.2s;
 }
 
+/* Reduce la opacidad y subraya el enlace al pasar el mouse. */
 .breadcrumbs a:hover {
   opacity: 0.8;
   text-decoration: underline;
 }
 
+/* Resalta la sección actual de la ruta de navegación. */
 .breadcrumbs .current {
   color: #f0d58a; 
   font-weight: 600;
 }
 
+/* Contenedor general de la sección de comentarios. */
 .comments-section {
   max-width: 1200px;
   width: 94%;
@@ -44,6 +50,7 @@ body{
 }
 
 /* Cabecera */
+/* Estiliza la cabecera de la sección de comentarios. */
 .comments-header {
   display: flex;
   align-items: center;
@@ -53,6 +60,7 @@ body{
   font-family: 'Nunito', sans-serif;
 }
 
+/* Define el tamaño y peso del título de la sección. */
 .comments-header h2 {
   font-size: 1.25rem;
   margin: 0;
@@ -60,10 +68,12 @@ body{
 }
 
 /* Bloque de comentarios */
+/* Separa cada bloque de comentario de los demás. */
 .comment-block {
   margin-bottom: 20px;
 }
 
+/* Muestra el nombre del usuario junto a su avatar. */
 .comment-user {
   display: flex;
   align-items: center;
@@ -73,12 +83,14 @@ body{
   margin-bottom: 8px;
 }
 
+/* Alinea el campo de texto con su botón de acción. */
 .comment-input-wrapper {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
+/* Estiliza los campos de entrada y visualización de comentarios. */
 .comment-input, .comment-text {
   flex-grow: 1;
   background-color: #92939f;
@@ -90,16 +102,19 @@ body{
   outline: none;
 }
 
+/* Define el color del texto de marcador de posición. */
 .comment-input::placeholder {
   color: #2b2b36;
 }
 
+/* Hace que el texto del comentario se comporte como un bloque flexible. */
 .comment-text {
   display: flex;
   align-items: center;
 }
 
 /* Botones laterales (Enviar / Like) */
+/* Estiliza los botones de icono cuadrados. */
 .icono-btn {
   background-color: #101225;
   color: #bd8d2f;
@@ -115,17 +130,20 @@ body{
   transition: background-color 0.2s;
 }
 
+/* Cambia el fondo del botón al pasar el mouse. */
 .icono-btn:hover {
   background-color: #292C4A;
 }
 
 /* Estilo exclusivo solo para el botón de Me gusta */
+/* Prepara el botón de Me gusta para mostrar sus iconos superpuestos. */
 .like-btn {
   position: relative;
   overflow: hidden;
 }
 
 /* Ocultar el corazón por defecto */
+/* Define el color rojo del icono de corazón oculto. */
 .like-btn .heart-icon {
   display: none;
   color: #e74c3c; /* Color rojo característico del corazón */
@@ -133,16 +151,19 @@ body{
 }
 
 /* Al poner el mouse encima de .like-btn */
+/* Oculta el icono de pulgar durante el hover. */
 .like-btn:hover .thumb-icon {
   display: none; /* Oculta el pulgar */
 }
 
+/* Muestra el corazón con una animación al pasar el mouse. */
 .like-btn:hover .heart-icon {
   display: block; /* Muestra el corazón */
   animation: heartPop 0.4s ease-in-out forwards; /* Aplica la animación por porcentajes */
 }
 
 /* Animación Keyframe estrictamente con porcentajes (%) */
+/* Anima el corazón con un rebote al aparecer. */
 @keyframes heartPop {
   0% {
     transform: scale(0.3);
@@ -160,6 +181,7 @@ body{
 
 
 /* Contenedor de las pestañas */
+/* Centra los botones de filtrado de comentarios. */
 .comment-filters {
   display: flex;
   justify-content: center;
@@ -170,6 +192,7 @@ body{
 }
 
 /* Botones para filtrar comentarior */
+/* Estiliza cada botón de filtro de comentarios. */
 .comment-filters .filter-btn {
   background-color: #101225;
   color: #bd8d2f;
@@ -187,11 +210,13 @@ body{
   transition: background-color 0.2s;
 }
 
+/* Cambia el fondo del botón de filtro al pasar el mouse. */
 .comment-filters .filter-btn:hover {
   background-color: #292C4A;
 }
 
 /* Contenedor de la lista de comentarios */
+/* Apila los comentarios con espacio entre ellos. */
 .comments-container {
   display: flex;
   flex-direction: column;
@@ -200,11 +225,13 @@ body{
 }
 
 /* Estilo y animación para cada comentario nuevo */
+/* Aplica la animación de entrada a cada comentario. */
 .comment-item {
   animation: slideInComment 0.4s ease-in-out forwards;
 }
 
 /* Animación keyframe con porcentajes solicitada */
+/* Desplaza el comentario hacia arriba mientras aparece. */
 @keyframes slideInComment {
   0% {
     opacity: 0;
@@ -220,6 +247,7 @@ body{
    PacBird - estilos del juego y de la sección de información
    ============================================================ */
 
+/* Centra y limita el ancho de toda la sección del juego. */
 .seccion-juego {
     width: 100%;
     max-width: 1100px;
@@ -233,6 +261,7 @@ body{
     gap: 8px;
 }
 
+/* Da estilo al título del juego. */
 .juego-titulo {
     color: #bd8d2f;
     font-size: 1.4rem;
@@ -241,6 +270,7 @@ body{
     text-align: center;
 }
 
+/* Envuelve el escenario y sus elementos relacionados. */
 .juego-contenedor-principal {
     position: relative;
     width: 100%;
@@ -255,6 +285,7 @@ body{
    HUD dentro del escenario
    ------------------------------------------------------------ */
 
+/* Coloca el HUD en la esquina superior izquierda del escenario. */
 .pacbird-hud-top {
     position: absolute;
     top: 12px;
@@ -265,11 +296,13 @@ body{
     gap: 10px;
 }
 
+/* Agrupa las tarjetas de puntuación y vidas. */
 .pacbird-hud {
     display: flex;
     gap: 10px;
 }
 
+/* Estiliza cada tarjeta de datos del HUD. */
 .stat-card {
     background-color: #090b14;
     border: 1px solid #222644;
@@ -282,6 +315,7 @@ body{
     min-width: 84px;
 }
 
+/* Muestra la etiqueta pequeña de cada estadística. */
 .stat-label {
     font-size: 0.7rem;
     color: #92939f;
@@ -289,12 +323,14 @@ body{
     text-align: center;
 }
 
+/* Muestra el valor numérico de cada estadística. */
 .stat-value {
     font-size: 0.95rem;
     color: #fff;
     font-weight: 600;
 }
 
+/* Alinea horizontalmente los corazones de las vidas. */
 #hudVidas {
     display: inline-flex;
     align-items: center;
@@ -304,27 +340,32 @@ body{
     line-height: 1;
 }
 
+/* Prepara cada corazón para contener su SVG. */
 .corazon {
     display: inline-flex;
 }
 
+/* Ajusta el tamaño del icono de corazón. */
 .corazon svg {
     display: block;
     width: 14px;
     height: 14px;
 }
 
+/* Colorea el corazón lleno y le añade brillo. */
 .corazon path {
     fill: #ff4d6d;
     filter: drop-shadow(0 0 4px rgba(255, 77, 109, 0.75));
     transition: fill 0.2s;
 }
 
+/* Muestra el corazón vacío en gris apagado. */
 .corazon-vacio path {
     fill: #3a3f5c;
     filter: none;
 }
 
+/* Estiliza los botones de icono usados dentro del juego. */
 .icono-btn {
     background-color: #101225;
     color: #bd8d2f;
@@ -341,6 +382,7 @@ body{
     transition: background-color 0.2s;
 }
 
+/* Cambia el fondo del botón de icono al pasar el mouse. */
 .icono-btn:hover {
     background-color: #292c4a;
 }
@@ -349,6 +391,7 @@ body{
    Escenario
    ------------------------------------------------------------ */
 
+/* Permite el desplazamiento horizontal del escenario en pantallas pequeñas. */
 .pacbird-escenario-wrapper {
     width: 100%;
     display: flex;
@@ -357,6 +400,7 @@ body{
     padding-bottom: 4px;
 }
 
+/* Define el tamaño fijo y el aspecto visual del escenario de juego. */
 .pacbird-escenario {
     position: relative;
     width: 810px;
@@ -374,6 +418,7 @@ body{
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Resalta el borde del escenario cuando recibe el foco con teclado. */
 .pacbird-escenario:focus-visible {
     border-color: #ffd400;
     box-shadow: 0 0 0 3px rgba(255, 212, 0, 0.25), 0 18px 50px rgba(0, 0, 0, 0.55);
@@ -383,6 +428,7 @@ body{
    Capas de parallax (fallback por si no hay sprites)
    ------------------------------------------------------------ */
 
+/* Base común de las capas de fondo con desplazamiento parallax. */
 .capa {
     position: absolute;
     left: 0;
@@ -393,6 +439,7 @@ body{
     pointer-events: none;
 }
 
+/* Capa de cielo estrellado con degradado nocturno. */
 .capa[data-sprite="fondo1"] {
     top: 0;
     height: 100%;
@@ -408,6 +455,7 @@ body{
     background-size: 340px 340px, 420px 420px, 300px 300px, 480px 480px, 380px 380px, 100% 100%;
 }
 
+/* Capa de edificios lejanos en el fondo. */
 .capa[data-sprite="fondo2"] {
     bottom: 0;
     height: 58%;
@@ -424,6 +472,7 @@ body{
     opacity: 0.85;
 }
 
+/* Capa de estructura cercana con líneas verticales y horizontales. */
 .capa[data-sprite="fondo3"] {
     bottom: 0;
     height: 34%;
@@ -436,6 +485,7 @@ body{
     background-size: 810px 100%, 810px 100%, 100% 100%;
 }
 
+/* Capa del piso con franjas amarillas y azules. */
 .capa[data-sprite="fondo4"] {
     bottom: 0;
     height: 12%;
@@ -452,6 +502,7 @@ body{
    Pilares / obstáculos
    ------------------------------------------------------------ */
 
+/* Contenedor de todos los pilares del juego. */
 .pacbird-tubos {
     position: absolute;
     inset: 0;
@@ -460,6 +511,7 @@ body{
     pointer-events: none;
 }
 
+/* Posiciona cada pilar y permite moverlo con transformaciones. */
 .tubo {
     position: absolute;
     top: 0;
@@ -469,6 +521,7 @@ body{
     will-change: transform;
 }
 
+/* Estiliza las mitades superior e inferior de un pilar. */
 .tubo-parte {
     position: absolute;
     left: 0;
@@ -483,6 +536,7 @@ body{
         0 0 14px rgba(55, 247, 255, 0.55);
 }
 
+/* Dibuja la franja amarilla en el borde de cada mitad del pilar. */
 .tubo-parte::after {
     content: "";
     position: absolute;
@@ -494,24 +548,29 @@ body{
     box-shadow: 0 0 12px rgba(255, 212, 0, 0.85);
 }
 
+/* Estiliza la mitad superior del pilar. */
 .tubo-arriba {
     top: 0;
     border-radius: 0 0 10px 10px;
 }
 
+/* Coloca la franja amarilla en la parte baja de la mitad superior. */
 .tubo-arriba::after {
     bottom: -4px;
 }
 
+/* Estiliza la mitad inferior del pilar. */
 .tubo-abajo {
     bottom: 0;
     border-radius: 10px 10px 0 0;
 }
 
+/* Coloca la franja amarilla en la parte alta de la mitad inferior. */
 .tubo-abajo::after {
     top: -4px;
 }
 
+/* Dibuja la bola amarilla de energía dentro de un pilar. */
 .tubo-item {
     position: absolute;
     top: 0;
@@ -529,6 +588,7 @@ body{
     animation: itemLatido 0.9s ease-in-out infinite alternate;
 }
 
+/* Hace que el ítem pulse agrandándose y encogiéndose. */
 @keyframes itemLatido {
     from {
         transform: translate(-50%, -50%) scale(0.88);
@@ -542,6 +602,7 @@ body{
    Fantasma multicolor
    ------------------------------------------------------------ */
 
+/* Contenedor de todos los fantasmas del juego. */
 .pacbird-fantasmas {
     position: absolute;
     inset: 0;
@@ -550,6 +611,7 @@ body{
     pointer-events: none;
 }
 
+/* Dibuja un fantasma multicolor con forma recortada. */
 .fantasma {
     position: absolute;
     top: 0;
@@ -568,6 +630,7 @@ body{
     animation: fantasmaColor 2.4s linear infinite;
 }
 
+/* Dibuja los ojos blancos del fantasma. */
 .fantasma::before {
     content: "";
     position: absolute;
@@ -580,6 +643,7 @@ body{
     box-shadow: 12px 0 0 #ffffff;
 }
 
+/* Dibuja las pupilas oscuras del fantasma. */
 .fantasma::after {
     content: "";
     position: absolute;
@@ -592,6 +656,7 @@ body{
     box-shadow: 12px 0 0 #0b1030;
 }
 
+/* Desplaza el degradado para simular el cambio de color del fantasma. */
 @keyframes fantasmaColor {
     to {
         background-position: 300% 0;
@@ -602,6 +667,7 @@ body{
    Puntos flotantes
    ------------------------------------------------------------ */
 
+/* Contenedor de los textos flotantes de puntuación. */
 .pacbird-puntos {
     position: absolute;
     inset: 0;
@@ -610,6 +676,7 @@ body{
     pointer-events: none;
 }
 
+/* Estiliza el número de puntos que aparece al sumar. */
 .punto-flotante {
     position: absolute;
     transform: translate(-50%, 0);
@@ -624,6 +691,7 @@ body{
     animation: puntoSube 1s ease-out forwards;
 }
 
+/* Anima el texto de puntos mientras sube y se desvanece. */
 @keyframes puntoSube {
     0% {
         opacity: 0;
@@ -647,6 +715,7 @@ body{
    Jugador
    ------------------------------------------------------------ */
 
+/* Posiciona al jugador y prepara sus transformaciones. */
 .jugador {
     position: absolute;
     top: 0;
@@ -659,6 +728,7 @@ body{
     filter: drop-shadow(0 0 10px rgba(255, 212, 0, 0.55));
 }
 
+/* Dibuja el Pac-Man de reserva cuando no hay sprite cargado. */
 .jugador::before {
     content: "";
     position: absolute;
@@ -668,22 +738,27 @@ body{
     clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 50%, 100% 62%, 100% 100%, 0 100%);
 }
 
+/* Anima la boca del Pac-Man mientras se está jugando. */
 .esta-jugando .jugador::before {
     animation: masticar 0.24s infinite;
 }
 
+/* Hace parpadear al jugador mientras es invulnerable. */
 .jugador.invulnerable {
     animation: parpadeo 0.24s linear infinite;
 }
 
+/* Añade un resplandor multicolor cuando el jugador tiene el poder. */
 .jugador.poder {
     filter: drop-shadow(0 0 10px #37f7ff) drop-shadow(0 0 18px #ff4d6d);
 }
 
+/* Hace parpadear al jugador cuando el poder está por terminar. */
 .jugador.poder-parpadeo {
     animation: parpadeo 0.24s linear infinite;
 }
 
+/* Alterna la opacidad para simular el parpadeo. */
 @keyframes parpadeo {
     0%, 49% {
         opacity: 1;
@@ -693,6 +768,7 @@ body{
     }
 }
 
+/* Abre y cierra la boca del Pac-Man. */
 @keyframes masticar {
     0%, 100% {
         clip-path: polygon(0 0, 100% 0, 100% 38%, 50% 50%, 100% 62%, 100% 100%, 0 100%);
@@ -702,6 +778,7 @@ body{
     }
 }
 
+/* Muestra la imagen del jugador cuando existe un sprite cargado. */
 .jugador-sprite {
     position: absolute;
     inset: 0;
@@ -712,34 +789,41 @@ body{
     pointer-events: none;
 }
 
+/* Oculta el Pac-Man dibujado con CSS si hay sprite disponible. */
 .jugador.con-sprite::before {
     display: none;
 }
 
+/* Hace visible la imagen del jugador cuando hay sprite. */
 .jugador.con-sprite .jugador-sprite {
     opacity: 1;
 }
 
+/* Reduce el tamaño del jugador al recoger un ítem. */
 .jugador.chico::before,
 .jugador.chico .jugador-sprite {
     transform: scale(0.6);
     transform-origin: center center;
 }
 
+/* Suaviza el cambio de tamaño del jugador. */
 .jugador::before,
 .jugador .jugador-sprite {
     transition: transform 0.18s ease;
 }
 
+/* Aplica la animación de muerte al jugador. */
 .jugador.desintegrando {
     animation: desintegrar 0.9s ease-in forwards;
 }
 
+/* Aplica la animación de desintegración al dibujo del jugador. */
 .jugador.desintegrando::before,
 .jugador.desintegrando .jugador-sprite {
     animation: desintegrarParte 0.9s ease-in forwards;
 }
 
+/* Desvanece el jugador y aumenta el resplandor rojo al morir. */
 @keyframes desintegrar {
     0% {
         opacity: 1;
@@ -755,6 +839,7 @@ body{
     }
 }
 
+/* Reduce y gira el dibujo del jugador hasta desaparecer. */
 @keyframes desintegrarParte {
     0% {
         transform: scale(1) rotate(0);
@@ -771,6 +856,7 @@ body{
    Pantallas superpuestas (menú y fin)
    ------------------------------------------------------------ */
 
+/* Superpone el menú inicial o el de fin sobre el escenario. */
 .pacbird-pantalla {
     position: absolute;
     inset: 0;
@@ -786,10 +872,12 @@ body{
     backdrop-filter: blur(3px);
 }
 
+/* Oculta la pantalla superpuesta cuando no debe mostrarse. */
 .pacbird-pantalla[hidden] {
     display: none;
 }
 
+/* Da estilo al título grande de las pantallas del juego. */
 .pacbird-titulo {
     margin: 0;
     font-size: 3rem;
@@ -798,6 +886,7 @@ body{
     text-shadow: 0 0 18px rgba(255, 212, 0, 0.55), 0 4px 0 #8a6a00;
 }
 
+/* Estiliza los textos descriptivos de las pantallas. */
 .pacbird-texto {
     margin: 0;
     max-width: 520px;
@@ -806,6 +895,7 @@ body{
     line-height: 1.55;
 }
 
+/* Muestra la pista de controles con un tono más tenue. */
 .pacbird-hint {
     margin: 4px 0 0;
     color: #8f97bd;
@@ -813,6 +903,7 @@ body{
     letter-spacing: 0.04em;
 }
 
+/* Agrupa los botones de acción y los distribuye en filas. */
 .pacbird-acciones {
     display: flex;
     flex-wrap: wrap;
@@ -820,6 +911,7 @@ body{
     justify-content: center;
 }
 
+/* Estiliza el botón principal de los menús. */
 .pacbird-btn {
     display: inline-flex;
     align-items: center;
@@ -839,22 +931,26 @@ body{
     transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
 }
 
+/* Resalta el botón principal al pasar el mouse si está habilitado. */
 .pacbird-btn:hover:not(:disabled) {
     filter: brightness(1.06);
     transform: translateY(-1px);
 }
 
+/* Simula que el botón principal se presiona. */
 .pacbird-btn:active:not(:disabled) {
     transform: translateY(4px);
     box-shadow: 0 2px 0 #8a6a00, 0 6px 14px rgba(255, 212, 0, 0.2);
 }
 
+/* Muestra el botón principal deshabilitado mientras carga. */
 .pacbird-btn:disabled {
     cursor: wait;
     filter: grayscale(0.6) brightness(0.8);
     box-shadow: 0 6px 0 #4a3a00;
 }
 
+/* Estiliza el botón secundario de los menús. */
 .pacbird-btn-secundario {
     background: #101225;
     color: #ffd400;
@@ -862,10 +958,12 @@ body{
     box-shadow: 0 6px 0 #05060d, 0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
+/* Ajusta la sombra al presionar el botón secundario. */
 .pacbird-btn-secundario:active:not(:disabled) {
     box-shadow: 0 2px 0 #05060d;
 }
 
+/* Indica los controles disponibles para jugar. */
 .pacbird-controles {
     margin: 0;
     color: #bd8d2f;
@@ -877,6 +975,7 @@ body{
    Sección de información
    ------------------------------------------------------------ */
 
+/* Contenedor de la sección de información del juego. */
 .game-info-section {
     max-width: 1200px;
     width: 100%;
@@ -887,12 +986,14 @@ body{
     box-sizing: border-box;
 }
 
+/* Organiza la información del juego en dos columnas. */
 .game-info-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
 }
 
+/* Estiliza los títulos de cada bloque informativo. */
 .info-title {
     color: #bd8d2f;
     font-size: 1.35rem;
@@ -901,6 +1002,7 @@ body{
     margin-bottom: 20px;
 }
 
+/* Estiliza los párrafos de la información del juego. */
 .info-text {
     color: #bd8d2f;
     font-size: 0.95rem;
@@ -908,6 +1010,7 @@ body{
     margin-bottom: 30px;
 }
 
+/* Coloca los detalles y el bloque de compartir uno al lado del otro. */
 .details-share-row {
     display: flex;
     justify-content: space-between;
@@ -916,12 +1019,14 @@ body{
     margin-top: 40px;
 }
 
+/* Apila los datos concretos del juego. */
 .game-details {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
+/* Resalta el título de cada detalle del juego. */
 .detail-title {
     color: #bd8d2f;
     font-weight: 600;
@@ -929,28 +1034,33 @@ body{
     margin-bottom: 4px;
 }
 
+/* Estiliza cada dato individual del juego. */
 .detail-item {
     color: #bd8d2f;
     font-size: 0.9rem;
 }
 
+/* Agrupa el título y los botones para compartir. */
 .share-block {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
+/* Estiliza el título del bloque para compartir. */
 .share-title {
     color: #bd8d2f;
     font-size: 0.95rem;
     font-weight: 500;
 }
 
+/* Alinea horizontalmente los botones de redes sociales. */
 .social-buttons {
     display: flex;
     gap: 10px;
 }
 
+/* Muestra las instrucciones como lista con viñetas. */
 .instructions-list {
     list-style-type: disc;
     padding-left: 20px;
@@ -960,12 +1070,14 @@ body{
     gap: 16px;
 }
 
+/* Estiliza cada paso de las instrucciones. */
 .instructions-list li {
     color: #bd8d2f;
     font-size: 0.93rem;
     line-height: 1.5;
 }
 
+/* Resalta las palabras clave dentro de las instrucciones. */
 .instructions-list li strong {
     color: #bd8d2f;
     font-weight: 600;
@@ -975,51 +1087,70 @@ body{
    Responsive
    ------------------------------------------------------------ */
 
+/* Ajusta el diseño para pantallas de hasta 780px de ancho. */
 @media (max-width: 780px) {
+/* Da estilo al título grande de las pantallas del juego. */
+    /* Reduce el tamaño del título en pantallas pequeñas. */
     .pacbird-titulo {
         font-size: 2.2rem;
     }
 
+/* Estiliza los textos descriptivos de las pantallas. */
+    /* Reduce el tamaño de los textos en pantallas pequeñas. */
     .pacbird-texto {
         font-size: 0.92rem;
     }
 
+/* Organiza la información del juego en dos columnas. */
+    /* Muestra la información en una sola columna. */
     .game-info-container {
         grid-template-columns: 1fr;
         gap: 28px;
     }
 
+/* Coloca los detalles y el bloque de compartir uno al lado del otro. */
+    /* Reduce el espacio superior entre detalles y compartir. */
     .details-share-row {
         margin-top: 20px;
     }
 }
 
+/* Desactiva las animaciones cuando el usuario prefiere menos movimiento. */
 @media (prefers-reduced-motion: reduce) {
+/* Anima la boca del Pac-Man mientras se está jugando. */
+    /* Detiene la animación de masticar. */
     .esta-jugando .jugador::before {
         animation: none;
     }
 
+/* Hace parpadear al jugador mientras es invulnerable. */
+    /* Mantiene al jugador semitransparente sin parpadear. */
     .jugador.invulnerable {
         animation: none;
         opacity: 0.55;
     }
 
+    /* Detiene el latido del ítem y el cambio de color del fantasma. */
     .tubo-item,
     .fantasma {
         animation: none;
     }
 
+/* Hace parpadear al jugador cuando el poder está por terminar. */
+    /* Mantiene el poder final sin parpadeos. */
     .jugador.poder-parpadeo {
         animation: none;
         opacity: 0.55;
     }
 
+    /* Muestra la muerte sin animación de desintegración. */
     .jugador.desintegrando,
     .jugador.desintegrando::before,
     .jugador.desintegrando .jugador-sprite {
         animation: none;
     }
 
+    /* Quita las transiciones de los botones. */
     .pacbird-btn {
         transition: none;
     }

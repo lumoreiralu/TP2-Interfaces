@@ -1,6 +1,8 @@
 "use strict";
 
+// Clase principal que implementa el juego PacBird.
 class PacBird {
+    // Inicializa constantes, referencias del DOM y arranca el juego.
     constructor() {
         // Medidas del escenario y físicas (px y px/s)
         this.ANCHO = 810;
@@ -98,6 +100,7 @@ class PacBird {
         this.iniciar();
     }
 
+    // Crea y devuelve el estado inicial del jugador.
     crearJugador() {
         return {
             x: 150,
@@ -109,14 +112,17 @@ class PacBird {
         };
     }
 
+    // Devuelve un número aleatorio entre min y max.
     azar(min, max) {
         return min + Math.random() * (max - min);
     }
 
+    // Devuelve la velocidad de desplazamiento (se duplica con el poder fantasma).
     velocidadActual() {
         return this.VEL_BASE * (this.tiempoFantasma > 0 ? this.MULTIPLICADOR_FANTASMA : 1);
     }
 
+    // Genera un pilar con un hueco aleatorio y programa fantasmas cada ciertas columnas.
     crearTubo() {
         const reducciones = Math.floor(this.juego.tiempo / this.INTERVALO_REDUCCION);
         const huecoBase = this.HUECO_INICIAL - reducciones * this.REDUCCION_HUECO;
@@ -139,6 +145,7 @@ class PacBird {
         }
     }
 
+    // Crea los elementos DOM de las dos mitades del pilar.
     crearTuboEl(centro, hueco) {
         const tubo = document.createElement("div");
         tubo.className = "tubo";
@@ -158,6 +165,7 @@ class PacBird {
         return tubo;
     }
 
+    // Crea un fantasma en la posición indicada si no hay un poder activo.
     crearFantasma(xCentro) {
         if(!this.jugadorEl.classList.contains("poder") && !this.jugadorEl.classList.contains("poder-parpadeo")) {
             const enArriba = Math.random() < 0.5;
@@ -176,6 +184,7 @@ class PacBird {
         }
     }
 
+    // Mueve los fantasmas y elimina los que ya salieron de pantalla.
     actualizarFantasmas(dt) {
         const velocidad = this.velocidadActual();
         for (const fantasma of this.fantasmas) {
@@ -188,6 +197,7 @@ class PacBird {
         }
     }
 
+    // Devuelve el rectángulo de colisión de un fantasma.
     hitboxFantasma(fantasma) {
         const mitad = this.TAMANO_FANTASMA / 2;
         return {
@@ -198,6 +208,7 @@ class PacBird {
         };
     }
 
+    // Detecta colisiones con fantasmas y activa su poder temporal.
     verificarFantasmas() {
         const caja = this.hitboxJugador();
 
@@ -211,6 +222,7 @@ class PacBird {
         }
     }
 
+    // Elimina todos los fantasmas y reinicia el contador de columnas.
     limpiarFantasmas() {
         for (const fantasma of this.fantasmas) {
             if (fantasma.el && fantasma.el.remove) fantasma.el.remove();
@@ -219,10 +231,12 @@ class PacBird {
         this.columnasCreadas = 0;
     }
 
+    // Programa un nuevo intervalo aleatorio para el próximo ítem.
     reiniciarTemporizadorItem() {
         this.tiempoSiguienteItem = this.azar(this.ITEM_TIEMPO_MIN, this.ITEM_TIEMPO_MAX);
     }
 
+    // Descuenta el temporizador y crea un ítem cuando vence.
     actualizarItem(dt) {
         this.tiempoSiguienteItem -= dt;
         if (this.tiempoSiguienteItem > 0) return;
@@ -231,6 +245,7 @@ class PacBird {
         this.crearItemEnTubo();
     }
 
+    // Coloca un ítem en un pilar aleatorio situado por delante del jugador.
     crearItemEnTubo() {
         const candidatos = this.tubos.filter((tubo) =>
             !tubo.itemEl && tubo.x > this.jugador.x + 100
@@ -246,6 +261,7 @@ class PacBird {
         tubo.el.appendChild(el);
     }
 
+    // Mueve los pilares, crea nuevos y elimina los que salen de pantalla.
     actualizarTubos(dt) {
         const velocidad = this.velocidadActual();
 
@@ -262,6 +278,7 @@ class PacBird {
         }
     }
 
+    // Suma puntos al superar cada pilar y muestra el texto flotante.
     verificarPuntos() {
         for (const tubo of this.tubos) {
             if (tubo.puntuado) continue;
@@ -274,6 +291,7 @@ class PacBird {
         }
     }
 
+    // Devuelve el rectángulo de colisión del ítem de un pilar.
     hitboxItem(tubo) {
         const mitad = this.TAMANO_ITEM / 2;
         return {
@@ -284,6 +302,7 @@ class PacBird {
         };
     }
 
+    // Detecta si el jugador recoge alguno de los ítems disponibles.
     verificarItems() {
         const caja = this.hitboxJugador();
         for (const tubo of this.tubos) {
@@ -294,6 +313,7 @@ class PacBird {
         }
     }
 
+    // Quita el ítem, suma puntos y activa el efecto de jugador pequeño.
     recogerItem(tubo) {
         if (!tubo.itemEl) return;
 
@@ -306,6 +326,7 @@ class PacBird {
         this.activarPequeno();
     }
 
+    // Muestra un texto flotante con la cantidad de puntos obtenida.
     mostrarPuntos(cantidad, x, y) {
         if (!this.contenedorPuntos) return;
 
@@ -322,10 +343,12 @@ class PacBird {
         }, 1200);
     }
 
+    // Elimina todos los textos flotantes de la pantalla.
     limpiarPuntos() {
         if (this.contenedorPuntos) this.contenedorPuntos.replaceChildren();
     }
 
+    // Elimina todos los pilares y reinicia la distancia entre ellos.
     limpiarTubos() {
         for (const tubo of this.tubos) {
             if (tubo.el && tubo.el.remove) tubo.el.remove();
@@ -334,6 +357,7 @@ class PacBird {
         this.distancia = 320;
     }
 
+    // Devuelve el rectángulo de colisión del jugador según su tamaño actual.
     hitboxJugador() {
         const margen = this.tiempoPequeno > 0 ? 13 : 6;
         return {
@@ -344,6 +368,7 @@ class PacBird {
         };
     }
 
+    // Devuelve los rectángulos de colisión de las dos mitades del pilar.
     hitboxesTubo(tubo) {
         const bordeSuperior = tubo.centro - tubo.hueco / 2;
         const bordeInferior = tubo.centro + tubo.hueco / 2;
@@ -353,6 +378,7 @@ class PacBird {
         ];
     }
 
+    // Comprueba si dos rectángulos se superponen.
     choca(a, b) {
         return a.x < b.x + b.w &&
             a.x + a.w > b.x &&
@@ -360,6 +386,7 @@ class PacBird {
             a.y + a.h > b.y;
     }
 
+    // Comprueba colisiones del jugador con el piso y con los pilares.
     verificarColisiones() {
         if (this.esInvulnerable()) return;
 
@@ -380,6 +407,7 @@ class PacBird {
         }
     }
 
+    // Resta una vida, aplica invulnerabilidad y rebote, o termina el juego.
     recibirImpacto(tipo) {
         if (this.juego.vidas <= 1) {
             this.juego.vidas = 0;
@@ -398,6 +426,7 @@ class PacBird {
         }
     }
 
+    // Inicia la animación de desintegración y programa la pantalla final.
     morir(tipo) {
         if (this.muriendo) return;
         this.muriendo = true;
@@ -405,6 +434,7 @@ class PacBird {
         this.timerMuerte = setTimeout(() => this.finalizar(tipo), 1000);
     }
 
+    // Cancela la muerte en curso y quita la animación de desintegración.
     cancelarMuerte() {
         if (this.timerMuerte) {
             clearTimeout(this.timerMuerte);
@@ -414,26 +444,31 @@ class PacBird {
         if (this.jugadorEl) this.jugadorEl.classList.remove("desintegrando");
     }
 
+    // Activa el tiempo de invulnerabilidad y su efecto visual de parpadeo.
     iniciarInvulnerabilidad() {
         this.tiempoInvulnerable = this.TIEMPO_INVULNERABLE;
         if (this.jugadorEl) this.jugadorEl.classList.add("invulnerable");
     }
 
+    // Finaliza la invulnerabilidad y quita su efecto visual.
     detenerInvulnerabilidad() {
         this.tiempoInvulnerable = 0;
         if (this.jugadorEl) this.jugadorEl.classList.remove("invulnerable");
     }
 
+    // Activa el efecto de jugador pequeño.
     activarPequeno() {
         this.tiempoPequeno = this.TIEMPO_PEQUENO;
         if (this.jugadorEl) this.jugadorEl.classList.add("chico");
     }
 
+    // Finaliza el efecto de jugador pequeño.
     desactivarPequeno() {
         this.tiempoPequeno = 0;
         if (this.jugadorEl) this.jugadorEl.classList.remove("chico");
     }
 
+    // Descuenta el tiempo del efecto pequeño y lo desactiva al terminar.
     actualizarPequeno(dt) {
         if (this.tiempoPequeno <= 0) return;
 
@@ -441,6 +476,7 @@ class PacBird {
         if (this.tiempoPequeno === 0) this.desactivarPequeno();
     }
 
+    // Activa el poder temporal de fantasma.
     activarPoderFantasma() {
         this.tiempoFantasma = this.TIEMPO_FANTASMA;
         if (this.jugadorEl) {
@@ -449,6 +485,7 @@ class PacBird {
         }
     }
 
+    // Finaliza el poder de fantasma y quita sus clases visuales.
     desactivarPoderFantasma() {
         this.tiempoFantasma = 0;
         if (this.jugadorEl) {
@@ -457,6 +494,7 @@ class PacBird {
         }
     }
 
+    // Descuenta el poder de fantasma y activa el parpadeo en sus últimos segundos.
     actualizarPoderFantasma(dt) {
         if (this.tiempoFantasma <= 0) return;
 
@@ -469,10 +507,12 @@ class PacBird {
         }
     }
 
+    // Indica si el jugador no puede recibir daño en este momento.
     esInvulnerable() {
         return this.tiempoInvulnerable > 0 || this.tiempoFantasma > 0;
     }
 
+    // Precarga los sprites, aplica los estilos y arranca el bucle de animación.
     async iniciar() {
         if (this.btnStart) this.btnStart.disabled = true;
         await this.precargarSprites();
@@ -486,6 +526,7 @@ class PacBird {
         requestAnimationFrame((ahora) => this.frame(ahora));
     }
 
+    // Carga una imagen y devuelve null si no se puede cargar.
     cargarImagen(src) {
         return new Promise((resolver) => {
             const img = new Image();
@@ -495,6 +536,7 @@ class PacBird {
         });
     }
 
+    // Carga todas las imágenes declaradas en el manifiesto.
     async precargarSprites() {
         const claves = Object.keys(this.MANIFIESTO);
         const imagenes = await Promise.all(
@@ -507,6 +549,7 @@ class PacBird {
         });
     }
 
+    // Aplica las imágenes cargadas al jugador y a las capas de fondo.
     aplicarSprites() {
         if (this.sprites.pacman && this.jugadorSprite) {
             this.jugadorSprite.src = this.sprites.pacman.src;
@@ -521,6 +564,7 @@ class PacBird {
         });
     }
 
+    // Registra teclado, puntero y botones para controlar el juego.
     configurarEntrada() {
         window.addEventListener("keydown", (e) => {
             if (e.repeat) return;
@@ -549,6 +593,7 @@ class PacBird {
         if (this.btnVolverMenu) this.btnVolverMenu.addEventListener("click", () => this.volverAlMenu());
     }
 
+    // Bucle principal: calcula el delta de tiempo, actualiza el estado y dibuja.
     frame(ahora) {
         let dt = (ahora - this.anterior) / 1000;
         this.anterior = ahora;
@@ -571,6 +616,7 @@ class PacBird {
         requestAnimationFrame((tiempo) => this.frame(tiempo));
     }
 
+    // Actualiza física, obstáculos, poderes y colisiones de la partida.
     actualizar(dt) {
         if (this.muriendo) return;
         this.actualizarPoderFantasma(dt);
@@ -623,6 +669,7 @@ class PacBird {
         this.juego.tiempo += dt;
     }
 
+    // Aplica posiciones y rotación a los elementos del DOM.
     dibujar() {
         const j = this.jugador;
         if (this.jugadorEl) {
@@ -645,6 +692,7 @@ class PacBird {
         }
     }
 
+    // Actualiza los puntos y los corazones mostrados en la interfaz.
     actualizarHud() {
         if (this.hudPuntos) this.hudPuntos.textContent = this.juego.puntos;
 
@@ -664,6 +712,7 @@ class PacBird {
         }
     }
 
+    // Cambia el estado del juego y muestra u oculta los menús.
     mostrarPantalla(estado) {
         this.juego.estado = estado;
         if (this.escenario) this.escenario.classList.toggle("esta-jugando", estado === "jugando");
@@ -671,6 +720,7 @@ class PacBird {
         if (this.menuFin) this.menuFin.hidden = estado !== "fin";
     }
 
+    // Reinicia las variables de la partida y cambia al estado jugando.
     empezar() {
         if (this.juego.estado === "jugando") return;
         this.cancelarMuerte();
@@ -691,11 +741,13 @@ class PacBird {
         this.mostrarPantalla("jugando");
     }
 
+    // Inicia una nueva partida desde la pantalla de fin.
     reiniciar() {
         this.juego.estado = "fin";
         this.empezar();
     }
 
+    // Muestra la pantalla final con el motivo de la muerte y los puntos.
     finalizar(tipo = "tubo") {
         if (this.juego.estado !== "jugando") return;
         this.cancelarMuerte();
@@ -708,6 +760,7 @@ class PacBird {
         }
     }
 
+    // Limpia la partida y vuelve al menú inicial.
     volverAlMenu() {
         this.cancelarMuerte();
         this.detenerInvulnerabilidad();
@@ -726,6 +779,7 @@ class PacBird {
     }
 }
 
+// Crea la instancia del juego cuando el DOM termina de cargar.
 document.addEventListener("DOMContentLoaded", () => {
     new PacBird();
 });
