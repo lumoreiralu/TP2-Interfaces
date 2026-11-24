@@ -13,6 +13,11 @@ class PacBird {
         this.DT_MAX = 0.05;
         this.FACTORES = [0.1, 0.25, 0.5, 1];
 
+        this.SPRITE = { ancho: 44, alto: 44, columnas: 4, fps: 12 };
+        this.frameActual = 0;
+        this.tiempoAnimacion = 0;
+        this.usandoSpritesheet = false;
+
         // Pilares (obstáculos)
         this.ANCHO_TUBO = 80;
         this.HUECO_INICIAL = 210;
@@ -60,6 +65,7 @@ class PacBird {
             fondo3: "../assets/pacbird/fondo3.png",
             fondo4: "../assets/pacbird/fondo4.png",
             pacman: "../assets/pacbird/pacman.png",
+            pacbirdSheet: "../assets/pacbird/pacbird-spritesheet.png",
             tubo: "../assets/pacbird/tubo.png",
             fantasma: "../assets/pacbird/fantasma.png",
             item: "../assets/pacbird/item.png"
@@ -551,9 +557,21 @@ class PacBird {
 
     // Aplica las imágenes cargadas al jugador y a las capas de fondo.
     aplicarSprites() {
-        if (this.sprites.pacman && this.jugadorSprite) {
-            this.jugadorSprite.src = this.sprites.pacman.src;
-            this.jugadorEl.classList.add("con-sprite");
+        if (this.jugadorSprite) {
+            const sheet = this.sprites.pacbirdSheet;
+            this.usandoSpritesheet = Boolean(sheet);
+
+            if (sheet) {
+                this.jugadorSprite.style.backgroundImage = `url("${sheet.src}")`;
+                this.jugadorSprite.style.backgroundSize =
+                    `${this.SPRITE.ancho * this.SPRITE.columnas}px ${this.SPRITE.alto}px`;
+                this.jugadorSprite.style.backgroundRepeat = "no-repeat";
+                this.jugadorSprite.style.backgroundPosition = "0 0";
+                this.jugadorEl.classList.add("con-sprite");
+            } else if (this.sprites.pacman) {
+                this.jugadorSprite.src = this.sprites.pacman.src;
+                this.jugadorEl.classList.add("con-sprite");
+            }
         }
 
         this.capas.forEach((capa) => {
@@ -562,6 +580,17 @@ class PacBird {
             capa.el.style.backgroundImage = `url("${img.src}")`;
             capa.el.style.backgroundSize = "auto 100%";
         });
+    }
+
+    actualizarSpritesheet(dt) {
+        if (!this.usandoSpritesheet || this.muriendo) return;
+
+        this.tiempoAnimacion += dt;
+        const duracion = 1 / this.SPRITE.fps;
+        while (this.tiempoAnimacion >= duracion) {
+            this.tiempoAnimacion -= duracion;
+            this.frameActual = (this.frameActual + 1) % this.SPRITE.columnas;
+        }
     }
 
     // Registra teclado, puntero y botones para controlar el juego.
@@ -619,6 +648,7 @@ class PacBird {
     // Actualiza física, obstáculos, poderes y colisiones de la partida.
     actualizar(dt) {
         if (this.muriendo) return;
+        this.actualizarSpritesheet(dt);
         this.actualizarPoderFantasma(dt);
 
         if (this.tiempoInvulnerable > 0) {
@@ -677,6 +707,11 @@ class PacBird {
                 `translate3d(${j.x}px, ${j.y}px, 0) rotate(${j.angulo}deg)`;
         }
 
+        if (this.usandoSpritesheet && this.jugadorSprite) {
+            this.jugadorSprite.style.backgroundPosition =
+                `${-this.frameActual * this.SPRITE.ancho}px 0`;
+        }
+
         for (const capa of this.capas) {
             capa.el.style.backgroundPositionX = `${-capa.x}px`;
         }
@@ -729,6 +764,8 @@ class PacBird {
         this.juego.tiempo = 0;
         this.jugador = this.crearJugador();
         this.jugador.vy = -this.IMPULSO * 0.7;
+        this.frameActual = 0;
+        this.tiempoAnimacion = 0;
         this.detenerInvulnerabilidad();
         this.desactivarPequeno();
         this.desactivarPoderFantasma();
@@ -774,6 +811,8 @@ class PacBird {
         this.juego.puntos = 0;
         this.juego.vidas = this.VIDAS_INICIALES;
         this.juego.tiempo = 0;
+        this.frameActual = 0;
+        this.tiempoAnimacion = 0;
         this.actualizarHud();
         this.mostrarPantalla("menu");
     }
