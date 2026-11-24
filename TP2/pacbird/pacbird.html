@@ -121,7 +121,12 @@
                     <div class="pacbird-pantalla" id="menuInicio">
                         <h3 class="pacbird-titulo">PACBIRD</h3>
                         <p class="pacbird-texto">Ayudá a Pac-Man a volar por el laberinto.<br>Esquivá los obstáculos y sumá puntos.</p>
-                        <button type="button" class="pacbird-btn" id="btnStart" disabled>START</button>
+                        
+                        <div class="boton-start-container">
+                            <button id="btn-play" class="btn-start" type="button" disabled>
+                                <span style="--i: 0">P</span><span style="--i: 1">l</span><span style="--i: 2">a</span><span style="--i: 3">y</span>
+                            </button> 
+                        </div>                        
                         <p class="pacbird-hint">ESPACIO / ↑ / clic para aletear</p>
                     </div>
 
@@ -149,10 +154,6 @@
                         PacBird es un juego de habilidad inspirado en Flappy Bird y ambientado en el universo de Pac-Man.
                         Controlás a Pac-Man mientras cae por un laberinto infinito: cada pulsación le da un impulso hacia
                         arriba y tenés que mantenerlo en el aire para atravesar los obstáculos sin chocar.
-                       <!--                         Ya están implementados el movimiento, el impulso, la gravedad, el parallax de cuatro capas,
-                        los estados de menú, juego y fin, los pilares con huecos aleatorios, el puntaje de +20 por cada
-                        pilar superado y un sistema de 5 vidas: al chocar con un pilar o con el piso perdés un corazón y
-                        Pac-Man parpadea durante 2 segundos, pudiendo atravesar las estructuras.-->
                     </p>
                 </div>
 

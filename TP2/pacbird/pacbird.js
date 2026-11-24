@@ -73,7 +73,7 @@ class PacBird {
         this.menuInicio = document.getElementById("menuInicio");
         this.menuFin = document.getElementById("menuFin");
         this.finDetalle = document.getElementById("finDetalle");
-        this.btnStart = document.getElementById("btnStart");
+        this.btnStart = document.getElementById("btn-play");
         this.btnReintentar = document.getElementById("btnReintentar");
         this.btnVolverMenu = document.getElementById("btnVolverMenu");
         this.contenedorTubos = document.getElementById("tubos");
