@@ -638,7 +638,7 @@ class PacBird {
         this.jugador.vy += this.GRAVEDAD * dt;
         this.jugador.y += this.jugador.vy * dt;
 
-        const piso = this.ALTO - this.jugador.alto;
+        const piso = this.ALTO -this.ALTO_PISO - this.jugador.alto;
         if (this.jugador.y < 0) {
             this.jugador.y = 0;
             this.jugador.vy = 0;
