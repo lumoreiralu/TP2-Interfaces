@@ -579,6 +579,8 @@ class PacBird {
             if (!img) return;
             capa.el.style.backgroundImage = `url("${img.src}")`;
             capa.el.style.backgroundSize = "auto 100%";
+            capa.anchoTile = img.naturalWidth *
+                capa.el.getBoundingClientRect().height / img.naturalHeight;
         });
     }
 
