@@ -142,7 +142,7 @@ class PacBird {
         const x = this.ANCHO + 40;
         const anterior = this.tubos[this.tubos.length - 1];
 
-        this.tubos.push({ x, centro, hueco, el, puntuado: false });
+        this.tubos.push({ x, centro, hueco, el, puntuado: false, pasoValido: true });
         this.distancia = this.azar(this.DISTANCIA_MIN, this.DISTANCIA_MAX);
         this.columnasCreadas += 1;
 
@@ -286,10 +286,26 @@ class PacBird {
 
     // Suma puntos al superar cada pilar y muestra el texto flotante.
     verificarPuntos() {
+        const caja = this.hitboxJugador();
+
         for (const tubo of this.tubos) {
             if (tubo.puntuado) continue;
+
+            const seSuperponeHorizontalmente =
+                caja.x < tubo.x + this.ANCHO_TUBO &&
+                caja.x + caja.w > tubo.x;
+            if (seSuperponeHorizontalmente) {
+                const bordeSuperior = tubo.centro - tubo.hueco / 2;
+                const bordeInferior = tubo.centro + tubo.hueco / 2;
+                if (caja.y < bordeSuperior || caja.y + caja.h > bordeInferior) {
+                    tubo.pasoValido = false;
+                }
+            }
+
             if (tubo.x + this.ANCHO_TUBO < this.jugador.x) {
                 tubo.puntuado = true;
+                if (!tubo.pasoValido) continue;
+
                 this.juego.puntos += 20;
                 this.actualizarHud();
                 this.mostrarPuntos(20, tubo.x + this.ANCHO_TUBO / 2, tubo.centro);
