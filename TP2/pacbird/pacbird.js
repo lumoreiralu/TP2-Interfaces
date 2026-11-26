@@ -31,7 +31,7 @@ class PacBird {
 
         // Vidas e invulnerabilidad
         this.VIDAS_INICIALES = 10;
-        this.ALTO_PISO = 72;
+        this.ALTO_PISO = 0; //esto modificamos para el piso 
         this.TIEMPO_INVULNERABLE = 2;
         this.tiempoInvulnerable = 0;
         this.muriendo = false;
@@ -48,14 +48,22 @@ class PacBird {
 
         // Fantasma multicolor (poder temporal)
         this.TAMANO_FANTASMA = 36;
+        this.FANTASMA_SPRITE = { ancho: 500, alto: 500, columnas: 8, fps: 8 };
+        this.usandoSpritesheetFantasma = false;
         this.FANTASMA_MARGEN = 40;
         this.FANTASMA_ZONA = 110;
         this.COLUMNAS_POR_FANTASMA = 4;
+
+
+        /*EFECTO FANTASMA*/
         this.TIEMPO_FANTASMA = 6;
         this.UMBRAL_PARPADEO_FANTASMA = 2;
         this.MULTIPLICADOR_FANTASMA = 2;
         this.tiempoFantasma = 0;
         this.fantasmas = [];
+
+
+
         this.columnasCreadas = 0;
 
         // Rutas reservadas: cuando existan los assets reales se cargan solos.
@@ -68,6 +76,7 @@ class PacBird {
             pacbirdSheet: "../assets/pacbird/pacbird-spritesheet.png",
             tubo: "../assets/pacbird/tubo.png",
             fantasma: "../assets/pacbird/fantasma.png",
+            fantasmaSheet: "../assets/pacbird/fantasma-spritesheet-limpio.png",
             item: "../assets/pacbird/item.png"
         };
 
@@ -123,10 +132,23 @@ class PacBird {
         return min + Math.random() * (max - min);
     }
 
+
+
+
+
+    /*TAMBIEN ACA USA PARA EFECTO FANTASMA */
+
     // Devuelve la velocidad de desplazamiento (se duplica con el poder fantasma).
     velocidadActual() {
         return this.VEL_BASE * (this.tiempoFantasma > 0 ? this.MULTIPLICADOR_FANTASMA : 1);
     }
+
+
+
+
+
+
+
 
     // Genera un pilar con un hueco aleatorio y programa fantasmas cada ciertas columnas.
     crearTubo() {
@@ -148,6 +170,19 @@ class PacBird {
 
         if (this.columnasCreadas % this.COLUMNAS_POR_FANTASMA === 0 && anterior) {
             this.crearFantasma((anterior.x + x) / 2);
+        }
+    }
+
+    actualizarAnimacionFantasma(dt) {
+        if (!this.usandoSpritesheetFantasma || this.muriendo) return;
+
+        const duracion = 1 / this.FANTASMA_SPRITE.fps;
+        for (const fantasma of this.fantasmas) {
+            fantasma.tiempoAnimacion += dt;
+            while (fantasma.tiempoAnimacion >= duracion) {
+                fantasma.tiempoAnimacion -= duracion;
+                fantasma.frame = (fantasma.frame + 1) % this.FANTASMA_SPRITE.columnas;
+            }
         }
     }
 
@@ -184,9 +219,22 @@ class PacBird {
 
             const el = document.createElement("div");
             el.className = "fantasma";
+            if (this.usandoSpritesheetFantasma) {
+                el.classList.add("fantasma-con-sprite");
+                el.style.backgroundImage = `url("${this.sprites.fantasmaSheet.src}")`;
+                el.style.backgroundSize =
+                    `${this.TAMANO_FANTASMA * this.FANTASMA_SPRITE.columnas}px ${this.TAMANO_FANTASMA}px`;
+                el.style.backgroundRepeat = "no-repeat";
+            }
             if (this.contenedorFantasmas) this.contenedorFantasmas.appendChild(el);
 
-            this.fantasmas.push({ x: xCentro, y, el });
+            this.fantasmas.push({
+                x: xCentro,
+                y,
+                el,
+                frame: Math.floor(Math.random() * this.FANTASMA_SPRITE.columnas),
+                tiempoAnimacion: 0
+            });
         }
     }
 
@@ -214,6 +262,14 @@ class PacBird {
         };
     }
 
+
+
+
+
+
+
+    
+ /*ACA USA EFECTO FANTASMA*/
     // Detecta colisiones con fantasmas y activa su poder temporal.
     verificarFantasmas() {
         const caja = this.hitboxJugador();
@@ -465,7 +521,7 @@ class PacBird {
         this.muriendo = false;
         if (this.jugadorEl) this.jugadorEl.classList.remove("desintegrando");
     }
-
+/*usa efecto fantasma*/
     // Activa el tiempo de invulnerabilidad y su efecto visual de parpadeo.
     iniciarInvulnerabilidad() {
         this.tiempoInvulnerable = this.TIEMPO_INVULNERABLE;
@@ -496,8 +552,14 @@ class PacBird {
 
         this.tiempoPequeno = Math.max(0, this.tiempoPequeno - dt);
         if (this.tiempoPequeno === 0) this.desactivarPequeno();
+
     }
 
+
+
+
+
+/*USA EFECTO FANSTMA*/
     // Activa el poder temporal de fantasma.
     activarPoderFantasma() {
         this.tiempoFantasma = this.TIEMPO_FANTASMA;
@@ -533,6 +595,23 @@ class PacBird {
     esInvulnerable() {
         return this.tiempoInvulnerable > 0 || this.tiempoFantasma > 0;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Precarga los sprites, aplica los estilos y arranca el bucle de animación.
     async iniciar() {
@@ -573,6 +652,8 @@ class PacBird {
 
     // Aplica las imágenes cargadas al jugador y a las capas de fondo.
     aplicarSprites() {
+        this.usandoSpritesheetFantasma = Boolean(this.sprites.fantasmaSheet);
+
         if (this.jugadorSprite) {
             const sheet = this.sprites.pacbirdSheet;
             this.usandoSpritesheet = Boolean(sheet);
@@ -610,6 +691,9 @@ class PacBird {
             this.frameActual = (this.frameActual + 1) % this.SPRITE.columnas;
         }
     }
+
+
+
 
     // Registra teclado, puntero y botones para controlar el juego.
     configurarEntrada() {
@@ -667,6 +751,7 @@ class PacBird {
     actualizar(dt) {
         if (this.muriendo) return;
         this.actualizarSpritesheet(dt);
+        this.actualizarAnimacionFantasma(dt);
         this.actualizarPoderFantasma(dt);
 
         if (this.tiempoInvulnerable > 0) {
@@ -742,6 +827,10 @@ class PacBird {
         for (const fantasma of this.fantasmas) {
             fantasma.el.style.transform =
                 `translate3d(${fantasma.x - mitadFantasma}px, ${fantasma.y - mitadFantasma}px, 0)`;
+            if (this.usandoSpritesheetFantasma) {
+                fantasma.el.style.backgroundPosition =
+                    `${-fantasma.frame * this.TAMANO_FANTASMA}px 0`;
+            }
         }
     }
 
